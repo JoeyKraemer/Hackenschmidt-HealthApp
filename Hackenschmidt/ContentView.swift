@@ -60,7 +60,17 @@ struct ContentView: View {
         }
     }
     
-    - /* TODO fix this properly */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
