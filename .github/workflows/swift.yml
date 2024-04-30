@@ -1,4 +1,4 @@
-name: Build Run Check Coding Conventions
+name: Check Coding Conventions
 
 on:
   push:

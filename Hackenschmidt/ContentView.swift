@@ -60,8 +60,8 @@ struct ContentView: View {
         }
     }
     
-    //very long line to test conventions
-
+    - /* TODO fix this properly */
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
