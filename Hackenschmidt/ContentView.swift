@@ -59,6 +59,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    //very long line to test conventions
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
