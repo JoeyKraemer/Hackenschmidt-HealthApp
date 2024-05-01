@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
+		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */; };
 		DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF32BDFEE6200980333 /* Persistence.swift */; };
 		DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */; };
 		DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF82BDFEE6200980333 /* ContentView.swift */; };
-		DA80AFFB2BDFEE6400980333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
 		DA80AFFF2BDFEE6400980333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackenschmidt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtApp.swift; sourceTree = "<group>"; };
 		DA80AFF32BDFEE6200980333 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA80AFF62BDFEE6200980333 /* Hackenschmidt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hackenschmidt.xcdatamodel; sourceTree = "<group>"; };
 		DA80AFF82BDFEE6200980333 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		DA80AFFA2BDFEE6400980333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA80AFFA2BDFEE6400980333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Hackenschmidt/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hackenschmidt.entitlements; sourceTree = "<group>"; };
 		DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6126E5132BE25C1F0066E3A7 /* SplashScreens */ = {
+			isa = PBXGroup;
+			children = (
+				61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */,
+			);
+			path = SplashScreens;
+			sourceTree = "<group>";
+		};
 		DA80AFE52BDFEE6200980333 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		DA80AFF02BDFEE6200980333 /* Hackenschmidt */ = {
 			isa = PBXGroup;
 			children = (
+				6126E5132BE25C1F0066E3A7 /* SplashScreens */,
 				DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */,
 				DA80AFF32BDFEE6200980333 /* Persistence.swift */,
 				DA80AFF82BDFEE6200980333 /* ContentView.swift */,
@@ -133,8 +144,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */,
 				DA80AFFF2BDFEE6400980333 /* Preview Assets.xcassets in Resources */,
-				DA80AFFB2BDFEE6400980333 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */,
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
@@ -290,7 +302,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -326,7 +338,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
