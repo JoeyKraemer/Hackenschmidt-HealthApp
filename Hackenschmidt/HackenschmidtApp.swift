@@ -13,7 +13,7 @@ struct HackenschmidtApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ProcessOne()
+            ProcessTwo()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
