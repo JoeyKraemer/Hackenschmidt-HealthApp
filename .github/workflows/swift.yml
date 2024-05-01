@@ -16,9 +16,14 @@ jobs:
 
     - name: Install Swift Format
       run: brew install swiftformat
-
-    - name: Making sure that the files are visible
-      run: ls -s Hackenschmidt/
     
     - name: Format the code
       run: swiftformat Hackenschmidt/
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions"
+        git add .
+        git commit -m "Apply SwiftFormat"
+        git push
