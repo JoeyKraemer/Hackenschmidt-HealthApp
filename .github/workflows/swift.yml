@@ -16,6 +16,9 @@ jobs:
 
     - name: Install Swift Format
       run: brew install swiftformat
-      
+
+    - name: Making sure that the files are visible
+      runs: ls -s Hackenschmidt/
+    
     - name: Format the code
       run: swiftformat Hackenschmidt/
