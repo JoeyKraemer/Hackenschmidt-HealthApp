@@ -50,7 +50,7 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button("Next"){
+                    Button("Next") {
                         print(userName)
                     }
                     .frame(width: 290, height: 40)

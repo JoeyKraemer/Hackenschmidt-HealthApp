@@ -11,9 +11,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            ZStack{
+            ZStack {
                 Color("BackgroundSplashSCreenColor").edgesIgnoringSafeArea(.all)
-                VStack(){
+                VStack {
                     Image("Hackenschmidt")
                         .resizable()
                         .scaledToFit()
