@@ -103,11 +103,11 @@ struct ProcessTwo: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(isClickedMale ? Color("ButtonColor").opacity(0.5) : Color.gray.opacity(0.0))
                                         .frame(width: 140, height: 50)
-                                    
+
                                     RoundedRectangle(cornerRadius: 6)
                                         .stroke(Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
-                                    
+
                                     Text("Male")
                                         .foregroundColor(Color("TextColor"))
                                 }
@@ -122,11 +122,11 @@ struct ProcessTwo: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(isClickedFemale ? Color("ButtonColor").opacity(0.5) : Color.gray.opacity(0.0))
                                         .frame(width: 140, height: 50)
-                                    
+
                                     RoundedRectangle(cornerRadius: 6)
                                         .stroke(Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
-                                    
+
                                     Text("Female")
                                         .foregroundColor(Color("TextColor"))
                                 }
@@ -140,7 +140,7 @@ struct ProcessTwo: View {
                         Text("What is your activity level?")
                             .foregroundColor(Color("TextColor"))
                             .padding()
-                        
+
                         Button(action: {
                             isClickedActive = false
                             isClickedVeryActive = true
@@ -150,17 +150,17 @@ struct ProcessTwo: View {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
                                     .frame(width: 380, height: 70)
-                                
+
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
                                     .frame(width: 380, height: 70)
-                                
+
                                 VStack(alignment: .leading) {
                                     Text("Very Active")
                                         .font(.system(size: 20))
                                         .foregroundColor(isClickedVeryActive ? Color("ButtonColor") : Color("TextColor"))
                                         .padding(.horizontal, 11)
-                                    
+
                                     Text("Spend most of the day doing heavy physical activity (e.g. food server, carpenter)")
                                         .font(.system(size: 10))
                                         .foregroundColor(isClickedVeryActive ? Color("TextColor") : Color("GrayText"))
@@ -168,7 +168,7 @@ struct ProcessTwo: View {
                                 }
                             }
                         }
-                        
+
                         Button(action: {
                             isClickedActive = true
                             isClickedVeryActive = false
@@ -178,17 +178,17 @@ struct ProcessTwo: View {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
                                     .frame(width: 380, height: 70)
-                                
+
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
                                     .frame(width: 380, height: 70)
-                                
+
                                 VStack(alignment: .leading) {
                                     Text("Active")
                                         .font(.system(size: 20))
                                         .foregroundColor(isClickedActive ? Color("ButtonColor") : Color("TextColor"))
                                         .padding(.horizontal, 11)
-                                    
+
                                     Text("Spend most of the day doing some physical activity (e.g. teacher, sales person)")
                                         .font(.system(size: 10))
                                         .foregroundColor(isClickedActive ? Color("TextColor") : Color("GrayText"))
@@ -196,7 +196,7 @@ struct ProcessTwo: View {
                                 }
                             }
                         }
-                        
+
                         Button(action: {
                             isClickedActive = false
                             isClickedVeryActive = false
@@ -206,17 +206,17 @@ struct ProcessTwo: View {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
                                     .frame(width: 380, height: 70)
-                                
+
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedNotVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
                                     .frame(width: 380, height: 70)
-                                
+
                                 VStack(alignment: .leading) {
                                     Text("Not Very Active")
                                         .font(.system(size: 20))
                                         .foregroundColor(isClickedNotVeryActive ? Color("ButtonColor") : Color("TextColor"))
                                         .padding(.horizontal, 11)
-                                    
+
                                     Text("Spend most of the day sitting (e.g. desk job, bank teller)")
                                         .font(.system(size: 10))
                                         .foregroundColor(isClickedNotVeryActive ? Color("TextColor") : Color("GrayText"))
