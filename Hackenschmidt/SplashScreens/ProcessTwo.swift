@@ -106,7 +106,7 @@ struct ProcessTwo: View {
                                     RoundedRectangle(cornerRadius: 25)
                                         .fill(isClicked ? Color.blue.opacity(0.5) : Color.gray.opacity(0.0))
                                         .frame(width: 100, height: 10)
-                                    
+
                                     Text("Female")
                                         .foregroundColor(.white)
                                         .opacity(isClicked ? 1.0 : 0.5)
