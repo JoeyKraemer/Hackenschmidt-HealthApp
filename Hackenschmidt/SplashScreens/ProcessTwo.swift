@@ -12,7 +12,11 @@ struct ProcessTwo: View {
     @State private var height: Int = 0
     @State private var gender: String = ""
     @State private var activity: String = ""
-    @State private var isClicked = false
+    @State private var isClickedMale = false
+    @State private var isClickedFemale = false
+    @State private var isClickedActive = false
+    @State private var isClickedVeryActive = false
+    @State private var isClickedNotVeryActive = false
 
     var body: some View {
         NavigationView {
@@ -27,10 +31,11 @@ struct ProcessTwo: View {
                         RoundedRectangle(cornerRadius: 25.0)
                             .frame(width: 80, height: 8)
                             .foregroundStyle(Color("ProgressBarColor"))
-                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        RoundedRectangle(cornerRadius: 25.0)
                             .frame(width: 80, height: 8)
                             .foregroundStyle(Color.gray)
                     }
+                    Spacer()
                     Spacer()
                     VStack {
                         Text("How much do you weight")
@@ -43,6 +48,7 @@ struct ProcessTwo: View {
                                 }
                             }
                         ))
+                        .frame(width: 313)
                         .padding()
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(10)
@@ -56,6 +62,8 @@ struct ProcessTwo: View {
                         )
                     }
                     Spacer()
+                    Spacer()
+                    Spacer()
                     VStack {
                         Text("How tall are you")
                             .foregroundStyle(Color("TextColor"))
@@ -67,6 +75,7 @@ struct ProcessTwo: View {
                                 }
                             }
                         ))
+                        .frame(width: 313)
                         .padding()
                         .background(Color.gray.opacity(0.1))
                         .cornerRadius(10)
@@ -80,45 +89,158 @@ struct ProcessTwo: View {
                         )
                     }
                     Spacer()
+                    Spacer()
                     VStack {
                         Text("Please select which sex we should use to calculate your calorie need:")
                             .foregroundStyle(Color("TextColor"))
-                            .padding()
                         HStack {
+                            Spacer()
                             Button(action: {
-                                isClicked.toggle() // Toggle the state
+                                isClickedMale = true
+                                isClickedFemale = false
                             }) {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 25)
-                                        .fill(isClicked ? Color.blue.opacity(0.5) : Color.gray.opacity(0.0))
-                                        .frame(width: 100, height: 10)
-
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(isClickedMale ? Color("ButtonColor").opacity(0.5) : Color.gray.opacity(0.0))
+                                        .frame(width: 140, height: 50)
+                                    
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 140, height: 50)
+                                    
                                     Text("Male")
-                                        .foregroundColor(.white)
-                                        .opacity(isClicked ? 1.0 : 0.5)
+                                        .foregroundColor(Color("TextColor"))
                                 }
                             }
                             .padding()
+                            Spacer()
                             Button(action: {
-                                isClicked.toggle() // Toggle the state
+                                isClickedFemale = true
+                                isClickedMale = false
                             }) {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 25)
-                                        .fill(isClicked ? Color.blue.opacity(0.5) : Color.gray.opacity(0.0))
-                                        .frame(width: 100, height: 10)
-
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(isClickedFemale ? Color("ButtonColor").opacity(0.5) : Color.gray.opacity(0.0))
+                                        .frame(width: 140, height: 50)
+                                    
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: 140, height: 50)
+                                    
                                     Text("Female")
-                                        .foregroundColor(.white)
-                                        .opacity(isClicked ? 1.0 : 0.5)
+                                        .foregroundColor(Color("TextColor"))
                                 }
                             }
                             .padding()
+                            Spacer()
                         }
                         Spacer()
                     }
+                    VStack(spacing: 10) {
+                        Text("What is your activity level?")
+                            .foregroundColor(Color("TextColor"))
+                            .padding()
+                        
+                        Button(action: {
+                            isClickedActive = false
+                            isClickedVeryActive = true
+                            isClickedNotVeryActive = false
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.gray.opacity(0.0))
+                                    .frame(width: 380, height: 70)
+                                
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(isClickedVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                                    .frame(width: 380, height: 70)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Very Active")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(isClickedVeryActive ? Color("ButtonColor") : Color("TextColor"))
+                                        .padding(.horizontal, 11)
+                                    
+                                    Text("Spend most of the day doing heavy physical activity (e.g. food server, carpenter)")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(isClickedVeryActive ? Color("TextColor") : Color("GrayText"))
+                                        .padding(.horizontal, 11)
+                                }
+                            }
+                        }
+                        
+                        Button(action: {
+                            isClickedActive = true
+                            isClickedVeryActive = false
+                            isClickedNotVeryActive = false
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.gray.opacity(0.0))
+                                    .frame(width: 380, height: 70)
+                                
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(isClickedActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                                    .frame(width: 380, height: 70)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Active")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(isClickedActive ? Color("ButtonColor") : Color("TextColor"))
+                                        .padding(.horizontal, 11)
+                                    
+                                    Text("Spend most of the day doing some physical activity (e.g. teacher, sales person)")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(isClickedActive ? Color("TextColor") : Color("GrayText"))
+                                        .padding(.horizontal, 11)
+                                }
+                            }
+                        }
+                        
+                        Button(action: {
+                            isClickedActive = false
+                            isClickedVeryActive = false
+                            isClickedNotVeryActive = true
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.gray.opacity(0.0))
+                                    .frame(width: 380, height: 70)
+                                
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(isClickedNotVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                                    .frame(width: 380, height: 70)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Not Very Active")
+                                        .font(.system(size: 20))
+                                        .foregroundColor(isClickedNotVeryActive ? Color("ButtonColor") : Color("TextColor"))
+                                        .padding(.horizontal, 11)
+                                    
+                                    Text("Spend most of the day sitting (e.g. desk job, bank teller)")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(isClickedNotVeryActive ? Color("TextColor") : Color("GrayText"))
+                                        .padding(.horizontal, 11)
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Button("Next") {
+                        print("I am process two")
+                    }
+                    .frame(width: 290, height: 40)
+                    .foregroundColor(Color.white)
+                    .background(Color("ButtonColor"))
+                    .cornerRadius(5)
+                    Spacer()
                 }
+                .padding(.horizontal, 20)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

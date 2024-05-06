@@ -42,6 +42,7 @@ struct ProcessOne: View {
                         Text("What should we call you?")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your name", text: $userName)
+                            .frame(width: 313)
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(10)
@@ -50,13 +51,13 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button("Next") {
-                        print(userName)
+                    NavigationLink(destination: ProcessTwo()) {
+                        Text("Next")
+                            .frame(width: 290, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
-                    .frame(width: 290, height: 40)
-                    .foregroundColor(Color.white)
-                    .background(Color("ButtonColor"))
-                    .cornerRadius(5)
                 }
             }
         }
