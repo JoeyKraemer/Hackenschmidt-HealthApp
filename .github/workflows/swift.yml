@@ -20,10 +20,14 @@ jobs:
     - name: Format the code
       run: swiftformat Hackenschmidt/
 
+    - name: Set up GitBot
+      run: |
+        git config --global user.email "github-actions"
+        git config --global user.name "swiftformat"
+
     - name: Commit and push changes
       run: |
-        git remote set-url origin ${{ secrets.SSH_SECRET }}
-        git status
         git add .
-        git commit -m "Auto formatting swift files with swiftformat"
+        git commit -m "Autoformat swift files by swiftformat"
         git push
+
