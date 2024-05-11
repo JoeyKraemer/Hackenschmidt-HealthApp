@@ -229,7 +229,6 @@ struct ProcessTwo: View {
                                 .frame(width: 340, height: 70, alignment: .leading)
                             }
                         }
-
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
