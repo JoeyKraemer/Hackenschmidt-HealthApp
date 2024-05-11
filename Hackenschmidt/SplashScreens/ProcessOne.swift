@@ -53,7 +53,7 @@ struct ProcessOne: View {
                     Spacer()
                     NavigationLink(destination: ProcessTwo()) {
                         Text("Next")
-                            .frame(width: 290, height: 40)
+                            .frame(width: 340, height: 40)
                             .foregroundColor(Color.white)
                             .background(Color("ButtonColor"))
                             .cornerRadius(5)

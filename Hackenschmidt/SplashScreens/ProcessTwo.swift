@@ -149,11 +149,11 @@ struct ProcessTwo: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70, alignment: .center)
 
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70, alignment: .center)
 
                                 VStack(alignment: .leading) {
                                     Text("Very Active")
@@ -166,6 +166,7 @@ struct ProcessTwo: View {
                                         .foregroundColor(isClickedVeryActive ? Color("TextColor") : Color("GrayText"))
                                         .padding(.horizontal, 11)
                                 }
+                                .frame(width: 340, height: 70, alignment: .leading)
                             }
                         }
 
@@ -177,11 +178,11 @@ struct ProcessTwo: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70)
 
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70)
 
                                 VStack(alignment: .leading) {
                                     Text("Active")
@@ -194,6 +195,7 @@ struct ProcessTwo: View {
                                         .foregroundColor(isClickedActive ? Color("TextColor") : Color("GrayText"))
                                         .padding(.horizontal, 11)
                                 }
+                                .frame(width: 340, height: 70, alignment: .leading)
                             }
                         }
 
@@ -205,37 +207,41 @@ struct ProcessTwo: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70)
 
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(isClickedNotVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 380, height: 70)
+                                    .frame(width: 340, height: 70)
 
                                 VStack(alignment: .leading) {
                                     Text("Not Very Active")
                                         .font(.system(size: 20))
                                         .foregroundColor(isClickedNotVeryActive ? Color("ButtonColor") : Color("TextColor"))
                                         .padding(.horizontal, 11)
+                                        .padding(.top, 10)
 
                                     Text("Spend most of the day sitting (e.g. desk job, bank teller)")
                                         .font(.system(size: 10))
                                         .foregroundColor(isClickedNotVeryActive ? Color("TextColor") : Color("GrayText"))
                                         .padding(.horizontal, 11)
+                                        .padding(.bottom, 10)
                                 }
+                                .frame(width: 340, height: 70, alignment: .leading)
                             }
                         }
+
                     }
+                    .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button("Next") {
-                        print("I am process two")
+                    NavigationLink(destination: ProcessThree()) {
+                        Text("Next")
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
-                    .frame(width: 290, height: 40)
-                    .foregroundColor(Color.white)
-                    .background(Color("ButtonColor"))
-                    .cornerRadius(5)
-                    Spacer()
                 }
                 .padding(.horizontal, 20)
             }
