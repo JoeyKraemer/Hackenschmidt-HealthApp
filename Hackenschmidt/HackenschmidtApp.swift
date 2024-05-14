@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct HackenschmidtApp: App {
     let persistenceController = PersistenceController.shared
-    
+
     @State private var showSecondSplash = false
 
     var body: some Scene {
@@ -31,4 +31,3 @@ struct HackenschmidtApp: App {
         }
     }
 }
-

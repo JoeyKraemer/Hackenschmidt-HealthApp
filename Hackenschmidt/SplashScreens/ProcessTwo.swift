@@ -10,7 +10,7 @@ import SwiftUI
 struct ProcessTwo: View {
     let activityTitles = ["Very Active", "Active", "Not Very Active"]
     let textTitles = ["Spend most of the day doing heavy physical activity (e.g. food server, carpenter)", "Spend most of the day doing some physical activity (e.g. teacher, sales person)", "Spend most of the day sitting (e.g. desk job, bank teller)"]
-    
+
     @State private var selectedButton: Int?
     @State private var selectedActivity: String = ""
     @State private var weight: Int = 0
@@ -182,7 +182,7 @@ struct ProcessTwo: View {
     }
 }
 
-private func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool{
+private func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool {
     if weight <= 0 {
         print(weight)
         return true
@@ -199,18 +199,17 @@ private func checkForNil(weight: Int, height: Int, gender: String, activity: Str
         print(activity)
         return true
     }
-    
+
     return false
 }
 
-
-struct ActivityButtonView: View{
+struct ActivityButtonView: View {
     let activity: String
     let text: String
     let tag: Int
     @Binding var selectedButton: Int?
     @Binding var selectedActivity: String
-    
+
     var body: some View {
         Button(action: {
             self.selectedButton = self.tag
