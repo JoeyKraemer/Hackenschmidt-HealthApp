@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProcessOne: View {
     @State private var userName: String = ""
-
+    @State private var showNextScreen: Bool = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -44,19 +44,29 @@ struct ProcessOne: View {
                         TextField("Enter your name", text: $userName)
                             .frame(width: 313)
                             .padding()
-                            .background(Color.gray.opacity(0.1))
+                            .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
                     Spacer()
                     Spacer()
                     Spacer()
                     Spacer()
-                    NavigationLink(destination: ProcessTwo()) {
-                        Text("Next")
-                            .frame(width: 340, height: 40)
-                            .foregroundColor(Color.white)
-                            .background(Color("ButtonColor"))
-                            .cornerRadius(5)
+                    Button(action: {
+                        if userName.count <= 2 {
+                            showNextScreen = true
+                        }
+                    }) {
+                        NavigationLink(
+                            destination: ProcessTwo(),
+                            label: {
+                                Text("Next")
+                                    .frame(width: 340, height: 40)
+                                    .foregroundColor(Color.white)
+                                    .background(Color("ButtonColor"))
+                                    .cornerRadius(5)
+                            }
+                        )
+                        .disabled(userName.count <= 2)
                     }
                 }
             }

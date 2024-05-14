@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct ProcessTwo: View {
+    let activityTitles = ["Very Active", "Active", "Not Very Active"]
+    let textTitles = ["Spend most of the day doing heavy physical activity (e.g. food server, carpenter)", "Spend most of the day doing some physical activity (e.g. teacher, sales person)", "Spend most of the day sitting (e.g. desk job, bank teller)"]
+    
+    @State private var selectedButton: Int?
+    @State private var selectedActivity: String = ""
     @State private var weight: Int = 0
     @State private var height: Int = 0
     @State private var gender: String = ""
     @State private var activity: String = ""
     @State private var isClickedMale = false
     @State private var isClickedFemale = false
-    @State private var isClickedActive = false
-    @State private var isClickedVeryActive = false
-    @State private var isClickedNotVeryActive = false
+    @State private var showNextScreen: Bool = false
 
     var body: some View {
         NavigationView {
@@ -98,6 +101,7 @@ struct ProcessTwo: View {
                             Button(action: {
                                 isClickedMale = true
                                 isClickedFemale = false
+                                gender = "Male"
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -117,6 +121,7 @@ struct ProcessTwo: View {
                             Button(action: {
                                 isClickedFemale = true
                                 isClickedMale = false
+                                gender = "Female"
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -140,93 +145,13 @@ struct ProcessTwo: View {
                         Text("What is your activity level?")
                             .foregroundColor(Color("TextColor"))
                             .padding()
-
-                        Button(action: {
-                            isClickedActive = false
-                            isClickedVeryActive = true
-                            isClickedNotVeryActive = false
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 340, height: 70, alignment: .center)
-
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(isClickedVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 340, height: 70, alignment: .center)
-
-                                VStack(alignment: .leading) {
-                                    Text("Very Active")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(isClickedVeryActive ? Color("ButtonColor") : Color("TextColor"))
-                                        .padding(.horizontal, 11)
-
-                                    Text("Spend most of the day doing heavy physical activity (e.g. food server, carpenter)")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(isClickedVeryActive ? Color("TextColor") : Color("GrayText"))
-                                        .padding(.horizontal, 11)
-                                }
-                                .frame(width: 340, height: 70, alignment: .leading)
-                            }
-                        }
-
-                        Button(action: {
-                            isClickedActive = true
-                            isClickedVeryActive = false
-                            isClickedNotVeryActive = false
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 340, height: 70)
-
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(isClickedActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 340, height: 70)
-
-                                VStack(alignment: .leading) {
-                                    Text("Active")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(isClickedActive ? Color("ButtonColor") : Color("TextColor"))
-                                        .padding(.horizontal, 11)
-
-                                    Text("Spend most of the day doing some physical activity (e.g. teacher, sales person)")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(isClickedActive ? Color("TextColor") : Color("GrayText"))
-                                        .padding(.horizontal, 11)
-                                }
-                                .frame(width: 340, height: 70, alignment: .leading)
-                            }
-                        }
-
-                        Button(action: {
-                            isClickedActive = false
-                            isClickedVeryActive = false
-                            isClickedNotVeryActive = true
-                        }) {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.gray.opacity(0.0))
-                                    .frame(width: 340, height: 70)
-
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(isClickedNotVeryActive ? Color("ButtonColor") : Color.black, lineWidth: 1)
-                                    .frame(width: 340, height: 70)
-
-                                VStack(alignment: .leading) {
-                                    Text("Not Very Active")
-                                        .font(.system(size: 20))
-                                        .foregroundColor(isClickedNotVeryActive ? Color("ButtonColor") : Color("TextColor"))
-                                        .padding(.horizontal, 11)
-                                        .padding(.top, 10)
-
-                                    Text("Spend most of the day sitting (e.g. desk job, bank teller)")
-                                        .font(.system(size: 10))
-                                        .foregroundColor(isClickedNotVeryActive ? Color("TextColor") : Color("GrayText"))
-                                        .padding(.horizontal, 11)
-                                        .padding(.bottom, 10)
-                                }
-                                .frame(width: 340, height: 70, alignment: .leading)
+                        Text(activity)
+                        ForEach(0 ..< 3, id: \.self) { index in
+                            Button(action: {
+                                selectedButton = index
+                                activity = activityTitles[index]
+                            }) {
+                                ActivityButtonView(activity: activityTitles[index], text: textTitles[index], tag: index, selectedButton: $selectedButton, selectedActivity: $selectedActivity)
                             }
                         }
                     }
@@ -234,18 +159,88 @@ struct ProcessTwo: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    NavigationLink(destination: ProcessThree()) {
-                        Text("Next")
-                            .frame(width: 340, height: 40)
-                            .foregroundColor(Color.white)
-                            .background(Color("ButtonColor"))
-                            .cornerRadius(5)
+                    Button(action: {
+                        showNextScreen = checkForNil(weight: weight, height: height, gender: gender, activity: activity)
+                    }) {
+                        NavigationLink(
+                            destination: ProcessTwo(),
+                            label: {
+                                Text("Next")
+                                    .frame(width: 340, height: 40)
+                                    .foregroundColor(Color.white)
+                                    .background(Color("ButtonColor"))
+                                    .cornerRadius(5)
+                            }
+                        )
+                        .disabled(checkForNil(weight: weight, height: height, gender: gender, activity: activity))
                     }
                 }
                 .padding(.horizontal, 20)
             }
         }
         .navigationBarBackButtonHidden(true)
+    }
+}
+
+private func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool{
+    if weight <= 0 {
+        print(weight)
+        return true
+    }
+    if height <= 0 {
+        print(height)
+        return true
+    }
+    if gender.isEmpty {
+        print(gender)
+        return true
+    }
+    if activity.isEmpty {
+        print(activity)
+        return true
+    }
+    
+    return false
+}
+
+
+struct ActivityButtonView: View{
+    let activity: String
+    let text: String
+    let tag: Int
+    @Binding var selectedButton: Int?
+    @Binding var selectedActivity: String
+    
+    var body: some View {
+        Button(action: {
+            self.selectedButton = self.tag
+            self.selectedActivity = self.activity
+        }) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 6)
+                    .fill(Color.gray.opacity(0.0))
+                    .frame(width: 340, height: 70)
+
+                RoundedRectangle(cornerRadius: 6)
+                    .stroke(selectedButton == tag ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                    .frame(width: 340, height: 70)
+
+                VStack(alignment: .leading) {
+                    Text(activity)
+                        .font(.system(size: 20))
+                        .foregroundColor(selectedButton == tag ? Color("ButtonColor") : Color("TextColor"))
+                        .padding(.horizontal, 11)
+                        .padding(.top, 10)
+
+                    Text(text)
+                        .font(.system(size: 10))
+                        .foregroundColor(selectedButton == tag ? Color("TextColor") : Color("GrayText"))
+                        .padding(.horizontal, 11)
+                        .padding(.bottom, 10)
+                }
+                .frame(width: 340, height: 70, alignment: .leading)
+            }
+        }
     }
 }
 
