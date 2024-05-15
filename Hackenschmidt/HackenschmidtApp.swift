@@ -11,10 +11,23 @@ import SwiftUI
 struct HackenschmidtApp: App {
     let persistenceController = PersistenceController.shared
 
+    @State private var showSecondSplash = false
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            VStack {
+                if !showSecondSplash {
+                    ContentView()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                self.showSecondSplash = true
+                            }
+                        }
+                } else {
+                    ProcessOne()
+                }
+            }
+            .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
