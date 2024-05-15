@@ -95,7 +95,7 @@ struct ProcessTwo: View {
                     VStack {
                         Text("Please select which sex we should use to calculate your calorie need:")
                             .foregroundStyle(Color("TextColor"))
-                        
+
                         HStack {
                             Spacer()
                             Button(action: {

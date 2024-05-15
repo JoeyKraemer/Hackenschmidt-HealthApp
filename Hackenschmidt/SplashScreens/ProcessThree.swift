@@ -96,11 +96,11 @@ struct ProcessThree: View {
     }
 }
 
-private func checkEmpty(selectedTitle: String, calories: Int) -> Bool{
-    if(selectedTitle.isEmpty || calories <= 0){
+private func checkEmpty(selectedTitle: String, calories: Int) -> Bool {
+    if selectedTitle.isEmpty || calories <= 0 {
         return true
     }
-    
+
     return false
 }
 
