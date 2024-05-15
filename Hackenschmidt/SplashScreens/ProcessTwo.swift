@@ -12,7 +12,6 @@ struct ProcessTwo: View {
     let textTitles = ["Spend most of the day doing heavy physical activity (e.g. food server, carpenter)", "Spend most of the day doing some physical activity (e.g. teacher, sales person)", "Spend most of the day sitting (e.g. desk job, bank teller)"]
 
     @State private var selectedButton: Int?
-    @State private var selectedActivity: String = ""
     @State private var weight: Int = 0
     @State private var height: Int = 0
     @State private var gender: String = ""
@@ -53,7 +52,7 @@ struct ProcessTwo: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -80,7 +79,7 @@ struct ProcessTwo: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -96,6 +95,7 @@ struct ProcessTwo: View {
                     VStack {
                         Text("Please select which sex we should use to calculate your calorie need:")
                             .foregroundStyle(Color("TextColor"))
+                        
                         HStack {
                             Spacer()
                             Button(action: {
@@ -109,7 +109,7 @@ struct ProcessTwo: View {
                                         .frame(width: 140, height: 50)
 
                                     RoundedRectangle(cornerRadius: 6)
-                                        .stroke(Color.black, lineWidth: 1)
+                                        .stroke(showNextScreen ? Color.red : Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
 
                                     Text("Male")
@@ -129,7 +129,7 @@ struct ProcessTwo: View {
                                         .frame(width: 140, height: 50)
 
                                     RoundedRectangle(cornerRadius: 6)
-                                        .stroke(Color.black, lineWidth: 1)
+                                        .stroke(showNextScreen ? Color.red : Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
 
                                     Text("Female")
@@ -145,14 +145,11 @@ struct ProcessTwo: View {
                         Text("What is your activity level?")
                             .foregroundColor(Color("TextColor"))
                             .padding()
-                        Text(activity)
                         ForEach(0 ..< 3, id: \.self) { index in
-                            Button(action: {
-                                selectedButton = index
-                                activity = activityTitles[index]
-                            }) {
-                                ActivityButtonView(activity: activityTitles[index], text: textTitles[index], tag: index, selectedButton: $selectedButton, selectedActivity: $selectedActivity)
-                            }
+                            ActivityButtonView(activity: activityTitles[index], text: textTitles[index], tag: index, showNextScreen: showNextScreen, selectedButton: $selectedButton)
+                        }
+                        .onReceive(selectedButton.publisher) { index in
+                            activity = activityTitles[index]
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -163,7 +160,7 @@ struct ProcessTwo: View {
                         showNextScreen = checkForNil(weight: weight, height: height, gender: gender, activity: activity)
                     }) {
                         NavigationLink(
-                            destination: ProcessTwo(),
+                            destination: ProcessThree(),
                             label: {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
@@ -184,19 +181,15 @@ struct ProcessTwo: View {
 
 private func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool {
     if weight <= 0 {
-        print(weight)
         return true
     }
     if height <= 0 {
-        print(height)
         return true
     }
     if gender.isEmpty {
-        print(gender)
         return true
     }
     if activity.isEmpty {
-        print(activity)
         return true
     }
 
@@ -207,13 +200,12 @@ struct ActivityButtonView: View {
     let activity: String
     let text: String
     let tag: Int
+    let showNextScreen: Bool
     @Binding var selectedButton: Int?
-    @Binding var selectedActivity: String
 
     var body: some View {
         Button(action: {
             self.selectedButton = self.tag
-            self.selectedActivity = self.activity
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 6)
@@ -221,7 +213,7 @@ struct ActivityButtonView: View {
                     .frame(width: 340, height: 70)
 
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(selectedButton == tag ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                    .stroke(selectedButton == tag ? Color("ButtonColor") : (showNextScreen ? Color.red : Color.black), lineWidth: 1)
                     .frame(width: 340, height: 70)
 
                 VStack(alignment: .leading) {

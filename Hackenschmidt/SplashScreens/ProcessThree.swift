@@ -10,7 +10,9 @@ import SwiftUI
 struct ProcessThree: View {
     @State private var calories: Int = 2000
     @State private var selectedButton: Int?
-    let buttonTitles = ["Loose Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
+    @State private var selectedTitle: String = ""
+    @State private var showNextScreen: Bool = false
+    let buttonTitles = ["Loos Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
 
     var body: some View {
         NavigationView {
@@ -35,7 +37,10 @@ struct ProcessThree: View {
                             .foregroundStyle(Color("TextColor"))
                         VStack(spacing: 20) {
                             ForEach(0 ..< 4, id: \.self) { index in
-                                ButtonView(title: buttonTitles[index], tag: index, selectedButton: $selectedButton)
+                                ButtonView(title: buttonTitles[index], tag: index, showNextScreen: showNextScreen, selectedButton: $selectedButton)
+                            }
+                            .onReceive(selectedButton.publisher) { index in
+                                selectedTitle = buttonTitles[index]
                             }
                         }
                     }
@@ -54,7 +59,7 @@ struct ProcessThree: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -69,12 +74,20 @@ struct ProcessThree: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    NavigationLink(destination: ProcessThree()) {
-                        Text("Next")
-                            .frame(width: 340, height: 40)
-                            .foregroundColor(Color.white)
-                            .background(Color("ButtonColor"))
-                            .cornerRadius(5)
+                    Button(action: {
+                        showNextScreen = checkEmpty(selectedTitle: selectedTitle, calories: calories)
+                    }) {
+                        NavigationLink(
+                            destination: ProcessThree(),
+                            label: {
+                                Text("Next")
+                                    .frame(width: 340, height: 40)
+                                    .foregroundColor(Color.white)
+                                    .background(Color("ButtonColor"))
+                                    .cornerRadius(5)
+                            }
+                        )
+                        .disabled(checkEmpty(selectedTitle: selectedTitle, calories: calories))
                     }
                 }
             }
@@ -83,9 +96,18 @@ struct ProcessThree: View {
     }
 }
 
+private func checkEmpty(selectedTitle: String, calories: Int) -> Bool{
+    if(selectedTitle.isEmpty || calories <= 0){
+        return true
+    }
+    
+    return false
+}
+
 struct ButtonView: View {
     let title: String
     let tag: Int
+    let showNextScreen: Bool
     @Binding var selectedButton: Int?
 
     var body: some View {
@@ -98,7 +120,7 @@ struct ButtonView: View {
                     .frame(width: 340, height: 70, alignment: .center)
 
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(selectedButton == tag ? Color("ButtonColor") : Color.black, lineWidth: 1)
+                    .stroke(selectedButton == tag ? Color("ButtonColor") : (showNextScreen ? Color.red : Color.black), lineWidth: 1)
                     .frame(width: 340, height: 70, alignment: .center)
 
                 VStack(alignment: .leading) {
