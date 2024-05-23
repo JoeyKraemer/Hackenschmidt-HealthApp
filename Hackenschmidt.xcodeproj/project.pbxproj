@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71872BFE785D002F9BB6 /* AddWorkout.swift */; };
+		611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71892BFE7E37002F9BB6 /* AddExercise.swift */; };
 		6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		611C71872BFE785D002F9BB6 /* AddWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkout.swift; sourceTree = "<group>"; };
+		611C71892BFE7E37002F9BB6 /* AddExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercise.swift; sourceTree = "<group>"; };
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		611C71862BFE783E002F9BB6 /* workouts */ = {
+			isa = PBXGroup;
+			children = (
+				611C71872BFE785D002F9BB6 /* AddWorkout.swift */,
+				611C71892BFE7E37002F9BB6 /* AddExercise.swift */,
+			);
+			path = workouts;
+			sourceTree = "<group>";
+		};
 		6126E5132BE25C1F0066E3A7 /* SplashScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 		DA80AFF02BDFEE6200980333 /* Hackenschmidt */ = {
 			isa = PBXGroup;
 			children = (
+				611C71862BFE783E002F9BB6 /* workouts */,
 				6126E5132BE25C1F0066E3A7 /* SplashScreens */,
 				DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */,
 				DA80AFF32BDFEE6200980333 /* Persistence.swift */,
@@ -168,7 +182,9 @@
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
+				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
+				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
