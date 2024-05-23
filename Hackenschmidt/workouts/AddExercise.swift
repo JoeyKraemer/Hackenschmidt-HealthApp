@@ -15,16 +15,16 @@ struct AddExercise: View {
     @State private var isDropdownOpen = false
     @State private var selectedEquipment = "Select equipment"
     @State private var selectedButton: Int?
-    
+
     let equipmentOptions = ["Treadmill", "Dumbbells", "Stationary Bike", "Elliptical"]
     let muscles = ["Shoulders", "Back", "Chest", "Legs"]
-    
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                
-                VStack(){
+
+                VStack {
                     VStack {
                         Text("What is the exercise name?")
                             .foregroundStyle(Color("TextColor"))
@@ -34,7 +34,7 @@ struct AddExercise: View {
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
-                    
+
                     VStack {
                         Text("How many sets did you do?")
                             .foregroundStyle(Color("TextColor"))
@@ -59,7 +59,7 @@ struct AddExercise: View {
                             }
                         )
                     }
-                    
+
                     VStack {
                         Button(action: {
                             withAnimation {
@@ -107,7 +107,7 @@ struct AddExercise: View {
                         }
                     }
                     .padding()
-                    
+
                     VStack {
                         Text("How much weight did you use?")
                             .foregroundStyle(Color("TextColor"))
@@ -133,11 +133,11 @@ struct AddExercise: View {
                         )
                     }
                     .padding(.bottom, 15)
-                    
-                    VStack(){
+
+                    VStack {
                         Text("What muscle group does it use?")
                             .foregroundStyle(Color("TextColor"))
-                        
+
                         ForEach(0 ..< 4, id: \.self) { index in
                             ExerciseButtonView(muscle: muscles[index], tag: index, selectedButton: $selectedButton)
                         }
@@ -193,9 +193,6 @@ struct ExerciseButtonView: View {
         }
     }
 }
-
-
-
 
 #Preview {
     AddExercise()

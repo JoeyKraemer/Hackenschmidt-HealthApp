@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct AddWorkout: View {
-    @State private var workoutName: String = "";
+    @State private var workoutName: String = ""
     var body: some View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                
-                VStack(){
-                    VStack(alignment: .leading){
+
+                VStack {
+                    VStack(alignment: .leading) {
                         Text("What is the Workout’s name?")
                             .foregroundStyle(Color("TextColor"))
                             .padding(.bottom, 20)
@@ -27,11 +27,11 @@ struct AddWorkout: View {
                     }
                     .padding(.bottom, 50)
                     .padding(.top, 50)
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         Text("Exercises List")
                             .foregroundStyle(Color("TextColor"))
                             .padding(.bottom, 20)
-                        
+
                         NavigationLink(destination: AddExercise()) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
@@ -50,11 +50,9 @@ struct AddWorkout: View {
                         }
                         .frame(width: 340, height: 70)
                         .buttonStyle(PlainButtonStyle())
-
-
                     }
                     Spacer()
-                    
+
                     Button(action: {
                         print("hello")
                     }) {
