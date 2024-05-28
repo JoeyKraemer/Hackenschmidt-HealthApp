@@ -15,17 +15,6 @@ struct HackenschmidtApp: App {
     // supabase connection test
     let client = SupabaseClient(supabaseURL: URL(string: "https://ggelsjpzpdreuoxgaxid.supabase.co")!, supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdnZWxzanB6cGRyZXVveGdheGlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ3MjgxMzcsImV4cCI6MjAzMDMwNDEzN30.X4BYTMMVwqSCExMOb-7UeqDciaQBmZxNfhiInR-S178")
 
-    struct Food: Decodable {
-        let id: Int
-        let name: String
-    }
-
-    let food: [Food] = try await supabase
-        .from("food")
-        .select()
-        .execute()
-        .value
-
     @State private var showSecondSplash = false
 
     var body: some Scene {
