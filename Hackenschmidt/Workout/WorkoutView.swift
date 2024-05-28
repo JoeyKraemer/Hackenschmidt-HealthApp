@@ -4,7 +4,6 @@
 //
 //  Created by Joey Krämer on 28.05.24.
 //
-
 import SwiftUI
 import UIKit
 
@@ -29,6 +28,21 @@ struct WorkoutView: View {
         Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)])
     ]
     
+    var workoutData: [WorkoutData] = [
+        WorkoutData(day: "Day 9", count: 1),
+        WorkoutData(day: "Day 10", count: 2),
+        WorkoutData(day: "Day 11", count: 3),
+        WorkoutData(day: "Day 12", count: 4),
+        WorkoutData(day: "Day 13", count: 2),
+        WorkoutData(day: "Day 14", count: 1),
+        WorkoutData(day: "Day 15", count: 3),
+        WorkoutData(day: "Day 16", count: 0),
+        WorkoutData(day: "Day 17", count: 0),
+        WorkoutData(day: "Day 18", count: 3),
+        WorkoutData(day: "Day 19", count: 3),
+        WorkoutData(day: "Day 20", count: 4)
+    ]
+    
     var body: some View {
         ZStack {
             Color(UIColor.systemPurple).opacity(0.1).edgesIgnoringSafeArea(.all)
@@ -45,9 +59,11 @@ struct WorkoutView: View {
                     }
                     .padding(.horizontal)
                     
+                    // Integrate WorkoutChartView
+                    WorkoutChartView(workoutData: workoutData)
+                    
                     Spacer()
                 }
-                .frame(height: 200)
                 .background(Color.white)
                 .cornerRadius(15)
                 .shadow(radius: 5)
@@ -80,8 +96,6 @@ struct WorkoutView: View {
                 .padding()
                 .blur(radius: isAdding ? 10 : 0)
                 .animation(.default, value: isAdding)
-                // Workout list integration
-                
                 
                 // Plus icon menu
                 HStack {
