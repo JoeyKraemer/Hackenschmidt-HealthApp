@@ -9,25 +9,25 @@ import UIKit
 
 struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style
-    
-    func makeUIView(context: Context) -> UIVisualEffectView {
+
+    func makeUIView(context _: Context) -> UIVisualEffectView {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
         return view
     }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
+
+    func updateUIView(_: UIVisualEffectView, context _: Context) {}
 }
 
 struct WorkoutView: View {
     @State private var isAdding: Bool = false
-    
+
     var workouts: [Workout] = [
         Workout(exercise: "Bench Press", sets: [(0, 20), (20, 8), (20, 8), (20, 8)]),
         Workout(exercise: "Barbell row", sets: [(20, 8), (20, 8), (20, 8), (20, 8)]),
         Workout(exercise: "Dumbbell Shoulder Press", sets: [(10, 8), (10, 8), (10, 8), (10, 8)]),
-        Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)])
+        Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)]),
     ]
-    
+
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),
         WorkoutData(day: "Day 10", count: 2),
@@ -40,13 +40,13 @@ struct WorkoutView: View {
         WorkoutData(day: "Day 17", count: 0),
         WorkoutData(day: "Day 18", count: 3),
         WorkoutData(day: "Day 19", count: 3),
-        WorkoutData(day: "Day 20", count: 4)
+        WorkoutData(day: "Day 20", count: 4),
     ]
-    
+
     var body: some View {
         ZStack {
             Color(UIColor.systemPurple).opacity(0.1).edgesIgnoringSafeArea(.all)
-            
+
             VStack {
                 VStack {
                     HStack {
@@ -58,10 +58,10 @@ struct WorkoutView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    
+
                     // Integrate WorkoutChartView
                     WorkoutChartView(workoutData: workoutData)
-                    
+
                     Spacer()
                 }
                 .background(Color.white)
@@ -70,9 +70,9 @@ struct WorkoutView: View {
                 .padding()
                 .blur(radius: isAdding ? 10 : 0)
                 .animation(.default, value: isAdding)
-                
+
                 VStack {
-                    HStack{
+                    HStack {
                         Text("Last Workouts")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -81,13 +81,12 @@ struct WorkoutView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    
+
                     Spacer()
-                    
+
                     List(workouts) { workout in
                         WorkoutCellView(workout: workout)
                     }
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white)
@@ -96,11 +95,11 @@ struct WorkoutView: View {
                 .padding()
                 .blur(radius: isAdding ? 10 : 0)
                 .animation(.default, value: isAdding)
-                
+
                 // Plus icon menu
                 HStack {
                     Spacer()
-                    
+
                     VStack {
                         if isAdding {
                             Button(action: {}) {
@@ -109,7 +108,7 @@ struct WorkoutView: View {
                                     .foregroundColor(.purple)
                             }
                             .padding(.bottom, 10)
-                            
+
                             Button(action: {}) {
                                 Image(systemName: "trophy.circle.fill")
                                     .font(.system(size: 50))
@@ -117,7 +116,7 @@ struct WorkoutView: View {
                             }
                             .padding(.bottom, 10)
                         }
-                        
+
                         Button(action: {
                             withAnimation {
                                 self.isAdding.toggle()
@@ -131,7 +130,7 @@ struct WorkoutView: View {
                     }
                     .padding(.trailing, 20)
                 }
-                
+
                 // Menu bar
                 HStack(spacing: 0) {
                     Button(action: {}) {
@@ -151,7 +150,7 @@ struct WorkoutView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 5)
                     }
-                    
+
                     Button(action: {}) {
                         VStack {
                             Image(systemName: "book.circle.fill")
@@ -169,7 +168,7 @@ struct WorkoutView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 5)
                     }
-                    
+
                     Button(action: {}) {
                         VStack {
                             Image(systemName: "person.fill")
