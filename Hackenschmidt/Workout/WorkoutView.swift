@@ -55,18 +55,33 @@ struct WorkoutView: View {
                 .blur(radius: isAdding ? 10 : 0)
                 .animation(.default, value: isAdding)
                 
-                // Workout list integration
-                List(workouts) { workout in
-                    WorkoutCellView(workout: workout)
+                VStack {
+                    HStack{
+                        Text("Last Workouts")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.purple)
+                            .padding(.top)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    List(workouts) { workout in
+                        WorkoutCellView(workout: workout)
+                    }
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white)
                 .cornerRadius(15)
                 .shadow(radius: 5)
-                .padding(.horizontal)
+                .padding()
                 .blur(radius: isAdding ? 10 : 0)
                 .animation(.default, value: isAdding)
+                // Workout list integration
                 
-                Spacer()
                 
                 // Plus icon menu
                 HStack {

@@ -11,21 +11,23 @@ struct WorkoutCellView: View {
     var workout: Workout
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(workout.exercise)
-                .font(.headline)
-            ForEach(0..<workout.sets.count, id: \.self) { index in
-                HStack {
-                    Text("Set \(index + 1):")
-                    Spacer()
-                    Text("\(workout.sets[index].weight) kg x \(workout.sets[index].reps) reps")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(workout.exercise)
+                    .font(.headline)
+                ForEach(0..<workout.sets.count, id: \.self) { index in
+                    HStack {
+                        Text("Set \(index + 1):")
+                        Spacer()
+                        Text("\(workout.sets[index].weight) kg x \(workout.sets[index].reps) reps")
+                    }
                 }
             }
+            .padding()
+            .background(Color.white)
+            .cornerRadius(10)
+            .shadow(radius: 2)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .cornerRadius(15)
-        .shadow(radius: 5)
-        .padding(.horizontal)
     }
 }
 
