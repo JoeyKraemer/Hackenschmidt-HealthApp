@@ -20,14 +20,14 @@ struct BlurView: UIViewRepresentable {
 
 struct WorkoutView: View {
     @State private var isAdding: Bool = false
-    
+
     var workouts: [Workout] = [
         Workout(exercise: "Bench Press", sets: [(0, 20), (20, 8), (20, 8), (20, 8)]),
         Workout(exercise: "Barbell row", sets: [(20, 8), (20, 8), (20, 8), (20, 8)]),
         Workout(exercise: "Dumbbell Shoulder Press", sets: [(10, 8), (10, 8), (10, 8), (10, 8)]),
         Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)]),
     ]
-    
+
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),
         WorkoutData(day: "Day 10", count: 2),
@@ -42,7 +42,7 @@ struct WorkoutView: View {
         WorkoutData(day: "Day 19", count: 3),
         WorkoutData(day: "Day 20", count: 4),
     ]
-    
+
     var body: some View {
         ScrollView {
             ZStack {
@@ -57,10 +57,10 @@ struct WorkoutView: View {
                             Spacer()
                         }
                         .padding(.horizontal)
-                        
+
                         // Integrate WorkoutChartView
                         WorkoutChartView(workoutData: workoutData)
-                        
+
                         Spacer()
                     }
                     .background(Color.white)
@@ -69,7 +69,7 @@ struct WorkoutView: View {
                     .padding()
                     .blur(radius: isAdding ? 10 : 0)
                     .animation(.default, value: isAdding)
-                    
+
                     VStack {
                         HStack {
                             Text("Last Workouts")
@@ -80,15 +80,14 @@ struct WorkoutView: View {
                             Spacer()
                         }
                         .padding(.horizontal)
-                        
+
                         Spacer()
-                        
+
                         List(workouts) { workout in
                             WorkoutCellView(workout: workout)
                         }
                         .frame(minHeight: 750)
                         .listStyle(PlainListStyle())
-                        
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
@@ -97,11 +96,11 @@ struct WorkoutView: View {
                     .padding()
                     .blur(radius: isAdding ? 10 : 0)
                     .animation(.default, value: isAdding)
-                    
+
                     // Plus icon menu
                     HStack {
                         Spacer()
-                        
+
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
@@ -110,7 +109,7 @@ struct WorkoutView: View {
                                         .foregroundColor(.purple)
                                 }
                                 .padding(.bottom, 10)
-                                
+
                                 Button(action: {}) {
                                     Image(systemName: "trophy.circle.fill")
                                         .font(.system(size: 50))
@@ -118,7 +117,7 @@ struct WorkoutView: View {
                                 }
                                 .padding(.bottom, 10)
                             }
-                            
+
                             Button(action: {
                                 withAnimation {
                                     self.isAdding.toggle()
@@ -132,7 +131,7 @@ struct WorkoutView: View {
                         }
                         .padding(.trailing, 20)
                     }
-                    
+
                     // Menu bar
                     HStack(spacing: 0) {
                         Button(action: {}) {
@@ -152,7 +151,7 @@ struct WorkoutView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 5)
                         }
-                        
+
                         Button(action: {}) {
                             VStack {
                                 Image(systemName: "book.circle.fill")
@@ -170,7 +169,7 @@ struct WorkoutView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 5)
                         }
-                        
+
                         Button(action: {}) {
                             VStack {
                                 Image(systemName: "person.fill")
