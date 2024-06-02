@@ -44,9 +44,7 @@ struct WorkoutView: View {
     ]
     
     var body: some View {
-        ZStack {
-            Color(UIColor.systemPurple).opacity(0.1).edgesIgnoringSafeArea(.all)
-            
+        ScrollView {
             VStack {
                 VStack {
                     HStack {
@@ -72,7 +70,7 @@ struct WorkoutView: View {
                 .animation(.default, value: isAdding)
                 
                 VStack {
-                    HStack{
+                    HStack {
                         Text("Last Workouts")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -87,9 +85,10 @@ struct WorkoutView: View {
                     List(workouts) { workout in
                         WorkoutCellView(workout: workout)
                     }
-                    
+                    .frame(minHeight: 750)
+                    .listStyle(PlainListStyle())
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
                 .cornerRadius(15)
                 .shadow(radius: 5)
