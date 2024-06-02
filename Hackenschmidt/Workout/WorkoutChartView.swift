@@ -5,8 +5,8 @@
 //  Created by Joey Krämer on 28.05.24.
 //
 
-import SwiftUI
 import Charts
+import SwiftUI
 
 struct WorkoutData: Identifiable {
     let id = UUID()
@@ -16,7 +16,7 @@ struct WorkoutData: Identifiable {
 
 struct WorkoutChartView: View {
     var workoutData: [WorkoutData]
-    
+
     var body: some View {
         Chart(workoutData) { data in
             LineMark(
@@ -44,7 +44,7 @@ struct WorkoutChartView_Previews: PreviewProvider {
             WorkoutData(day: "Day 17", count: 0),
             WorkoutData(day: "Day 18", count: 3),
             WorkoutData(day: "Day 19", count: 3),
-            WorkoutData(day: "Day 20", count: 4)
+            WorkoutData(day: "Day 20", count: 4),
         ])
     }
 }

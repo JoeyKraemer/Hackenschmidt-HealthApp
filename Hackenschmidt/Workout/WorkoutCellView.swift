@@ -9,13 +9,13 @@ import SwiftUI
 
 struct WorkoutCellView: View {
     var workout: Workout
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 8) {
                 Text(workout.exercise)
                     .font(.headline)
-                ForEach(0..<workout.sets.count, id: \.self) { index in
+                ForEach(0 ..< workout.sets.count, id: \.self) { index in
                     HStack {
                         Text("Set \(index + 1):")
                         Spacer()
