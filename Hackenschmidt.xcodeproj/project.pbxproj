@@ -13,6 +13,7 @@
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
+		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */; };
 		DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF32BDFEE6200980333 /* Persistence.swift */; };
 		DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */; };
@@ -26,6 +27,7 @@
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
+		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackenschmidt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtApp.swift; sourceTree = "<group>"; };
 		DA80AFF32BDFEE6200980333 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */,
 				DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */,
 				DA80AFFD2BDFEE6400980333 /* Preview Content */,
+				D48973482C0C9330006C39B4 /* FoodFormView.swift */,
 			);
 			path = Hackenschmidt;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
+				D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
