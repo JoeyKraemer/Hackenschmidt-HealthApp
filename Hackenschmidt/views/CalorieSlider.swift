@@ -15,6 +15,7 @@ struct CalorieSlider: View {
     var remaining: Double {
         goal - food + burned
     }
+
     var progress: Double {
         (goal - remaining) / goal
     }
@@ -26,7 +27,6 @@ struct CalorieSlider: View {
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .padding(.bottom)
-
             }
             HStack {
                 ZStack {
@@ -72,7 +72,6 @@ struct CalorieSlider: View {
                 .padding()
                 .font(.headline)
             }
-
         }
         .padding()
         .background(Color.white)
