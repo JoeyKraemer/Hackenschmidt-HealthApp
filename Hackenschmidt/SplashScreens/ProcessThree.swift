@@ -78,7 +78,7 @@ struct ProcessThree: View {
                         showNextScreen = checkEmpty(selectedTitle: selectedTitle, calories: calories)
                     }) {
                         NavigationLink(
-                            destination: ProcessThree(),
+                            destination: AddWorkout(),
                             label: {
                                 Text("Next")
                                     .frame(width: 340, height: 40)

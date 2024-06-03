@@ -18,7 +18,9 @@ struct ProcessTwo: View {
     @State private var activity: String = ""
     @State private var isClickedMale = false
     @State private var isClickedFemale = false
-    @State private var showNextScreen: Bool = false
+    @State private var showNextScreen: Bool = true
+    
+    @ObservedObject var processTwoChecker = ProcessTwoChecker()
 
     var body: some View {
         NavigationView {
@@ -52,7 +54,7 @@ struct ProcessTwo: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                        .background(processTwoChecker.isWeightEmpty(weight: weight) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -69,7 +71,7 @@ struct ProcessTwo: View {
                     VStack {
                         Text("How tall are you")
                             .foregroundStyle(Color("TextColor"))
-                        TextField("Enter your Weight", text: Binding(
+                        TextField("Enter your Height", text: Binding(
                             get: { "\(height)" },
                             set: {
                                 if let value = Int($0) {
@@ -79,7 +81,7 @@ struct ProcessTwo: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                        .background(processTwoChecker.isHeightEmpty(height: height) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -109,7 +111,7 @@ struct ProcessTwo: View {
                                         .frame(width: 140, height: 50)
 
                                     RoundedRectangle(cornerRadius: 6)
-                                        .stroke(showNextScreen ? Color.red : Color.black, lineWidth: 1)
+                                        .stroke(processTwoChecker.isGenderEmpty(gender: gender) ? Color.red : Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
 
                                     Text("Male")
@@ -129,7 +131,7 @@ struct ProcessTwo: View {
                                         .frame(width: 140, height: 50)
 
                                     RoundedRectangle(cornerRadius: 6)
-                                        .stroke(showNextScreen ? Color.red : Color.black, lineWidth: 1)
+                                        .stroke(processTwoChecker.isGenderEmpty(gender: gender) ? Color.red : Color.black, lineWidth: 1)
                                         .frame(width: 140, height: 50)
 
                                     Text("Female")
@@ -146,7 +148,7 @@ struct ProcessTwo: View {
                             .foregroundColor(Color("TextColor"))
                             .padding()
                         ForEach(0 ..< 3, id: \.self) { index in
-                            ActivityButtonView(activity: activityTitles[index], text: textTitles[index], tag: index, showNextScreen: showNextScreen, selectedButton: $selectedButton)
+                            ActivityButtonView(activity: activityTitles[index], text: textTitles[index], tag: index, showNextScreen: processTwoChecker.isActivityEmpty(activity: activity), selectedButton: $selectedButton)
                         }
                         .onReceive(selectedButton.publisher) { index in
                             activity = activityTitles[index]
@@ -157,7 +159,6 @@ struct ProcessTwo: View {
                     Spacer()
                     Spacer()
                     Button(action: {
-                        showNextScreen = checkForNil(weight: weight, height: height, gender: gender, activity: activity)
                     }) {
                         NavigationLink(
                             destination: ProcessThree(),
@@ -169,7 +170,7 @@ struct ProcessTwo: View {
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(checkForNil(weight: weight, height: height, gender: gender, activity: activity))
+                        .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
                     }
                 }
                 .padding(.horizontal, 20)
@@ -179,61 +180,6 @@ struct ProcessTwo: View {
     }
 }
 
-private func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool {
-    if weight <= 0 {
-        return true
-    }
-    if height <= 0 {
-        return true
-    }
-    if gender.isEmpty {
-        return true
-    }
-    if activity.isEmpty {
-        return true
-    }
-
-    return false
-}
-
-struct ActivityButtonView: View {
-    let activity: String
-    let text: String
-    let tag: Int
-    let showNextScreen: Bool
-    @Binding var selectedButton: Int?
-
-    var body: some View {
-        Button(action: {
-            self.selectedButton = self.tag
-        }) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray.opacity(0.0))
-                    .frame(width: 340, height: 70)
-
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(selectedButton == tag ? Color("ButtonColor") : (showNextScreen ? Color.red : Color.black), lineWidth: 1)
-                    .frame(width: 340, height: 70)
-
-                VStack(alignment: .leading) {
-                    Text(activity)
-                        .font(.system(size: 20))
-                        .foregroundColor(selectedButton == tag ? Color("ButtonColor") : Color("TextColor"))
-                        .padding(.horizontal, 11)
-                        .padding(.top, 10)
-
-                    Text(text)
-                        .font(.system(size: 10))
-                        .foregroundColor(selectedButton == tag ? Color("TextColor") : Color("GrayText"))
-                        .padding(.horizontal, 11)
-                        .padding(.bottom, 10)
-                }
-                .frame(width: 340, height: 70, alignment: .leading)
-            }
-        }
-    }
-}
 
 #Preview {
     ProcessTwo()
