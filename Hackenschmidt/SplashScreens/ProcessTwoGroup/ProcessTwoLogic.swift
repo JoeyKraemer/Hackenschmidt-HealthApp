@@ -5,8 +5,8 @@
 //  Created by Богдан Закусило on 03.06.2024.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 class ProcessTwoChecker: ObservableObject {
     @Published var weight: Int?
@@ -20,7 +20,7 @@ class ProcessTwoChecker: ObservableObject {
             print("Weight is empty or zero")
         }
     }
-    
+
     func setHeight(_ height: Int?) {
         self.height = height
         if isHeightEmpty(height: height ?? 0) {
@@ -43,21 +43,21 @@ class ProcessTwoChecker: ObservableObject {
     }
 
     func isWeightEmpty(weight: Int) -> Bool {
-        return weight == 0
+        weight == 0
     }
-    
+
     func isHeightEmpty(height: Int) -> Bool {
-        return height == 0
+        height == 0
     }
-    
+
     func isGenderEmpty(gender: String) -> Bool {
-        return gender.isEmpty
+        gender.isEmpty
     }
-    
+
     func isActivityEmpty(activity: String) -> Bool {
-        return activity.isEmpty
+        activity.isEmpty
     }
-    
+
     func checkForNil(weight: Int, height: Int, gender: String, activity: String) -> Bool {
         if weight <= 0 {
             return true
@@ -75,4 +75,3 @@ class ProcessTwoChecker: ObservableObject {
         return false
     }
 }
-

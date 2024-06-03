@@ -5,13 +5,13 @@
 ////  Created by Богдан Закусило on 03.06.2024.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct GenderButtonView: View {
+// struct GenderButtonView: View {
 //    let gender: String
 //    let tag: Int
 //    @Binding var selectedButton: Int?
-//    
+//
 //    Button(action: {
 //        self.selectedButton = self.tag
 //    }) {
@@ -28,8 +28,8 @@
 //                .foregroundColor(Color("TextColor"))
 //        }
 //    }
-//}
+// }
 //
-//#Preview {
+// #Preview {
 //    GenderButtonView()
-//}
+// }

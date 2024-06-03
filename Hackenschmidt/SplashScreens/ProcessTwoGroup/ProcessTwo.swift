@@ -19,7 +19,7 @@ struct ProcessTwo: View {
     @State private var isClickedMale = false
     @State private var isClickedFemale = false
     @State private var showNextScreen: Bool = true
-    
+
     @ObservedObject var processTwoChecker = ProcessTwoChecker()
 
     var body: some View {
@@ -158,8 +158,7 @@ struct ProcessTwo: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: ProcessThree(),
                             label: {
@@ -179,7 +178,6 @@ struct ProcessTwo: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-
 
 #Preview {
     ProcessTwo()
