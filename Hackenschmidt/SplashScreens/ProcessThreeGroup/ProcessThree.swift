@@ -13,7 +13,7 @@ struct ProcessThree: View {
     @State private var selectedTitle: String = ""
     @State private var showNextScreen: Bool = false
     let buttonTitles = ["Lose Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
-    
+
     let processThreeChecker = ProcessThreeChecker()
 
     var body: some View {
@@ -76,9 +76,7 @@ struct ProcessThree: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                        
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: AddWorkout(),
                             label: {
