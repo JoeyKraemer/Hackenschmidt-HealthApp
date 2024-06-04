@@ -14,6 +14,8 @@ struct ProcessThree: View {
     @State private var showNextScreen: Bool = false
     let buttonTitles = ["Lose Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
 
+    let processThreeChecker = ProcessThreeChecker()
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -37,7 +39,7 @@ struct ProcessThree: View {
                             .foregroundStyle(Color("TextColor"))
                         VStack(spacing: 20) {
                             ForEach(0 ..< 4, id: \.self) { index in
-                                ButtonView(title: buttonTitles[index], tag: index, showNextScreen: showNextScreen, selectedButton: $selectedButton)
+                                ButtonView(title: buttonTitles[index], tag: index, showNextScreen: processThreeChecker.checkGoal(goal: selectedTitle), selectedButton: $selectedButton)
                             }
                             .onReceive(selectedButton.publisher) { index in
                                 selectedTitle = buttonTitles[index]
@@ -59,7 +61,7 @@ struct ProcessThree: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                        .background(processThreeChecker.checkCalories(calories: calories) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -74,11 +76,9 @@ struct ProcessThree: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                        showNextScreen = checkEmpty(selectedTitle: selectedTitle, calories: calories)
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
-                            destination: ProcessThree(),
+                            destination: AddWorkout(),
                             label: {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
@@ -87,7 +87,7 @@ struct ProcessThree: View {
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(checkEmpty(selectedTitle: selectedTitle, calories: calories))
+                        .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
                     }
                 }
             }
@@ -102,39 +102,6 @@ private func checkEmpty(selectedTitle: String, calories: Int) -> Bool {
     }
 
     return false
-}
-
-struct ButtonView: View {
-    let title: String
-    let tag: Int
-    let showNextScreen: Bool
-    @Binding var selectedButton: Int?
-
-    var body: some View {
-        Button(action: {
-            self.selectedButton = self.tag
-        }) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray.opacity(0.0))
-                    .frame(width: 340, height: 70, alignment: .center)
-
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(selectedButton == tag ? Color("ButtonColor") : (showNextScreen ? Color.red : Color.black), lineWidth: 1)
-                    .frame(width: 340, height: 70, alignment: .center)
-
-                VStack(alignment: .leading) {
-                    Text(title)
-                        .font(.system(size: 20))
-                        .foregroundColor(selectedButton == tag ? Color("ButtonColor") : Color("TextColor"))
-                        .padding(.horizontal, 11)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                }
-                .frame(width: 340, height: 70, alignment: .leading)
-            }
-        }
-    }
 }
 
 #Preview {
