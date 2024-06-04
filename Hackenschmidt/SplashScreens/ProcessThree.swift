@@ -12,7 +12,7 @@ struct ProcessThree: View {
     @State private var selectedButton: Int?
     @State private var selectedTitle: String = ""
     @State private var showNextScreen: Bool = false
-    let buttonTitles = ["Loos Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
+    let buttonTitles = ["Lose Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
 
     var body: some View {
         NavigationView {

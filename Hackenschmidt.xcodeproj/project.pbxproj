@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71872BFE785D002F9BB6 /* AddWorkout.swift */; };
+		611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71892BFE7E37002F9BB6 /* AddExercise.swift */; };
 		6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
@@ -17,6 +19,11 @@
 		D44210EA2BFCAF9C000AC11D /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = D44210E92BFCAF9C000AC11D /* Realtime */; };
 		D44210EC2BFCAF9C000AC11D /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = D44210EB2BFCAF9C000AC11D /* Storage */; };
 		D44210EE2BFCAF9C000AC11D /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = D44210ED2BFCAF9C000AC11D /* Supabase */; };
+		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
+		D4AC459F2C05E38100038144 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459E2C05E38100038144 /* Workout.swift */; };
+		D4AC45A12C05E38F00038144 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A02C05E38F00038144 /* WorkoutCell.swift */; };
+		D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */; };
+		D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */; };
 		DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */; };
 		DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF32BDFEE6200980333 /* Persistence.swift */; };
 		DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */; };
@@ -25,9 +32,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		611C71872BFE785D002F9BB6 /* AddWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkout.swift; sourceTree = "<group>"; };
+		611C71892BFE7E37002F9BB6 /* AddExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercise.swift; sourceTree = "<group>"; };
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
+		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		D4AC45A02C05E38F00038144 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
+		D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCellView.swift; sourceTree = "<group>"; };
+		D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutChartView.swift; sourceTree = "<group>"; };
 		DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackenschmidt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtApp.swift; sourceTree = "<group>"; };
 		DA80AFF32BDFEE6200980333 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -55,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		611C71862BFE783E002F9BB6 /* workouts */ = {
+			isa = PBXGroup;
+			children = (
+				611C71872BFE785D002F9BB6 /* AddWorkout.swift */,
+				611C71892BFE7E37002F9BB6 /* AddExercise.swift */,
+			);
+			path = workouts;
+			sourceTree = "<group>";
+		};
 		6126E5132BE25C1F0066E3A7 /* SplashScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +86,18 @@
 				617639B62BEFDB900057D0A4 /* ProcessThree.swift */,
 			);
 			path = SplashScreens;
+			sourceTree = "<group>";
+		};
+		D4AC459D2C05E35800038144 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				D4AC459B2C05D9E900038144 /* WorkoutView.swift */,
+				D4AC459E2C05E38100038144 /* Workout.swift */,
+				D4AC45A02C05E38F00038144 /* WorkoutCell.swift */,
+				D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */,
+				D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */,
+			);
+			path = Workout;
 			sourceTree = "<group>";
 		};
 		DA80AFE52BDFEE6200980333 = {
@@ -84,6 +119,8 @@
 		DA80AFF02BDFEE6200980333 /* Hackenschmidt */ = {
 			isa = PBXGroup;
 			children = (
+				D4AC459D2C05E35800038144 /* Workout */,
+				611C71862BFE783E002F9BB6 /* workouts */,
 				6126E5132BE25C1F0066E3A7 /* SplashScreens */,
 				DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */,
 				DA80AFF32BDFEE6200980333 /* Persistence.swift */,
@@ -186,12 +223,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */,
+				D4AC45A12C05E38F00038144 /* WorkoutCell.swift in Sources */,
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
+				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
+				D4AC459F2C05E38100038144 /* Workout.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
+				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
+				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
+				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
+				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -341,6 +385,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.Hackenschmidt;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.hackenschmidt;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -360,7 +406,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -379,6 +425,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.Hackenschmidt;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.hackenschmidt;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
