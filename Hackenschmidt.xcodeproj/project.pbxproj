@@ -13,6 +13,7 @@
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
+		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		D44210E42BFCAF9C000AC11D /* Auth in Frameworks */ = {isa = PBXBuildFile; productRef = D44210E32BFCAF9C000AC11D /* Auth */; };
 		D44210E62BFCAF9C000AC11D /* Functions in Frameworks */ = {isa = PBXBuildFile; productRef = D44210E52BFCAF9C000AC11D /* Functions */; };
 		D44210E82BFCAF9C000AC11D /* PostgREST in Frameworks */ = {isa = PBXBuildFile; productRef = D44210E72BFCAF9C000AC11D /* PostgREST */; };
@@ -37,6 +38,7 @@
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
+		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D4AC45A02C05E38F00038144 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */,
 				DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */,
 				DA80AFFD2BDFEE6400980333 /* Preview Content */,
+				D48973482C0C9330006C39B4 /* FoodFormView.swift */,
 			);
 			path = Hackenschmidt;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
+				D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */,
 				D4AC459F2C05E38100038144 /* Workout.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
