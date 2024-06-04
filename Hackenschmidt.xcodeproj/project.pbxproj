@@ -12,7 +12,8 @@
 		6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
 		6135F5B82C0E5752004138D9 /* ActivityButtomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5B72C0E5752004138D9 /* ActivityButtomView.swift */; };
 		6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */; };
-		6135F5BC2C0E5E60004138D9 /* GenderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5BB2C0E5E60004138D9 /* GenderButtonView.swift */; };
+		6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */; };
+		6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5C22C0E8711004138D9 /* ButtonView.swift */; };
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
@@ -28,7 +29,8 @@
 		611C71892BFE7E37002F9BB6 /* AddExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercise.swift; sourceTree = "<group>"; };
 		6135F5B72C0E5752004138D9 /* ActivityButtomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButtomView.swift; sourceTree = "<group>"; };
 		6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwoLogic.swift; sourceTree = "<group>"; };
-		6135F5BB2C0E5E60004138D9 /* GenderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButtonView.swift; sourceTree = "<group>"; };
+		6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThreeLogic.swift; sourceTree = "<group>"; };
+		6135F5C22C0E8711004138D9 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
@@ -65,9 +67,9 @@
 		6126E5132BE25C1F0066E3A7 /* SplashScreens */ = {
 			isa = PBXGroup;
 			children = (
-				6135F5B62C0E56A5004138D9 /* ProcessTwoGroup */,
+				6135F5BE2C0E8666004138D9 /* ProcessThreeGroup */,
 				61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */,
-				617639B62BEFDB900057D0A4 /* ProcessThree.swift */,
+				6135F5B62C0E56A5004138D9 /* ProcessTwoGroup */,
 			);
 			path = SplashScreens;
 			sourceTree = "<group>";
@@ -78,9 +80,18 @@
 				61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */,
 				6135F5B72C0E5752004138D9 /* ActivityButtomView.swift */,
 				6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */,
-				6135F5BB2C0E5E60004138D9 /* GenderButtonView.swift */,
 			);
 			path = ProcessTwoGroup;
+			sourceTree = "<group>";
+		};
+		6135F5BE2C0E8666004138D9 /* ProcessThreeGroup */ = {
+			isa = PBXGroup;
+			children = (
+				617639B62BEFDB900057D0A4 /* ProcessThree.swift */,
+				6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */,
+				6135F5C22C0E8711004138D9 /* ButtonView.swift */,
+			);
+			path = ProcessThreeGroup;
 			sourceTree = "<group>";
 		};
 		DA80AFE52BDFEE6200980333 = {
@@ -198,13 +209,14 @@
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
-				6135F5BC2C0E5E60004138D9 /* GenderButtonView.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
+				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
 				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
+				6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
