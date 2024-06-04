@@ -30,6 +30,7 @@
 		DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */; };
 		DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF82BDFEE6200980333 /* ContentView.swift */; };
 		DA80AFFF2BDFEE6400980333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */; };
+		DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DA80AFFA2BDFEE6400980333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Hackenschmidt/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hackenschmidt.entitlements; sourceTree = "<group>"; };
 		DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		DA80AFF02BDFEE6200980333 /* Hackenschmidt */ = {
 			isa = PBXGroup;
 			children = (
+				DA94EC2D2C0E620D0009D397 /* views */,
 				D4AC459D2C05E35800038144 /* Workout */,
 				611C71862BFE783E002F9BB6 /* workouts */,
 				6126E5132BE25C1F0066E3A7 /* SplashScreens */,
@@ -142,6 +145,14 @@
 				DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA94EC2D2C0E620D0009D397 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
+				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
 				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
