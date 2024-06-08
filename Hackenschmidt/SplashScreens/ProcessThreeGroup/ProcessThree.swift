@@ -83,7 +83,7 @@ struct ProcessThree: View {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(Color("ButtonColor"))
+                                    .background(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )

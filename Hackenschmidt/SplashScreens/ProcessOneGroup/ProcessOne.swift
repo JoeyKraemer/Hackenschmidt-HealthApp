@@ -11,6 +11,9 @@ import SwiftUI
 struct ProcessOne: View {
     @State private var userName: String = ""
     @State private var showNextScreen: Bool = false
+    
+    let processOneChecker = ProcessOneChecker();
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -44,7 +47,7 @@ struct ProcessOne: View {
                         TextField("Enter your name", text: $userName)
                             .frame(width: 313)
                             .padding()
-                            .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
                     Spacer()
@@ -52,9 +55,6 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Button(action: {
-                        if userName.count <= 2 {
-                            showNextScreen = true
-                        }
                     }) {
                         NavigationLink(
                             destination: ProcessTwo(),
@@ -62,11 +62,11 @@ struct ProcessOne: View {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(Color("ButtonColor"))
+                                    .background(processOneChecker.checkUsername(username: userName) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(userName.count <= 2)
+                        .disabled(processOneChecker.checkUsername(username: userName))
                     }
                 }
             }
