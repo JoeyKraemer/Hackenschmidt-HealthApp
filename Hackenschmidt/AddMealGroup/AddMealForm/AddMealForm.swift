@@ -53,9 +53,7 @@ struct AddMealForm: View {
                     }
                     Spacer()
 
-                    Button(action: {
-                        
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: AddExercise(),
                             label: {
