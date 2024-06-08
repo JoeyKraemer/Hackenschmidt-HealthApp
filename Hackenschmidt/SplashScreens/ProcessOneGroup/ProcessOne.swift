@@ -11,9 +11,9 @@ import SwiftUI
 struct ProcessOne: View {
     @State private var userName: String = ""
     @State private var showNextScreen: Bool = false
-    
-    let processOneChecker = ProcessOneChecker();
-    
+
+    let processOneChecker = ProcessOneChecker()
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -54,8 +54,7 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: ProcessTwo(),
                             label: {

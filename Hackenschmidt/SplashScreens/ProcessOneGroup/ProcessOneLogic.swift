@@ -7,8 +7,8 @@
 
 import Foundation
 
-class ProcessOneChecker{
-    func checkUsername(username: String) ->Bool{
-        return username.isEmpty;
+class ProcessOneChecker {
+    func checkUsername(username: String) -> Bool {
+        username.isEmpty
     }
 }

@@ -7,48 +7,48 @@
 
 import Foundation
 
-class AddExerciseChecker{
-    func checkName(name: String) ->Bool{
-        return name.isEmpty;
+class AddExerciseChecker {
+    func checkName(name: String) -> Bool {
+        name.isEmpty
     }
-    
-    func checkSets(sets: Int) -> Bool{
-        return sets <= 0;
+
+    func checkSets(sets: Int) -> Bool {
+        sets <= 0
     }
-    
-    func checkWeight(weight: Int) -> Bool{
-        return weight <= 0;
+
+    func checkWeight(weight: Int) -> Bool {
+        weight <= 0
     }
-    
-    func checkMuscleGroup(group: String) ->Bool{
-        return group.isEmpty;
+
+    func checkMuscleGroup(group: String) -> Bool {
+        group.isEmpty
     }
-    
-    func checkEquipment(equipment: String) -> Bool{
-        return equipment.isEmpty;
+
+    func checkEquipment(equipment: String) -> Bool {
+        equipment.isEmpty
     }
-    
-    func checkAll(name: String, sets: Int, weight: Int, group: String, equipment: String) -> Bool{
-        if(name.isEmpty){
+
+    func checkAll(name: String, sets: Int, weight: Int, group: String, equipment: String) -> Bool {
+        if name.isEmpty {
             return true
         }
-        
-        if (sets <= 0){
+
+        if sets <= 0 {
             return true
         }
-        
-        if(weight <= 0){
+
+        if weight <= 0 {
             return true
         }
-        
-        if(group.isEmpty){
+
+        if group.isEmpty {
             return true
         }
-        
-        if(equipment.isEmpty){
+
+        if equipment.isEmpty {
             return true
         }
-        
+
         return false
     }
 }

@@ -18,7 +18,7 @@ struct AddExercise: View {
 
     let equipmentOptions = ["Treadmill", "Dumbbells", "Stationary Bike", "Elliptical"]
     let muscles = ["Shoulders", "Back", "Chest", "Legs"]
-    
+
     let addExerciseChecker = AddExerciseChecker()
 
     var body: some View {
@@ -148,9 +148,7 @@ struct AddExercise: View {
                         }
                     }
                     Spacer()
-                    Button(action: {
-                        
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: AddWorkout(),
                             label: {
