@@ -20,6 +20,8 @@
 		6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */; };
 		6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5C22C0E8711004138D9 /* ButtonView.swift */; };
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
+		617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34552C1646F3004FC095 /* SearchBarMeal.swift */; };
+		617C34582C164B78004FC095 /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34572C164B78004FC095 /* FoodCart.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
 		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
@@ -49,6 +51,8 @@
 		6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThreeLogic.swift; sourceTree = "<group>"; };
 		6135F5C22C0E8711004138D9 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
+		617C34552C1646F3004FC095 /* SearchBarMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMeal.swift; sourceTree = "<group>"; };
+		617C34572C164B78004FC095 /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCart.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				6111BE3A2C1506B000B17BB8 /* AddMealUI.swift */,
+				617C34552C1646F3004FC095 /* SearchBarMeal.swift */,
+				617C34572C164B78004FC095 /* FoodCart.swift */,
 			);
 			path = AddMeal;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
 				6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */,
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
+				617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
 				D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */,
@@ -332,6 +339,7 @@
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
 				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
+				617C34582C164B78004FC095 /* FoodCart.swift in Sources */,
 				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
 				6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */,
 			);

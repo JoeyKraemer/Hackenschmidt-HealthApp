@@ -9,7 +9,27 @@ import SwiftUI
 
 struct AddMealUI: View {
     var body: some View {
-        Text()
+        NavigationView {
+            ZStack {
+                Color("NormalBackground").edgesIgnoringSafeArea(.all)
+                
+                VStack(){
+                    VStack(){
+                        SearchBar()
+                    }
+                    
+                    VStack(alignment: .leading){
+                        Text("My meals")
+                            .foregroundStyle(Color("ButtonColor"))
+                            .font(.system(size: 15, weight: .bold))
+                    }
+                    
+                    VStack(){
+                        FoodCard(title: "title", subtitle: "subtitle", calories: 900)
+                    }
+                }
+            }
+        }
     }
 }
 
