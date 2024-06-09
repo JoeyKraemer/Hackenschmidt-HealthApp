@@ -11,7 +11,7 @@ struct FoodCard: View {
     var title: String
     var subtitle: String
     var calories: Int
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -24,7 +24,7 @@ struct FoodCard: View {
                     .lineLimit(1)
             }
             Spacer()
-            VStack(){
+            VStack {
                 ZStack {
                     Circle()
                         .fill(Color(.systemGray5))

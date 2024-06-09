@@ -12,19 +12,19 @@ struct AddMealUI: View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                
-                VStack(){
-                    VStack(){
+
+                VStack {
+                    VStack {
                         SearchBar()
                     }
-                    
-                    VStack(alignment: .leading){
+
+                    VStack(alignment: .leading) {
                         Text("My meals")
                             .foregroundStyle(Color("ButtonColor"))
                             .font(.system(size: 15, weight: .bold))
                     }
-                    
-                    VStack(){
+
+                    VStack {
                         FoodCard(title: "title", subtitle: "subtitle", calories: 900)
                     }
                 }
