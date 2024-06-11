@@ -13,11 +13,13 @@ struct AddExercise: View {
     @State private var weight: Int = 0
     @State private var muscleGroup = ""
     @State private var isDropdownOpen = false
-    @State private var selectedEquipment = "Select equipment"
+    @State private var selectedEquipment = ""
     @State private var selectedButton: Int?
 
     let equipmentOptions = ["Treadmill", "Dumbbells", "Stationary Bike", "Elliptical"]
     let muscles = ["Shoulders", "Back", "Chest", "Legs"]
+
+    let addExerciseChecker = AddExerciseChecker()
 
     var body: some View {
         NavigationView {
@@ -31,7 +33,7 @@ struct AddExercise: View {
                         TextField("Name", text: $name)
                             .frame(width: 313)
                             .padding()
-                            .background(Color.gray.opacity(0.1))
+                            .background(addExerciseChecker.checkName(name: name) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
 
@@ -48,7 +50,7 @@ struct AddExercise: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(addExerciseChecker.checkSets(sets: sets) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -67,7 +69,7 @@ struct AddExercise: View {
                             }
                         }) {
                             HStack {
-                                Text(selectedEquipment)
+                                Text("Select equipment")
                                     .foregroundColor(.black)
                                 Spacer()
                                 Image(systemName: "chevron.down")
@@ -75,7 +77,7 @@ struct AddExercise: View {
                                     .rotationEffect(.degrees(isDropdownOpen ? 180 : 0))
                             }
                             .padding()
-                            .background(Color.gray.opacity(0.1))
+                            .background(addExerciseChecker.checkEquipment(equipment: selectedEquipment) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                         }
                         .frame(width: 340)
@@ -121,7 +123,7 @@ struct AddExercise: View {
                         ))
                         .frame(width: 313)
                         .padding()
-                        .background(Color.gray.opacity(0.1))
+                        .background(addExerciseChecker.checkWeight(weight: weight) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
                         .overlay(
                             HStack {
@@ -139,58 +141,30 @@ struct AddExercise: View {
                             .foregroundStyle(Color("TextColor"))
 
                         ForEach(0 ..< 4, id: \.self) { index in
-                            ExerciseButtonView(muscle: muscles[index], tag: index, selectedButton: $selectedButton)
+                            ExerciseButtonView(muscle: muscles[index], tag: index, showNextScreen: addExerciseChecker.checkMuscleGroup(group: muscleGroup), selectedButton: $selectedButton)
                         }
                         .onReceive(selectedButton.publisher) { index in
                             muscleGroup = muscles[index]
                         }
                     }
                     Spacer()
-                    Button(action: {
-                        print("hello")
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: AddWorkout(),
                             label: {
                                 Text("ADD")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(Color("ButtonColor"))
+                                    .background(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
+                        .disabled(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment))
                     }
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
-    }
-}
-
-struct ExerciseButtonView: View {
-    let muscle: String
-    let tag: Int
-    @Binding var selectedButton: Int?
-
-    var body: some View {
-        Button(action: {
-            self.selectedButton = self.tag
-        }) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 6)
-                    .fill(Color.gray.opacity(0.0))
-                    .frame(width: 340, height: 55)
-
-                RoundedRectangle(cornerRadius: 6)
-                    .stroke(selectedButton == tag ? Color("ButtonColor") : Color.black)
-                    .frame(width: 340, height: 55)
-
-                Text(muscle)
-                    .font(.system(size: 20))
-                    .foregroundColor(selectedButton == tag ? Color("ButtonColor") : Color("TextColor"))
-                    .frame(width: 340, height: 40, alignment: .center)
-            }
-        }
     }
 }
 

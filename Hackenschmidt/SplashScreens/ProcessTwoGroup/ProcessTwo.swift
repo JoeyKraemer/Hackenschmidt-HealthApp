@@ -165,7 +165,7 @@ struct ProcessTwo: View {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(Color("ButtonColor"))
+                                    .background(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )

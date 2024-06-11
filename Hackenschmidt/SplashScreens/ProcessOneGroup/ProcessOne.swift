@@ -10,7 +10,12 @@ import SwiftUI
 
 struct ProcessOne: View {
     @State private var userName: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     @State private var showNextScreen: Bool = false
+
+    let processOneChecker = ProcessOneChecker()
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -44,29 +49,41 @@ struct ProcessOne: View {
                         TextField("Enter your name", text: $userName)
                             .frame(width: 313)
                             .padding()
-                            .background(showNextScreen ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+
+                        Text("What is your email?")
+                            .foregroundStyle(Color("TextColor"))
+                        TextField("Enter your email", text: $email)
+                            .frame(width: 313)
+                            .padding()
+                            .background(processOneChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+
+                        Text("Come up with the password")
+                            .foregroundStyle(Color("TextColor"))
+                        SecureField("Enter your password", text: $password)
+                            .frame(width: 313)
+                            .padding()
+                            .background(processOneChecker.checkPassword(password: password) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
                     Spacer()
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                        if userName.count <= 2 {
-                            showNextScreen = true
-                        }
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: ProcessTwo(),
                             label: {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(Color("ButtonColor"))
+                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(userName.count <= 2)
+                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password))
                     }
                 }
             }
