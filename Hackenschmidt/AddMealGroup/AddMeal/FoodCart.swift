@@ -16,23 +16,29 @@ struct FoodCard: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.headline)
+                    .font(.system(size: 20, weight: .bold))
                     .bold()
                 Text(subtitle)
                     .font(.subheadline)
                     .foregroundColor(.gray)
-                    .lineLimit(1)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
             VStack {
                 ZStack {
                     Circle()
-                        .fill(Color(.systemGray5))
+                        .fill(Color.gray)
                         .frame(width: 50, height: 50)
-                    Text("\(calories) cal")
-                        .font(.subheadline)
-                        .bold()
-                        .foregroundColor(Color.gray)
+                    VStack(){
+                        Text("\(calories)")
+                            .font(.subheadline)
+                            .bold()
+                            .foregroundColor(Color.black)
+                        Text("cal")
+                            .font(.subheadline)
+                            .bold()
+                            .foregroundColor(Color.black)
+                    }
                 }
             }
         }

@@ -13,19 +13,19 @@ struct AddMealUI: View {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
-                VStack {
+                VStack() {
                     VStack {
                         SearchBar()
                     }
 
-                    VStack(alignment: .leading) {
+                    VStack() {
                         Text("My meals")
                             .foregroundStyle(Color("ButtonColor"))
                             .font(.system(size: 15, weight: .bold))
                     }
 
                     VStack {
-                        FoodCard(title: "title", subtitle: "subtitle", calories: 900)
+                        FoodCard(title: "Title", subtitle: "hello very very big and big and text and it is very very big text yes it is big very", calories: 900)
                     }
                 }
             }

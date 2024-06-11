@@ -55,7 +55,7 @@ struct AddMealForm: View {
 
                     Button(action: {}) {
                         NavigationLink(
-                            destination: AddExercise(),
+                            destination: AddMealUI(),
                             label: {
                                 Text("ADD")
                                     .frame(width: 340, height: 40)

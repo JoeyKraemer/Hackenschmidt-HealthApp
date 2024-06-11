@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProcessOne: View {
     @State private var userName: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     @State private var showNextScreen: Bool = false
 
     let processOneChecker = ProcessOneChecker()
@@ -49,6 +51,22 @@ struct ProcessOne: View {
                             .padding()
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
+                        
+                        Text("What is your email?")
+                            .foregroundStyle(Color("TextColor"))
+                        TextField("Enter your email", text: $email)
+                            .frame(width: 313)
+                            .padding()
+                            .background(processOneChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                        
+                        Text("Come up with the password")
+                            .foregroundStyle(Color("TextColor"))
+                        SecureField("Enter your password", text: $password)
+                            .frame(width: 313)
+                            .padding()
+                            .background(processOneChecker.checkPassword(password: password) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
                     }
                     Spacer()
                     Spacer()
@@ -61,11 +79,11 @@ struct ProcessOne: View {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(processOneChecker.checkUsername(username: userName) ? Color.gray : Color("ButtonColor"))
+                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(processOneChecker.checkUsername(username: userName))
+                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password))
                     }
                 }
             }
