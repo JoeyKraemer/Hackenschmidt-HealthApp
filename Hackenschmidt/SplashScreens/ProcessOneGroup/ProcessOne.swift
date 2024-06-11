@@ -51,7 +51,7 @@ struct ProcessOne: View {
                             .padding()
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
-                        
+
                         Text("What is your email?")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your email", text: $email)
@@ -59,7 +59,7 @@ struct ProcessOne: View {
                             .padding()
                             .background(processOneChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
-                        
+
                         Text("Come up with the password")
                             .foregroundStyle(Color("TextColor"))
                         SecureField("Enter your password", text: $password)

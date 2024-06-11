@@ -11,28 +11,28 @@ class ProcessOneChecker {
     func checkUsername(username: String) -> Bool {
         username.isEmpty
     }
-    
-    func checkEmail(email: String) -> Bool{
-        return email.isEmpty
+
+    func checkEmail(email: String) -> Bool {
+        email.isEmpty
     }
-    
-    func checkPassword(password: String) -> Bool{
-        return password.isEmpty;
+
+    func checkPassword(password: String) -> Bool {
+        password.isEmpty
     }
-    
-    func checkAll(username: String, email: String, password: String) -> Bool{
-        if(username.isEmpty){
+
+    func checkAll(username: String, email: String, password: String) -> Bool {
+        if username.isEmpty {
             return true
         }
-        
-        if(email.isEmpty){
+
+        if email.isEmpty {
             return true
         }
-        
-        if(password.isEmpty){
+
+        if password.isEmpty {
             return true
         }
-        
+
         return false
     }
 }

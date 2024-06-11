@@ -29,7 +29,7 @@ struct FoodCard: View {
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 50, height: 50)
-                    VStack(){
+                    VStack {
                         Text("\(calories)")
                             .font(.subheadline)
                             .bold()

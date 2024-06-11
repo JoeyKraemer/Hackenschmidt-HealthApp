@@ -13,12 +13,12 @@ struct AddMealUI: View {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
-                VStack() {
+                VStack {
                     VStack {
                         SearchBar()
                     }
 
-                    VStack() {
+                    VStack {
                         Text("My meals")
                             .foregroundStyle(Color("ButtonColor"))
                             .font(.system(size: 15, weight: .bold))
