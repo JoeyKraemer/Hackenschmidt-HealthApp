@@ -28,7 +28,7 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    //ProcessOne()
+                    // ProcessOne()
                     FoodFormCameraView()
                 }
             }

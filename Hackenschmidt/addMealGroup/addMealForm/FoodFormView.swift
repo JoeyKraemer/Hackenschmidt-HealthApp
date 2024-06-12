@@ -20,7 +20,6 @@ struct ProductFormView: View {
             Color("NormalBackground").edgesIgnoringSafeArea(.all)
             VStack {
                 VStack {
-                    
                     VStack {
                         Text("What is the product name?")
                             .foregroundStyle(Color("TextColor"))

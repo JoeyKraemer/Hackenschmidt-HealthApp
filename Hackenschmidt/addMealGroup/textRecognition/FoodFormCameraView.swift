@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FoodFormCameraView : View {
+struct FoodFormCameraView: View {
     @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage? = nil
     @State private var nutritionInfo: [String: String] = [:]

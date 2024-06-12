@@ -1,5 +1,5 @@
 //
-//  CameraView.swift
+//  CameraTextRecognitionView.swift
 //  Hackenschmidt
 //
 //  Created by Joey Krämer on 12.06.24.
@@ -16,7 +16,7 @@ struct CameraTextRecognitionView: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let pickedImage = info[.originalImage] as? UIImage {
                 parent.image = pickedImage
                 CameraTextRecognition.recognizeText(in: pickedImage) { nutritionInfo in
@@ -26,7 +26,7 @@ struct CameraTextRecognitionView: UIViewControllerRepresentable {
             parent.presentationMode.wrappedValue.dismiss()
         }
 
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        func imagePickerControllerDidCancel(_: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
@@ -46,5 +46,5 @@ struct CameraTextRecognitionView: UIViewControllerRepresentable {
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    func updateUIViewController(_: UIImagePickerController, context _: Context) {}
 }
