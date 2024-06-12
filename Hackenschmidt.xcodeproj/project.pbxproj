@@ -10,7 +10,6 @@
 		6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE2D2C14F9F200B17BB8 /* ProcessOneLogic.swift */; };
 		6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE312C14FBBF00B17BB8 /* AddExerciseLogic.swift */; };
 		6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE332C14FFEB00B17BB8 /* ExcerciseButtonView.swift */; };
-		6111BE392C15058600B17BB8 /* AddMealForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE382C15058600B17BB8 /* AddMealForm.swift */; };
 		6111BE3B2C1506B000B17BB8 /* AddMealUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE3A2C1506B000B17BB8 /* AddMealUI.swift */; };
 		611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71872BFE785D002F9BB6 /* AddWorkout.swift */; };
 		611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71892BFE7E37002F9BB6 /* AddExercise.swift */; };
@@ -31,7 +30,8 @@
 		D422CB5B2C19F67400CFF92D /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = D422CB5A2C19F67400CFF92D /* Storage */; };
 		D422CB5D2C19F67400CFF92D /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = D422CB5C2C19F67400CFF92D /* Supabase */; };
 		D422CB602C19F7EB00CFF92D /* CameraTextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422CB5F2C19F7EB00CFF92D /* CameraTextRecognitionView.swift */; };
-		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
+		D422CB622C1A0A3B00CFF92D /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
+		D422CB642C1A0A4200CFF92D /* AddMealForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE382C15058600B17BB8 /* AddMealForm.swift */; };
 		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
 		D4AC459F2C05E38100038144 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459E2C05E38100038144 /* Workout.swift */; };
 		D4AC45A12C05E38F00038144 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A02C05E38F00038144 /* WorkoutCell.swift */; };
@@ -310,7 +310,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					DA80AFED2BDFEE6200980333 = {
 						CreatedOnToolsVersion = 15.3;
@@ -362,9 +362,10 @@
 				6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */,
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
 				617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */,
+				D422CB642C1A0A4200CFF92D /* AddMealForm.swift in Sources */,
+				D422CB622C1A0A3B00CFF92D /* FoodFormView.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
 				DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */,
-				D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */,
 				6111BE3B2C1506B000B17BB8 /* AddMealUI.swift in Sources */,
 				D4AC459F2C05E38100038144 /* Workout.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
@@ -375,7 +376,6 @@
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
 				6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */,
-				6111BE392C15058600B17BB8 /* AddMealForm.swift in Sources */,
 				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
@@ -424,6 +424,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -485,6 +486,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -513,6 +515,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
 				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
@@ -553,6 +556,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
 				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
