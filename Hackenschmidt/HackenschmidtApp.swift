@@ -28,7 +28,8 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    ProcessOne()
+                    //ProcessOne()
+                    FoodFormCameraView()
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

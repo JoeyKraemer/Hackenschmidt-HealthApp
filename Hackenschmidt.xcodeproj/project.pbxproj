@@ -32,6 +32,8 @@
 		D422CB602C19F7EB00CFF92D /* CameraTextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422CB5F2C19F7EB00CFF92D /* CameraTextRecognitionView.swift */; };
 		D422CB622C1A0A3B00CFF92D /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		D422CB642C1A0A4200CFF92D /* AddMealForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE382C15058600B17BB8 /* AddMealForm.swift */; };
+		D42D882F2C1A0CA800B179EA /* CameraTextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D882E2C1A0CA800B179EA /* CameraTextRecognition.swift */; };
+		D42D88312C1A0D3A00B179EA /* FoodFormCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D88302C1A0D3A00B179EA /* FoodFormCameraView.swift */; };
 		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
 		D4AC459F2C05E38100038144 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459E2C05E38100038144 /* Workout.swift */; };
 		D4AC45A12C05E38F00038144 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A02C05E38F00038144 /* WorkoutCell.swift */; };
@@ -64,6 +66,15 @@
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
 		D422CB5F2C19F7EB00CFF92D /* CameraTextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTextRecognitionView.swift; sourceTree = "<group>"; };
+		D42D882E2C1A0CA800B179EA /* CameraTextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTextRecognition.swift; sourceTree = "<group>"; };
+		D42D88302C1A0D3A00B179EA /* FoodFormCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormCameraView.swift; sourceTree = "<group>"; };
+		D42D88382C1A131500B179EA /* HackenschmidtiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSApp.swift; sourceTree = "<group>"; };
+		D42D883A2C1A131500B179EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D42D883C2C1A131600B179EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D42D883F2C1A131600B179EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D42D88492C1A131600B179EA /* HackenschmidtiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSTests.swift; sourceTree = "<group>"; };
+		D42D88532C1A131600B179EA /* HackenschmidtiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSUITests.swift; sourceTree = "<group>"; };
+		D42D88552C1A131600B179EA /* HackenschmidtiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -206,8 +217,46 @@
 			children = (
 				D4E1CDFF2C19EB9A00C9A358 /* TextRecognition.swift */,
 				D422CB5F2C19F7EB00CFF92D /* CameraTextRecognitionView.swift */,
+				D42D882E2C1A0CA800B179EA /* CameraTextRecognition.swift */,
+				D42D88302C1A0D3A00B179EA /* FoodFormCameraView.swift */,
 			);
 			path = textRecognition;
+			sourceTree = "<group>";
+		};
+		D42D88372C1A131500B179EA /* HackenschmidtiOS */ = {
+			isa = PBXGroup;
+			children = (
+				D42D88382C1A131500B179EA /* HackenschmidtiOSApp.swift */,
+				D42D883A2C1A131500B179EA /* ContentView.swift */,
+				D42D883C2C1A131600B179EA /* Assets.xcassets */,
+				D42D883E2C1A131600B179EA /* Preview Content */,
+			);
+			path = HackenschmidtiOS;
+			sourceTree = "<group>";
+		};
+		D42D883E2C1A131600B179EA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D42D883F2C1A131600B179EA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D42D88482C1A131600B179EA /* HackenschmidtiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				D42D88492C1A131600B179EA /* HackenschmidtiOSTests.swift */,
+			);
+			path = HackenschmidtiOSTests;
+			sourceTree = "<group>";
+		};
+		D42D88522C1A131600B179EA /* HackenschmidtiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D42D88532C1A131600B179EA /* HackenschmidtiOSUITests.swift */,
+				D42D88552C1A131600B179EA /* HackenschmidtiOSUITestsLaunchTests.swift */,
+			);
+			path = HackenschmidtiOSUITests;
 			sourceTree = "<group>";
 		};
 		D4AC459D2C05E35800038144 /* workout */ = {
@@ -226,6 +275,9 @@
 			isa = PBXGroup;
 			children = (
 				DA80AFF02BDFEE6200980333 /* Hackenschmidt */,
+				D42D88372C1A131500B179EA /* HackenschmidtiOS */,
+				D42D88482C1A131600B179EA /* HackenschmidtiOSTests */,
+				D42D88522C1A131600B179EA /* HackenschmidtiOSUITests */,
 				DA80AFEF2BDFEE6200980333 /* Products */,
 				D422CB512C19F67400CFF92D /* Frameworks */,
 			);
@@ -309,7 +361,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					DA80AFED2BDFEE6200980333 = {
@@ -356,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6135F5B82C0E5752004138D9 /* ActivityButtomView.swift in Sources */,
+				D42D882F2C1A0CA800B179EA /* CameraTextRecognition.swift in Sources */,
 				61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */,
 				D4AC45A12C05E38F00038144 /* WorkoutCell.swift in Sources */,
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
@@ -372,6 +425,7 @@
 				D422CB602C19F7EB00CFF92D /* CameraTextRecognitionView.swift in Sources */,
 				6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
+				D42D88312C1A0D3A00B179EA /* FoodFormCameraView.swift in Sources */,
 				D4E1CE002C19EB9A00C9A358 /* TextRecognition.swift in Sources */,
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
@@ -541,6 +595,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -582,6 +637,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

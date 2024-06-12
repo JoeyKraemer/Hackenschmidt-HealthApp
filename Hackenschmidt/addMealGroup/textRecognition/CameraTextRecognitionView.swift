@@ -16,19 +16,23 @@ struct CameraTextRecognitionView: UIViewControllerRepresentable {
             self.parent = parent
         }
 
-        func textRecognitionController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let pickedImage = info[.originalImage] as? UIImage {
                 parent.image = pickedImage
+                CameraTextRecognition.recognizeText(in: pickedImage) { nutritionInfo in
+                    self.parent.nutritionInfo = nutritionInfo
+                }
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
 
-        func textRecognitionControllerDidCancel(_ picker: UIImagePickerController) {
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             parent.presentationMode.wrappedValue.dismiss()
         }
     }
 
     @Binding var image: UIImage?
+    @Binding var nutritionInfo: [String: String]
     @Environment(\.presentationMode) var presentationMode
 
     func makeCoordinator() -> Coordinator {
@@ -37,6 +41,7 @@ struct CameraTextRecognitionView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
+        picker.sourceType = .camera
         picker.delegate = context.coordinator
         return picker
     }
