@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ProcessThree: View {
-    @State private var calories: Int = 2000
+    @State private var calories: Int = 0
     @State private var selectedButton: Int?
     @State private var selectedTitle: String = ""
     @State private var showNextScreen: Bool = false
-    let buttonTitles = ["Lose Weight", "Maintain Weight", "Gain Weight", "Gain Muscles"]
+    let buttonTitles = ["Lose Weight", "Maintain Weight", "Grow Muscles"]
 
     let processThreeChecker = ProcessThreeChecker()
 
@@ -38,39 +38,34 @@ struct ProcessThree: View {
                         Text("What is your goal")
                             .foregroundStyle(Color("TextColor"))
                         VStack(spacing: 20) {
-                            ForEach(0 ..< 4, id: \.self) { index in
+                            ForEach(0 ..< 3, id: \.self) { index in
                                 ButtonView(title: buttonTitles[index], tag: index, showNextScreen: processThreeChecker.checkGoal(goal: selectedTitle), selectedButton: $selectedButton)
                             }
                             .onReceive(selectedButton.publisher) { index in
                                 selectedTitle = buttonTitles[index]
+                                CalorieCalculator.shared.setGoal(goal: selectedTitle)
+                                calories = CalorieCalculator.shared.getTotalCalories()
                             }
                         }
                     }
                     .padding(.bottom, 50)
                     VStack {
-                        Text("What is your calorie intake goal?")
+                        Text("This is your calorie intake goal")
                             .foregroundStyle(Color("TextColor"))
 
-                        TextField("Enter your Caloris", text: Binding(
-                            get: { "\(calories)" },
-                            set: {
-                                if let value = Int($0) {
-                                    calories = value
+                        Text(calories == 0 ? "Please Set The Goal" : "\(calories)")
+                            .frame(width: 313)
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Text("Cal")
+                                        .padding(.trailing, 8)
+                                        .foregroundColor(Color("TextColor"))
                                 }
-                            }
-                        ))
-                        .frame(width: 313)
-                        .padding()
-                        .background(processThreeChecker.checkCalories(calories: calories) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
-                        .cornerRadius(10)
-                        .overlay(
-                            HStack {
-                                Spacer()
-                                Text("Cal")
-                                    .padding(.trailing, 8)
-                                    .foregroundColor(Color("TextColor"))
-                            }
-                        )
+                            )
                     }
                     Spacer()
                     Spacer()
