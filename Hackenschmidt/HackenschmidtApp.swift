@@ -5,7 +5,7 @@
 //  Created by paul on 29/04/2024.
 //
 
-//import Supabase
+// import Supabase
 import SwiftUI
 
 @main

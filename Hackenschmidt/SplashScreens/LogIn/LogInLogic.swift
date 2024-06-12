@@ -7,25 +7,24 @@
 
 import Foundation
 
+class LogInChecker {
+    func checkPassword(password: String) -> Bool {
+        password.isEmpty
+    }
 
-class LogInChecker{
-    func checkPassword(password: String) -> Bool{
-        return password.isEmpty
+    func checkEmail(email: String) -> Bool {
+        email.isEmpty
     }
-    
-    func checkEmail(email : String) -> Bool{
-        return email.isEmpty
-    }
-    
-    func checkAll(password: String, email: String) -> Bool{
-        if(password.isEmpty){
+
+    func checkAll(password: String, email: String) -> Bool {
+        if password.isEmpty {
             return true
         }
-        
-        if(email.isEmpty){
+
+        if email.isEmpty {
             return true
         }
-        
+
         return false
     }
 }

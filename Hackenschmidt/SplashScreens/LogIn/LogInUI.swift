@@ -10,7 +10,7 @@ import SwiftUI
 struct LogInUI: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    
+
     let logInChecker = LogInChecker()
     var body: some View {
         NavigationView {

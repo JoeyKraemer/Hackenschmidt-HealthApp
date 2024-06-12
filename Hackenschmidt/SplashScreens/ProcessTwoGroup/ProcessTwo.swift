@@ -164,8 +164,7 @@ struct ProcessTwo: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {
-                    }) {
+                    Button(action: {}) {
                         NavigationLink(
                             destination: ProcessThree(),
                             label: {
