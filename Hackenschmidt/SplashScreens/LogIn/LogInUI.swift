@@ -1,21 +1,17 @@
 //
-//  ProcessOne.swift
+//  LogInUI.swift
 //  Hackenschmidt
 //
-//  Created by Богдан Закусило on 01.05.2024.
+//  Created by Богдан Закусило on 12.06.2024.
 //
 
-import Foundation
 import SwiftUI
 
-struct ProcessOne: View {
-    @State private var userName: String = ""
+struct LogInUI: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var showNextScreen: Bool = false
-
-    let processOneChecker = ProcessOneChecker()
-
+    
+    let logInChecker = LogInChecker()
     var body: some View {
         NavigationView {
             ZStack {
@@ -38,64 +34,42 @@ struct ProcessOne: View {
                         Text("Welcome")
                             .foregroundStyle(Color("ButtonColor"))
                             .font(.system(size: 30, weight: .bold))
-                        Text("Let's Start!")
-                            .foregroundStyle(Color("TextColor"))
                     }
-                    Spacer()
+                    .padding(.bottom, 20)
 
                     VStack {
-                        Text("What should we call you?")
-                            .foregroundStyle(Color("TextColor"))
-                        TextField("Enter your name", text: $userName)
-                            .frame(width: 313)
-                            .padding()
-                            .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
-                            .cornerRadius(10)
-
                         Text("What is your email?")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your email", text: $email)
                             .frame(width: 313)
                             .padding()
-                            .background(processOneChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .background(logInChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
 
-                        Text("Come up with the password")
+                        Text("What is your password")
                             .foregroundStyle(Color("TextColor"))
                         SecureField("Enter your password", text: $password)
                             .frame(width: 313)
                             .padding()
-                            .background(processOneChecker.checkPassword(password: password) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .background(logInChecker.checkPassword(password: password) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
                     Spacer()
-                    VStack {
-                        Text("Already have an account?")
-                            .foregroundColor(Color("TextColor"))
-                        NavigationLink(
-                            destination: LogInUI(),
-                            label: {
-                                Text("Log in")
-                                    .foregroundColor(Color("ButtonColor"))
-                            }
-                        )
-                    }
-                    .padding(.top, 20)
                     Spacer()
                     Spacer()
                     Spacer()
                     Button(action: {}) {
                         NavigationLink(
-                            destination: ProcessTwo(),
+                            destination: LogInUI(),
                             label: {
-                                Text("Next")
+                                Text("Log In")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password) ? Color.gray : Color("ButtonColor"))
+                                    .background(logInChecker.checkAll(password: password, email: email) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password))
+                        .disabled(logInChecker.checkAll(password: password, email: email))
                     }
                 }
             }
@@ -104,5 +78,5 @@ struct ProcessOne: View {
 }
 
 #Preview {
-    ProcessOne().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    LogInUI()
 }

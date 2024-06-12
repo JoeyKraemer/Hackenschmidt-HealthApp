@@ -49,6 +49,7 @@ struct ProcessTwo: View {
                             set: {
                                 if let value = Int($0) {
                                     weight = value
+                                    CalorieCalculator.shared.setWeight(weight: weight)
                                 }
                             }
                         ))
@@ -76,6 +77,7 @@ struct ProcessTwo: View {
                             set: {
                                 if let value = Int($0) {
                                     height = value
+                                    CalorieCalculator.shared.setHeight(height: height)
                                 }
                             }
                         ))
@@ -104,6 +106,7 @@ struct ProcessTwo: View {
                                 isClickedMale = true
                                 isClickedFemale = false
                                 gender = "Male"
+                                CalorieCalculator.shared.setSex(sex: gender)
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -124,6 +127,7 @@ struct ProcessTwo: View {
                                 isClickedFemale = true
                                 isClickedMale = false
                                 gender = "Female"
+                                CalorieCalculator.shared.setSex(sex: gender)
                             }) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -152,13 +156,16 @@ struct ProcessTwo: View {
                         }
                         .onReceive(selectedButton.publisher) { index in
                             activity = activityTitles[index]
+                            CalorieCalculator.shared.setActivityLevel(activityLevel: activity)
+                            CalorieCalculator.shared.setAge(age: 30)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                    }) {
                         NavigationLink(
                             destination: ProcessThree(),
                             label: {
