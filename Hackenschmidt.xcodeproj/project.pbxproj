@@ -68,13 +68,6 @@
 		D422CB5F2C19F7EB00CFF92D /* CameraTextRecognitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTextRecognitionView.swift; sourceTree = "<group>"; };
 		D42D882E2C1A0CA800B179EA /* CameraTextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTextRecognition.swift; sourceTree = "<group>"; };
 		D42D88302C1A0D3A00B179EA /* FoodFormCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormCameraView.swift; sourceTree = "<group>"; };
-		D42D88382C1A131500B179EA /* HackenschmidtiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSApp.swift; sourceTree = "<group>"; };
-		D42D883A2C1A131500B179EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		D42D883C2C1A131600B179EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D42D883F2C1A131600B179EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D42D88492C1A131600B179EA /* HackenschmidtiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSTests.swift; sourceTree = "<group>"; };
-		D42D88532C1A131600B179EA /* HackenschmidtiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSUITests.swift; sourceTree = "<group>"; };
-		D42D88552C1A131600B179EA /* HackenschmidtiOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtiOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -223,42 +216,6 @@
 			path = textRecognition;
 			sourceTree = "<group>";
 		};
-		D42D88372C1A131500B179EA /* HackenschmidtiOS */ = {
-			isa = PBXGroup;
-			children = (
-				D42D88382C1A131500B179EA /* HackenschmidtiOSApp.swift */,
-				D42D883A2C1A131500B179EA /* ContentView.swift */,
-				D42D883C2C1A131600B179EA /* Assets.xcassets */,
-				D42D883E2C1A131600B179EA /* Preview Content */,
-			);
-			path = HackenschmidtiOS;
-			sourceTree = "<group>";
-		};
-		D42D883E2C1A131600B179EA /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D42D883F2C1A131600B179EA /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D42D88482C1A131600B179EA /* HackenschmidtiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				D42D88492C1A131600B179EA /* HackenschmidtiOSTests.swift */,
-			);
-			path = HackenschmidtiOSTests;
-			sourceTree = "<group>";
-		};
-		D42D88522C1A131600B179EA /* HackenschmidtiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D42D88532C1A131600B179EA /* HackenschmidtiOSUITests.swift */,
-				D42D88552C1A131600B179EA /* HackenschmidtiOSUITestsLaunchTests.swift */,
-			);
-			path = HackenschmidtiOSUITests;
-			sourceTree = "<group>";
-		};
 		D4AC459D2C05E35800038144 /* workout */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,9 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				DA80AFF02BDFEE6200980333 /* Hackenschmidt */,
-				D42D88372C1A131500B179EA /* HackenschmidtiOS */,
-				D42D88482C1A131600B179EA /* HackenschmidtiOSTests */,
-				D42D88522C1A131600B179EA /* HackenschmidtiOSUITests */,
 				DA80AFEF2BDFEE6200980333 /* Products */,
 				D422CB512C19F67400CFF92D /* Frameworks */,
 			);
@@ -501,6 +455,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -556,6 +511,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -574,6 +530,7 @@
 				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To be able to scan the nutrition we need to access the camera";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -594,7 +551,7 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -616,6 +573,7 @@
 				DEVELOPMENT_TEAM = P65VTJACU7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "To be able to scan the nutrition we need to access the camera";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -636,7 +594,7 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

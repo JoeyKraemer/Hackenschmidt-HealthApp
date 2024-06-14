@@ -48,7 +48,7 @@ class textRecognition: UIViewController, UIImagePickerControllerDelegate, UINavi
                 return
             }
 
-            var nutritionInfo: [String: String] = [:]
+            let nutritionInfo: [String: String] = [:]
 
             for observation in observations {
                 guard let topCandidate = observation.topCandidates(1).first else { continue }

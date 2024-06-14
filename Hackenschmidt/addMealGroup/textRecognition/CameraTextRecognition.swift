@@ -20,24 +20,43 @@ class CameraTextRecognition {
 
             guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
 
-            var nutritionInfo: [String: String] = [:]
+            var nutritionInfo: [String: String] = ["Calories": "", "Fat": "", "Carbs": "", "Protein": ""]
+            var textLines: [String] = []
 
             for observation in observations {
                 guard let topCandidate = observation.topCandidates(1).first else { continue }
-                let recognizedText = topCandidate.string
+                textLines.append(topCandidate.string)
+            }
 
-                if recognizedText.contains("Protein") {
-                    nutritionInfo["Protein"] = extractValue(from: recognizedText)
-                } else if recognizedText.contains("Calories") {
-                    nutritionInfo["Calories"] = extractValue(from: recognizedText)
-                } else if recognizedText.contains("Fat") {
-                    nutritionInfo["Fat"] = extractValue(from: recognizedText)
-                } else if recognizedText.contains("Carbs") {
-                    nutritionInfo["Carbs"] = extractValue(from: recognizedText)
+            // Log recognized text lines
+            print("Recognized Text Lines: \(textLines)")
+
+            var currentKey: String? = nil
+
+            for (index, line) in textLines.enumerated() {
+                if line.contains("Energie") || line.contains("kcal") || line.contains("Brennwert") || line.contains("energy") {
+                    currentKey = "Calories"
+                } else if line.contains("Fett") || line.contains("vetten") || line.contains("Fat") && !line.contains("davon gesättigte Fettsäuren") {
+                    currentKey = "Fat"
+                } else if line.contains("Kohlenhydrate") || line.contains("koolhydraten") || line.contains("carbohydrates") && !line.contains("davon Zucker") {
+                    currentKey = "Carbs"
+                } else if line.contains("Eiweiß") || line.contains("eiwitten") || line.contains("protein") {
+                    currentKey = "Protein"
+                }
+
+                if let key = currentKey {
+                    if nutritionInfo[key] == "" {
+                        let value = extractValue(from: line)
+                        if !value.isEmpty {
+                            nutritionInfo[key] = value
+                            currentKey = nil
+                        }
+                    }
                 }
             }
 
             DispatchQueue.main.async {
+                print("Nutrition Info: \(nutritionInfo)") // Print the dictionary to the console
                 completion(nutritionInfo)
             }
         }
@@ -51,8 +70,19 @@ class CameraTextRecognition {
     }
 
     static func extractValue(from text: String) -> String {
-        // Implement your logic to extract the numerical value from the text
-        // For simplicity, this example just returns the full text
-        text
+        // Extract the first number found in the text followed by "kcal" or "g"
+        let pattern = "(\\d+(?:[.,]\\d+)?)\\s*(kcal|g)?"
+        if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
+            let range = NSRange(location: 0, length: text.utf16.count)
+            if let match = regex.firstMatch(in: text, options: [], range: range) {
+                let numberRange = Range(match.range(at: 1), in: text)
+                let unitRange = Range(match.range(at: 2), in: text)
+                if let number = numberRange.map({ String(text[$0]) }),
+                   let unit = unitRange.map({ String(text[$0]) }) {
+                    return "\(number) \(unit)"
+                }
+            }
+        }
+        return ""
     }
 }

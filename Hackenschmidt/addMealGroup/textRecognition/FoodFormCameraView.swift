@@ -4,7 +4,6 @@
 //
 //  Created by Joey Krämer on 12.06.24.
 //
-
 import SwiftUI
 
 struct FoodFormCameraView: View {
@@ -49,7 +48,7 @@ struct FoodFormCameraView: View {
     }
 }
 
-struct FoodFormCameratView_Previews: PreviewProvider {
+struct FoodFormCameraView_Previews: PreviewProvider {
     static var previews: some View {
         FoodFormCameraView()
     }
