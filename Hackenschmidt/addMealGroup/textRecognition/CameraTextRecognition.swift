@@ -78,7 +78,8 @@ class CameraTextRecognition {
                 let numberRange = Range(match.range(at: 1), in: text)
                 let unitRange = Range(match.range(at: 2), in: text)
                 if let number = numberRange.map({ String(text[$0]) }),
-                   let unit = unitRange.map({ String(text[$0]) }) {
+                   let unit = unitRange.map({ String(text[$0]) })
+                {
                     return "\(number) \(unit)"
                 }
             }
