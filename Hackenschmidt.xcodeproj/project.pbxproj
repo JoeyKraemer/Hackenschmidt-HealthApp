@@ -18,6 +18,9 @@
 		6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */; };
 		6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */; };
 		6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5C22C0E8711004138D9 /* ButtonView.swift */; };
+		616878BE2C1A286800A35247 /* CalorieCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616878BD2C1A286800A35247 /* CalorieCalculator.swift */; };
+		616878C12C1A431800A35247 /* LogInUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616878C02C1A431700A35247 /* LogInUI.swift */; };
+		616878C32C1A432600A35247 /* LogInLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616878C22C1A432600A35247 /* LogInLogic.swift */; };
 		617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617639B62BEFDB900057D0A4 /* ProcessThree.swift */; };
 		617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34552C1646F3004FC095 /* SearchBarMeal.swift */; };
 		617C34582C164B78004FC095 /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34572C164B78004FC095 /* FoodCart.swift */; };
@@ -60,6 +63,9 @@
 		6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwoLogic.swift; sourceTree = "<group>"; };
 		6135F5BF2C0E86A2004138D9 /* ProcessThreeLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThreeLogic.swift; sourceTree = "<group>"; };
 		6135F5C22C0E8711004138D9 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		616878BD2C1A286800A35247 /* CalorieCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieCalculator.swift; sourceTree = "<group>"; };
+		616878C02C1A431700A35247 /* LogInUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInUI.swift; sourceTree = "<group>"; };
+		616878C22C1A432600A35247 /* LogInLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInLogic.swift; sourceTree = "<group>"; };
 		617639B62BEFDB900057D0A4 /* ProcessThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessThree.swift; sourceTree = "<group>"; };
 		617C34552C1646F3004FC095 /* SearchBarMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarMeal.swift; sourceTree = "<group>"; };
 		617C34572C164B78004FC095 /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCart.swift; sourceTree = "<group>"; };
@@ -171,9 +177,17 @@
 		6126E5132BE25C1F0066E3A7 /* splashScreens */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				6111BE2C2C14F9DF00B17BB8 /* processOneGroup */,
 				6135F5BE2C0E8666004138D9 /* processThreeGroup */,
 				6135F5B62C0E56A5004138D9 /* processTwoGroup */,
+=======
+				616878BF2C1A428500A35247 /* LogIn */,
+				6111BE2C2C14F9DF00B17BB8 /* ProcessOneGroup */,
+				6135F5BE2C0E8666004138D9 /* ProcessThreeGroup */,
+				6135F5B62C0E56A5004138D9 /* ProcessTwoGroup */,
+				616878BD2C1A286800A35247 /* CalorieCalculator.swift */,
+>>>>>>> development
 			);
 			path = splashScreens;
 			sourceTree = "<group>";
@@ -198,6 +212,7 @@
 			path = processThreeGroup;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		D422CB512C19F67400CFF92D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +232,18 @@
 			sourceTree = "<group>";
 		};
 		D4AC459D2C05E35800038144 /* workout */ = {
+=======
+		616878BF2C1A428500A35247 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				616878C02C1A431700A35247 /* LogInUI.swift */,
+				616878C22C1A432600A35247 /* LogInLogic.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		D4AC459D2C05E35800038144 /* Workout */ = {
+>>>>>>> development
 			isa = PBXGroup;
 			children = (
 				D4AC459B2C05D9E900038144 /* WorkoutView.swift */,
@@ -368,6 +395,7 @@
 				DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */,
 				6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */,
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
+				616878C12C1A431800A35247 /* LogInUI.swift in Sources */,
 				617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */,
 				D422CB642C1A0A4200CFF92D /* AddMealForm.swift in Sources */,
 				D422CB622C1A0A3B00CFF92D /* FoodFormView.swift in Sources */,
@@ -379,14 +407,19 @@
 				D422CB602C19F7EB00CFF92D /* CameraTextRecognitionView.swift in Sources */,
 				6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
+<<<<<<< HEAD
 				D42D88312C1A0D3A00B179EA /* FoodFormCameraView.swift in Sources */,
 				D4E1CE002C19EB9A00C9A358 /* TextRecognition.swift in Sources */,
+=======
+				616878BE2C1A286800A35247 /* CalorieCalculator.swift in Sources */,
+>>>>>>> development
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
 				6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */,
 				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
+				616878C32C1A432600A35247 /* LogInLogic.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
 				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
 				617C34582C164B78004FC095 /* FoodCart.swift in Sources */,
@@ -527,7 +560,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = P65VTJACU7;
+				DEVELOPMENT_TEAM = PSZLR7BATX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To be able to scan the nutrition we need to access the camera";
@@ -570,7 +603,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = P65VTJACU7;
+				DEVELOPMENT_TEAM = PSZLR7BATX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "To be able to scan the nutrition we need to access the camera";
