@@ -20,16 +20,8 @@ class ProcessOneChecker {
         password.isEmpty
     }
 
-    func checkAge(age: Int) -> Bool {
-        age <= 0
-    }
-
-    func checkAll(username: String, email: String, password: String, age: Int) -> Bool {
+    func checkAll(username: String, email: String, password: String) -> Bool {
         if username.isEmpty {
-            return true
-        }
-
-        if age <= 0 {
             return true
         }
 
