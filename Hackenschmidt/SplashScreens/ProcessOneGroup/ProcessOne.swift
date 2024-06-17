@@ -13,6 +13,7 @@ struct ProcessOne: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showNextScreen: Bool = false
+    @State private var age = 0;
 
     let processOneChecker = ProcessOneChecker()
 
@@ -50,6 +51,22 @@ struct ProcessOne: View {
                             .frame(width: 313)
                             .padding()
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                        
+                        Text("What is your age")
+                            .foregroundStyle(Color("TextColor"))
+                        TextField("Enter your age", text: Binding(
+                            get: { "\(age)" },
+                            set: {
+                                if let value = Int($0) {
+                                    age = value
+                                    CalorieCalculator.shared.setAge(age: age)
+                                }
+                            }
+                        ))
+                            .frame(width: 313)
+                            .padding()
+                            .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
 
                         Text("What is your email?")
@@ -91,11 +108,11 @@ struct ProcessOne: View {
                                 Text("Next")
                                     .frame(width: 340, height: 40)
                                     .foregroundColor(Color.white)
-                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password) ? Color.gray : Color("ButtonColor"))
+                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password, age: age) ? Color.gray : Color("ButtonColor"))
                                     .cornerRadius(5)
                             }
                         )
-                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password))
+                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
                     }
                 }
             }
