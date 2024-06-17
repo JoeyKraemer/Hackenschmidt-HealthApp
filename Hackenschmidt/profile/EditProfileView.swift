@@ -13,33 +13,33 @@ struct EditProfileView: View {
     @Binding var sex: String
     @Binding var caloriesIntakeGoal: String
     @Binding var activityLevel: String
-    
+
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $name)
                 }
-                
+
                 Section(header: Text("Weight")) {
                     TextField("Weight", text: $weight)
                         .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Height")) {
                     TextField("Height", text: $height)
                         .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Sex")) {
                     TextField("Sex", text: $sex)
                 }
-                
+
                 Section(header: Text("Calories intake goal")) {
                     TextField("Calories intake goal", text: $caloriesIntakeGoal)
                         .keyboardType(.numberPad)
                 }
-                
+
                 Section(header: Text("Activity level")) {
                     TextField("Activity level", text: $activityLevel)
                 }

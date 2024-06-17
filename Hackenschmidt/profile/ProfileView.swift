@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State private var sex: String = "Female"
     @State private var caloriesIntakeGoal: String = "2,000 cal"
     @State private var activityLevel: String = "Active"
-    
+
     var body: some View {
         VStack(spacing: 20) {
             HStack {
@@ -29,7 +29,7 @@ struct ProfileView: View {
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-            
+
             VStack(alignment: .leading, spacing: 15) {
                 HStack {
                     Text("Weight")
@@ -65,7 +65,7 @@ struct ProfileView: View {
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-            
+
             Button(action: {
                 isEditViewPresented = true
             }) {
