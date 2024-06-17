@@ -32,7 +32,7 @@ struct ProfileView: View {
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-            
+
             VStack(alignment: .leading, spacing: 15) {
                 HStack {
                     Text("Weight")
@@ -68,7 +68,7 @@ struct ProfileView: View {
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
-            
+
             Button(action: {
                 isEditViewPresented = true
             }) {

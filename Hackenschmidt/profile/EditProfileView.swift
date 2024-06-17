@@ -16,33 +16,32 @@ struct EditProfileView: View {
     @Binding var activityLevel: String
     
     let healthStore: HKHealthStore
-    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $name)
                 }
-                
+
                 Section(header: Text("Weight")) {
                     TextField("Weight", text: $weight)
                         .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Height")) {
                     TextField("Height", text: $height)
                         .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Sex")) {
                     TextField("Sex", text: $sex)
                 }
-                
+
                 Section(header: Text("Calories intake goal")) {
                     TextField("Calories intake goal", text: $caloriesIntakeGoal)
                         .keyboardType(.numberPad)
                 }
-                
+
                 Section(header: Text("Activity level")) {
                     TextField("Activity level", text: $activityLevel)
                 }
