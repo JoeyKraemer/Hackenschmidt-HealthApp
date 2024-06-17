@@ -27,6 +27,10 @@
 		617C34582C164B78004FC095 /* FoodCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34572C164B78004FC095 /* FoodCart.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
+		D431E5792C2093FD006AB28D /* FoodFormCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E5752C2093FD006AB28D /* FoodFormCameraView.swift */; };
+		D431E57A2C2093FD006AB28D /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E5762C2093FD006AB28D /* TextRecognition.swift */; };
+		D431E57B2C2093FD006AB28D /* CameraTextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E5772C2093FD006AB28D /* CameraTextRecognition.swift */; };
+		D431E57C2C2093FD006AB28D /* CameraTextRecognitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E5782C2093FD006AB28D /* CameraTextRecognitionView.swift */; };
 		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
 		D4AC459F2C05E38100038144 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459E2C05E38100038144 /* Workout.swift */; };
@@ -61,6 +65,10 @@
 		617C34572C164B78004FC095 /* FoodCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCart.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
+		D431E5752C2093FD006AB28D /* FoodFormCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodFormCameraView.swift; sourceTree = "<group>"; };
+		D431E5762C2093FD006AB28D /* TextRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
+		D431E5772C2093FD006AB28D /* CameraTextRecognition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTextRecognition.swift; sourceTree = "<group>"; };
+		D431E5782C2093FD006AB28D /* CameraTextRecognitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTextRecognitionView.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -119,6 +127,7 @@
 		6111BE352C15041200B17BB8 /* AddMealGroup */ = {
 			isa = PBXGroup;
 			children = (
+				D497EF112C20909600A84984 /* textRecognition */,
 				6111BE372C15043C00B17BB8 /* AddMealForm */,
 				6111BE362C15042100B17BB8 /* AddMeal */,
 			);
@@ -191,6 +200,17 @@
 				616878C22C1A432600A35247 /* LogInLogic.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		D497EF112C20909600A84984 /* textRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				D431E5772C2093FD006AB28D /* CameraTextRecognition.swift */,
+				D431E5782C2093FD006AB28D /* CameraTextRecognitionView.swift */,
+				D431E5752C2093FD006AB28D /* FoodFormCameraView.swift */,
+				D431E5762C2093FD006AB28D /* TextRecognition.swift */,
+			);
+			path = textRecognition;
 			sourceTree = "<group>";
 		};
 		D4AC459D2C05E35800038144 /* Workout */ = {
@@ -350,11 +370,15 @@
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
 				616878BE2C1A286800A35247 /* CalorieCalculator.swift in Sources */,
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
+				D431E5792C2093FD006AB28D /* FoodFormCameraView.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
 				6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */,
 				6111BE392C15058600B17BB8 /* AddMealForm.swift in Sources */,
+				D431E57A2C2093FD006AB28D /* TextRecognition.swift in Sources */,
 				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
+				D431E57B2C2093FD006AB28D /* CameraTextRecognition.swift in Sources */,
+				D431E57C2C2093FD006AB28D /* CameraTextRecognitionView.swift in Sources */,
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
 				616878C32C1A432600A35247 /* LogInLogic.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
@@ -488,11 +512,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hackenschmidt/Hackenschmidt.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = PSZLR7BATX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P98463U8S7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -510,10 +536,11 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.Hackenschmidt;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.hackenschmidt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.app;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Hackenschmidt Development";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -528,11 +555,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hackenschmidt/Hackenschmidt.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
-				DEVELOPMENT_TEAM = PSZLR7BATX;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P98463U8S7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -550,10 +579,11 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.Hackenschmidt;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.hackenschmidt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hackenschmidt.app;
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.hackenschmidt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Hackenschmidt Development";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
