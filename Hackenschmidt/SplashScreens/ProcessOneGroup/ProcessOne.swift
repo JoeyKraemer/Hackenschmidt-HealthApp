@@ -13,7 +13,7 @@ struct ProcessOne: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showNextScreen: Bool = false
-    @State private var age = 0;
+    @State private var age = 0
 
     let processOneChecker = ProcessOneChecker()
 
@@ -52,7 +52,7 @@ struct ProcessOne: View {
                             .padding()
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
-                        
+
                         Text("What is your age")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your age", text: Binding(
@@ -64,10 +64,10 @@ struct ProcessOne: View {
                                 }
                             }
                         ))
-                            .frame(width: 313)
-                            .padding()
-                            .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
-                            .cornerRadius(10)
+                        .frame(width: 313)
+                        .padding()
+                        .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                        .cornerRadius(10)
 
                         Text("What is your email?")
                             .foregroundStyle(Color("TextColor"))
