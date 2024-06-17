@@ -29,22 +29,80 @@ struct FoodFormCameraView: View {
                 isImagePickerPresented = true
             }) {
                 Text("Take Photo")
+                    .padding()
+                    .background(Color.purple)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
             }
             .sheet(isPresented: $isImagePickerPresented) {
                 CameraTextRecognitionView(image: $selectedImage, nutritionInfo: $nutritionInfo)
             }
 
             if !nutritionInfo.isEmpty {
-                ForEach(nutritionInfo.keys.sorted(), id: \.self) { key in
-                    HStack {
-                        Text(key)
-                        Spacer()
-                        Text(nutritionInfo[key] ?? "")
+                Form {
+                    Section(header: Text("What is the product name?")) {
+                        TextField("Name", text: Binding(
+                            get: { nutritionInfo["Name"] ?? "" },
+                            set: { nutritionInfo["Name"] = $0 }
+                        ))
                     }
-                    .padding()
+
+                    Section(header: Text("What is the product weight?")) {
+                        TextField("Weight", text: Binding(
+                            get: { nutritionInfo["Weight"] ?? "" },
+                            set: { nutritionInfo["Weight"] = $0 }
+                        ))
+                    }
+
+                    Section(header: Text("Nutrition per 100g")) {
+                        HStack {
+                            Text("Carbs")
+                            Spacer()
+                            TextField("Carbs", text: Binding(
+                                get: { nutritionInfo["Carbs"] ?? "Not Available" },
+                                set: { nutritionInfo["Carbs"] = $0 }
+                            ))
+                        }
+                        HStack {
+                            Text("Fat")
+                            Spacer()
+                            TextField("Fat", text: Binding(
+                                get: { nutritionInfo["Fat"] ?? "Not Available" },
+                                set: { nutritionInfo["Fat"] = $0 }
+                            ))
+                        }
+                        HStack {
+                            Text("Protein")
+                            Spacer()
+                            TextField("Protein", text: Binding(
+                                get: { nutritionInfo["Protein"] ?? "Not Available" },
+                                set: { nutritionInfo["Protein"] = $0 }
+                            ))
+                        }
+                    }
+
+                    Section(header: Text("Calorie on 100g")) {
+                        TextField("Calories", text: Binding(
+                            get: { nutritionInfo["Calories"] ?? "" },
+                            set: { nutritionInfo["Calories"] = $0 }
+                        ))
+                    }
+
+                    Button(action: {
+                        // Add functionality
+                    }) {
+                        Text("ADD")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.purple)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
                 }
+                .padding()
             }
         }
+        .padding()
     }
 }
 
