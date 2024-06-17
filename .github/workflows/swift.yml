@@ -1,0 +1,33 @@
+name: Build Run Check Coding Conventions
+
+on:
+  push:
+    branches: 
+  pull_request:
+    branches: 
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Swift Format
+      run: brew install swiftformat
+    
+    - name: Format the code
+      run: swiftformat Hackenschmidt/
+
+    - name: Set up GitBot
+      run: |
+        git config --global user.email "github-actions"
+        git config --global user.name "swiftformat"
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git commit -m "Autoformat swift files by swiftformat"
+        git push
+
