@@ -7,17 +7,6 @@
 import SwiftUI
 import UIKit
 
-struct BlurView: UIViewRepresentable {
-    let style: UIBlurEffect.Style
-
-    func makeUIView(context _: Context) -> UIVisualEffectView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
-        return view
-    }
-
-    func updateUIView(_: UIVisualEffectView, context _: Context) {}
-}
-
 struct WorkoutView: View {
     @State private var isAdding: Bool = false
 
