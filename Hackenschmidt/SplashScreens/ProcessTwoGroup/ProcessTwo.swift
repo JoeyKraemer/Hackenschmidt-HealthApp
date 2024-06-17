@@ -157,6 +157,7 @@ struct ProcessTwo: View {
                         .onReceive(selectedButton.publisher) { index in
                             activity = activityTitles[index]
                             CalorieCalculator.shared.setActivityLevel(activityLevel: activity)
+                            CalorieCalculator.shared.setAge(age: 30)
                         }
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
