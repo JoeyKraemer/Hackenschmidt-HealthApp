@@ -69,7 +69,7 @@ struct ProfileView: View {
                     Text("Notifications")
                         .bold()
                     Spacer()
-                    Text(notificationsEnabled ? "Enabled": "Disabled")
+                    Text(notificationsEnabled ? "Enabled" : "Disabled")
                 }
             }
             .padding()

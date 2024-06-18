@@ -15,7 +15,7 @@ struct ProcessOne: View {
 
     let processOneChecker = ProcessOneChecker()
     let notificationHandler = NotificationHandler()
-    
+
     var body: some View {
         NavigationView {
             ZStack {
