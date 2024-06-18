@@ -49,6 +49,7 @@
 		DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */; };
 		DAD2D3A72C21B58300B1BA62 /* authViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2D3A62C21B58300B1BA62 /* authViewModel.swift */; };
 		DAD2D3AA2C21B61B00B1BA62 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DAD2D3A92C21B61B00B1BA62 /* KeychainAccess */; };
+		DAD2D3AD2C21C1E800B1BA62 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = DAD2D3AC2C21C1E800B1BA62 /* Supabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD2D3AD2C21C1E800B1BA62 /* Supabase in Frameworks */,
 				DAD2D3AA2C21B61B00B1BA62 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +269,7 @@
 			children = (
 				DA80AFF02BDFEE6200980333 /* Hackenschmidt */,
 				DA80AFEF2BDFEE6200980333 /* Products */,
+				DAD2D3AB2C21C1E800B1BA62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,6 +329,13 @@
 			path = supabase;
 			sourceTree = "<group>";
 		};
+		DAD2D3AB2C21C1E800B1BA62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -344,6 +354,7 @@
 			name = Hackenschmidt;
 			packageProductDependencies = (
 				DAD2D3A92C21B61B00B1BA62 /* KeychainAccess */,
+				DAD2D3AC2C21C1E800B1BA62 /* Supabase */,
 			);
 			productName = Hackenschmidt;
 			productReference = DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */;
@@ -699,6 +710,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DAD2D3A82C21B61B00B1BA62 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		DAD2D3AC2C21C1E800B1BA62 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D44210E22BFCAF9C000AC11D /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 
