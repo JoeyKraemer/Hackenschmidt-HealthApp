@@ -47,6 +47,8 @@
 		DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF82BDFEE6200980333 /* ContentView.swift */; };
 		DA80AFFF2BDFEE6400980333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */; };
 		DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */; };
+		DAD2D3A72C21B58300B1BA62 /* authViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD2D3A62C21B58300B1BA62 /* authViewModel.swift */; };
+		DAD2D3AA2C21B61B00B1BA62 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = DAD2D3A92C21B61B00B1BA62 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,7 @@
 		DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hackenschmidt.entitlements; sourceTree = "<group>"; };
 		DA80AFFE2BDFEE6400980333 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA94EC302C0E65EB0009D397 /* CalorieSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieSlider.swift; sourceTree = "<group>"; };
+		DAD2D3A62C21B58300B1BA62 /* authViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD2D3AA2C21B61B00B1BA62 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 		DA80AFF02BDFEE6200980333 /* Hackenschmidt */ = {
 			isa = PBXGroup;
 			children = (
+				DAD2D3A52C21B57600B1BA62 /* supabase */,
 				619E4FE02C20EC9500C58A21 /* Notifications */,
 				D42D889C2C206A6000B179EA /* profile */,
 				421BF6D92C2097230097B3AE /* HomepageGroup */,
@@ -313,6 +318,14 @@
 			path = views;
 			sourceTree = "<group>";
 		};
+		DAD2D3A52C21B57600B1BA62 /* supabase */ = {
+			isa = PBXGroup;
+			children = (
+				DAD2D3A62C21B58300B1BA62 /* authViewModel.swift */,
+			);
+			path = supabase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,6 +343,7 @@
 			);
 			name = Hackenschmidt;
 			packageProductDependencies = (
+				DAD2D3A92C21B61B00B1BA62 /* KeychainAccess */,
 			);
 			productName = Hackenschmidt;
 			productReference = DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */;
@@ -361,6 +375,7 @@
 			mainGroup = DA80AFE52BDFEE6200980333;
 			packageReferences = (
 				D44210E22BFCAF9C000AC11D /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				DAD2D3A82C21B61B00B1BA62 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = DA80AFEF2BDFEE6200980333 /* Products */;
 			projectDirPath = "";
@@ -409,6 +424,7 @@
 				D431E5852C209BBF006AB28D /* TextRecognition.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
 				616878BE2C1A286800A35247 /* CalorieCalculator.swift in Sources */,
+				DAD2D3A72C21B58300B1BA62 /* authViewModel.swift in Sources */,
 				6135F5BA2C0E582E004138D9 /* ProcessTwoLogic.swift in Sources */,
 				D431E5832C209B9A006AB28D /* CameraTextRecognitionView.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
@@ -668,7 +684,23 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		DAD2D3A82C21B61B00B1BA62 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAD2D3A92C21B61B00B1BA62 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAD2D3A82C21B61B00B1BA62 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */ = {
