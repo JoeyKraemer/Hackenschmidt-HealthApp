@@ -14,6 +14,9 @@ struct EditProfileView: View {
     @Binding var sex: String
     @Binding var caloriesIntakeGoal: String
     @Binding var activityLevel: String
+    @Binding var notificationsEnabled: Bool
+    
+    @Environment(\.presentationMode) var presentationMode
 
     let healthStore: HKHealthStore
     var body: some View {
@@ -45,14 +48,22 @@ struct EditProfileView: View {
                 Section(header: Text("Activity level")) {
                     TextField("Activity level", text: $activityLevel)
                 }
+                
+                Section(header: Text("Notifications")) {
+                    Toggle("Enable Notifications", isOn: $notificationsEnabled)
+                        .onChange(of: notificationsEnabled) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "notifications")
+                        }
+                }
             }
             .navigationBarTitle("Edit Profile", displayMode: .inline)
             .navigationBarItems(trailing: Button("Save") {
                 saveToHealthKit()
+                presentationMode.wrappedValue.dismiss()
             })
         }
     }
-
+    
     private func saveToHealthKit() {
         guard let weightValue = Double(weight.replacingOccurrences(of: " kg", with: "")),
               let heightValue = Double(height.replacingOccurrences(of: " cm", with: "")),

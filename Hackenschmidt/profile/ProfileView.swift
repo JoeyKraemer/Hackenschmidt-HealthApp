@@ -15,6 +15,7 @@ struct ProfileView: View {
     @State private var sex: String = "Female"
     @State private var caloriesIntakeGoal: String = "2,000 cal"
     @State private var activityLevel: String = "Active"
+    @State private var notificationsEnabled = UserDefaults.standard.bool(forKey: "notifications")
 
     private let healthStore = HKHealthStore()
 
@@ -64,6 +65,12 @@ struct ProfileView: View {
                     Spacer()
                     Text(activityLevel)
                 }
+                HStack {
+                    Text("Notifications")
+                        .bold()
+                    Spacer()
+                    Text(notificationsEnabled ? "Enabled": "Disabled")
+                }
             }
             .padding()
             .background(Color(UIColor.systemGray6))
@@ -83,7 +90,7 @@ struct ProfileView: View {
         }
         .padding()
         .sheet(isPresented: $isEditViewPresented) {
-            EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, healthStore: healthStore)
+            EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, notificationsEnabled: $notificationsEnabled, healthStore: healthStore)
         }
         .onAppear {
             requestHealthKitAuthorization()
