@@ -12,9 +12,9 @@ struct ProcessOne: View {
     @State private var userName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var showNextScreen: Bool = false
 
     let processOneChecker = ProcessOneChecker()
+    let notificationHandler = NotificationHandler()
 
     var body: some View {
         NavigationView {
@@ -84,7 +84,9 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                        notificationHandler.askPermission()
+                    }) {
                         NavigationLink(
                             destination: ProcessTwo(),
                             label: {
