@@ -24,11 +24,6 @@ struct AddMealUI: View {
                             .foregroundStyle(Color("ButtonColor"))
                             .font(.system(size: 15, weight: .bold))
                     }
-                    
-                    
-                    
-                    
-                    
 
                     VStack {
                         if supabasLogic.isLoading {

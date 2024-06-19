@@ -21,10 +21,9 @@ struct ProcessTwo: View {
     @State private var showNextScreen: Bool = true
 
     @ObservedObject var processTwoChecker = ProcessTwoChecker()
-    
+
     @State private var shouldNavigate = false
 
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -183,7 +182,7 @@ struct ProcessTwo: View {
                                 .cornerRadius(5)
                         }
                         .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
-                        
+
                         NavigationLink(
                             destination: ProcessThree(),
                             isActive: $shouldNavigate,

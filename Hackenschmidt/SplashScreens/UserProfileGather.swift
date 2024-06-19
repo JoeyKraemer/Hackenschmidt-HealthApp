@@ -7,9 +7,9 @@
 
 import Foundation
 
-class UserProfileInformationGather{
+class UserProfileInformationGather {
     static let shared = UserProfileInformationGather()
-    
+
     var name: String?
     var weight: Int?
     var height: Int?
@@ -17,8 +17,8 @@ class UserProfileInformationGather{
     var activity: String?
     var age: Int?
 
-    private init(){}
-    
+    private init() {}
+
     func setName(name: String) {
         self.name = name
     }
@@ -42,8 +42,8 @@ class UserProfileInformationGather{
     func setAge(age: Int) {
         self.age = age
     }
-    
+
     func getAllInformation() -> (name: String, weight: Int, height: Int, sex: String, activity: String, age: Int) {
-        return (name: self.name!, weight: self.weight!, height: self.height!, sex: self.sex!, activity: self.activity!, age: self.age!)
+        (name: name!, weight: weight!, height: height!, sex: sex!, activity: activity!, age: age!)
     }
 }

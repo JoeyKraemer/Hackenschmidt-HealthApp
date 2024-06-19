@@ -15,7 +15,7 @@ struct EditProfileView: View {
     @Binding var caloriesIntakeGoal: String
     @Binding var activityLevel: String
     @Binding var notificationsEnabled: Bool
-    
+
     let notificationHandler = NotificationHandler()
 
     @Environment(\.presentationMode) var presentationMode

@@ -13,12 +13,12 @@ struct ProcessThree: View {
     @State private var selectedTitle: String = ""
     @State private var showNextScreen: Bool = false
     @State private var shouldNavigate = false
-    
+
     let buttonTitles = ["Lose Weight", "Maintain Weight", "Grow Muscles"]
 
     let processThreeChecker = ProcessThreeChecker()
     let userInfo = UserProfileInformationGather.shared.getAllInformation()
-    
+
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
 
@@ -79,7 +79,7 @@ struct ProcessThree: View {
                     Spacer()
                     Button(action: {
                         if !processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories) {
-                            Task{
+                            Task {
                                 await supabaseLogic.appendUserProfile(user_id: authViewModel.uid!, name: userInfo.name, calorie_goal: calories, weight: userInfo.weight, height: userInfo.height, sex: userInfo.sex, activity: userInfo.activity, body_goal: selectedTitle, age: userInfo.age)
                                 shouldNavigate = true
                             }

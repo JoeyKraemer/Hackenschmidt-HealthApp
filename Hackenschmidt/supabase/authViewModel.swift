@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
 
     let client: SupabaseClient
     let keychain: Keychain
-    
+
     static let shared = AuthViewModel()
 
     private init() {
@@ -31,8 +31,8 @@ class AuthViewModel: ObservableObject {
         Task {
             await restoreSession()
         }
-        
-        Task{
+
+        Task {
             print("I am initialised")
         }
     }
@@ -53,7 +53,7 @@ class AuthViewModel: ObservableObject {
                 self.isLoading = false
             }
         }
-        
+
         print("Succes")
     }
 

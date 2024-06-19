@@ -17,7 +17,7 @@ struct ProcessOne: View {
 
     let processOneChecker = ProcessOneChecker()
     let notificationHandler = NotificationHandler()
-    
+
     @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
@@ -55,7 +55,7 @@ struct ProcessOne: View {
                             .padding()
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
-                        
+
                         Text("What is your age")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your age", text: Binding(
@@ -71,7 +71,6 @@ struct ProcessOne: View {
                         .padding()
                         .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                         .cornerRadius(10)
-
 
                         Text("What is your email?")
                             .foregroundStyle(Color("TextColor"))
@@ -136,9 +135,7 @@ struct ProcessOne: View {
                 }
             }
         }
-        .onAppear{
-            
-        }
+        .onAppear {}
     }
 }
 

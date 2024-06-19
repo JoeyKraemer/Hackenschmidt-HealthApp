@@ -21,7 +21,7 @@ struct AddExercise: View {
     let muscles = ["Shoulders", "Back", "Chest", "Legs"]
 
     let addExerciseChecker = AddExerciseChecker()
-    
+
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
 
@@ -153,8 +153,8 @@ struct AddExercise: View {
                     }
                     Spacer()
                     Button(action: {
-                        Task{
-                            if(!addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment)){
+                        Task {
+                            if !addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment) {
                                 await supabaseLogic.appendExercise(exercise_name: name, sets: sets, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment)
                                 print("Processed")
                                 shouldNavigate = true
@@ -177,7 +177,6 @@ struct AddExercise: View {
                         }
                     )
                     .hidden()
-
                 }
             }
         }
