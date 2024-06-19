@@ -106,7 +106,7 @@ struct ProcessOne: View {
                     Spacer()
                     Button(action: {
                         Task {
-                            await authViewModel.signIn(email: "test@test.com", password: "verytest")
+                            await authViewModel.singUp(email: email, password: password)
                         }
                         Task {
                             if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {

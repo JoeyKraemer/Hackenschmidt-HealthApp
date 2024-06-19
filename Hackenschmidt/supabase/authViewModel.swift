@@ -56,6 +56,26 @@ class AuthViewModel: ObservableObject {
 
         print("Succes")
     }
+    
+    func singUp(email: String, password: String) async {
+        isLoading = true
+        do {
+            let session = try await client.auth.signUp(email: email, password: password)
+            saveSession(session.session!)
+            DispatchQueue.main.async {
+                self.userEmail = session.user.email
+                self.uid = session.user.id
+                self.isLoading = false
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+            }
+        }
+
+        print("Succes")
+    }
 
     func saveSession(_ session: Session) {
         keychain["access_token"] = session.accessToken
