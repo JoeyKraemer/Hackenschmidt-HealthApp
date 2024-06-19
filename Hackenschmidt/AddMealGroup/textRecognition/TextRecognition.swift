@@ -54,8 +54,7 @@ class textRecognition: UIViewController, UIImagePickerControllerDelegate, UINavi
                 if recognizedText.contains("Protein") {
                 } else if recognizedText.contains("Calories") {
                 } else if recognizedText.contains("Fat") {
-                } else if recognizedText.contains("Carbs") {
-                }
+                } else if recognizedText.contains("Carbs") {}
             }
 
             print("Nutrition Information: \(nutritionInfo)")
