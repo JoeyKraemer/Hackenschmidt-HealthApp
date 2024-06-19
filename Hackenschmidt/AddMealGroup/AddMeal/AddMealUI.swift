@@ -16,8 +16,7 @@ struct AddMealUI: View {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    
-                    VStack{
+                    VStack {
                         VStack {
                             SearchBar()
                         }
@@ -34,8 +33,7 @@ struct AddMealUI: View {
                     }
                     .blur(radius: isAdding ? 5 : 0)
                     .animation(.default, value: isAdding)
-                    
-                    
+
                     Spacer()
 
                     HStack {
@@ -44,7 +42,7 @@ struct AddMealUI: View {
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
-                                    VStack{
+                                    VStack {
                                         Image(systemName: "camera.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
@@ -55,14 +53,13 @@ struct AddMealUI: View {
                                 .padding(.bottom, 10)
 
                                 Button(action: {}) {
-                                    VStack{
+                                    VStack {
                                         Image(systemName: "pencil.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
                                         Text("Manual")
                                             .foregroundColor(.black)
                                     }
-                                    
                                 }
                                 .padding(.bottom, 10)
                             }
