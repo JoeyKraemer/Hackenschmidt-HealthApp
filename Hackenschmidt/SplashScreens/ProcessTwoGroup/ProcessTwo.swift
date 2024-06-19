@@ -172,6 +172,7 @@ struct ProcessTwo: View {
                                 UserProfileInformationGather.shared.setWeight(weight: weight)
                                 UserProfileInformationGather.shared.setSex(sex: gender)
                                 UserProfileInformationGather.shared.setActivity(activity: activity)
+                                UserProfileInformationGather.shared.setHeight(height: height)
                                 shouldNavigate = true
                             }
                         }) {

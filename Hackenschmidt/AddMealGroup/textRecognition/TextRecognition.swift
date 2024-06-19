@@ -26,8 +26,6 @@ class textRecognition: UIViewController, UIImagePickerControllerDelegate, UINavi
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {
             imageView.image = pickedImage
-
-            // Perform text recognition
             recognizeText(image: pickedImage)
         }
 
@@ -53,15 +51,10 @@ class textRecognition: UIViewController, UIImagePickerControllerDelegate, UINavi
                 guard let topCandidate = observation.topCandidates(1).first else { continue }
                 let recognizedText = topCandidate.string
 
-                // Your parsing logic to extract nutritional information goes here
                 if recognizedText.contains("Protein") {
-                    // Extract protein value and store it in nutritionInfo dictionary
                 } else if recognizedText.contains("Calories") {
-                    // Extract calories value and store it in nutritionInfo dictionary
                 } else if recognizedText.contains("Fat") {
-                    // Extract fat value and store it in nutritionInfo dictionary
                 } else if recognizedText.contains("Carbs") {
-                    // Extract carbs value and store it in nutritionInfo dictionary
                 }
             }
 

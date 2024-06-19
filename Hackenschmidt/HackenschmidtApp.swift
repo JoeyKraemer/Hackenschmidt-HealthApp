@@ -28,7 +28,7 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    AddMealUI()
+                    ProcessOne()
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

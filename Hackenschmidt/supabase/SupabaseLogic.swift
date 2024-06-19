@@ -96,9 +96,4 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-
-    // usage
-//    Task{
-//        await supabaseLogic.appendUserProfile(user_id: authViewModel.uid!, name: "name", calorie_goal: 100, weight: 1, height: 1, sex: "Female", activity: "active", body_goal: "muscle_growth", age: 100)
-//    }
 }
