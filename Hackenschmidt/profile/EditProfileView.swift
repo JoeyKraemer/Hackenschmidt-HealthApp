@@ -16,6 +16,8 @@ struct EditProfileView: View {
     @Binding var activityLevel: String
     @Binding var notificationsEnabled: Bool
 
+    let notificationHandler = NotificationHandler()
+
     @Environment(\.presentationMode) var presentationMode
 
     let healthStore: HKHealthStore
@@ -61,6 +63,9 @@ struct EditProfileView: View {
                 saveToHealthKit()
                 presentationMode.wrappedValue.dismiss()
             })
+        }
+        .onAppear {
+            notificationHandler.askPermission()
         }
     }
 

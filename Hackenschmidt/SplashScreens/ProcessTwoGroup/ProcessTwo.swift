@@ -22,6 +22,8 @@ struct ProcessTwo: View {
 
     @ObservedObject var processTwoChecker = ProcessTwoChecker()
 
+    @State private var shouldNavigate = false
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -164,24 +166,38 @@ struct ProcessTwo: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {}) {
+                    VStack {
+                        Button(action: {
+                            if !processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity) {
+                                UserProfileInformationGather.shared.setWeight(weight: weight)
+                                UserProfileInformationGather.shared.setSex(sex: gender)
+                                UserProfileInformationGather.shared.setActivity(activity: activity)
+                                UserProfileInformationGather.shared.setHeight(height: height)
+                                shouldNavigate = true
+                            }
+                        }) {
+                            Text("Next")
+                                .frame(width: 340, height: 40)
+                                .foregroundColor(Color.white)
+                                .background(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity) ? Color.gray : Color("ButtonColor"))
+                                .cornerRadius(5)
+                        }
+                        .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
+
                         NavigationLink(
                             destination: ProcessThree(),
+                            isActive: $shouldNavigate,
                             label: {
-                                Text("Next")
-                                    .frame(width: 340, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity) ? Color.gray : Color("ButtonColor"))
-                                    .cornerRadius(5)
+                                EmptyView()
                             }
                         )
-                        .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
+                        .hidden()
                     }
                 }
                 .padding(.horizontal, 20)
             }
         }
-//        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
