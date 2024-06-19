@@ -56,7 +56,7 @@ class AuthViewModel: ObservableObject {
 
         print("Succes")
     }
-    
+
     func singUp(email: String, password: String) async {
         isLoading = true
         do {
