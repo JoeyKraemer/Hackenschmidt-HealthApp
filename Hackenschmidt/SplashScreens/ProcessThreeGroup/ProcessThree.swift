@@ -12,9 +12,15 @@ struct ProcessThree: View {
     @State private var selectedButton: Int?
     @State private var selectedTitle: String = ""
     @State private var showNextScreen: Bool = false
+    @State private var shouldNavigate = false
+    
     let buttonTitles = ["Lose Weight", "Maintain Weight", "Grow Muscles"]
 
     let processThreeChecker = ProcessThreeChecker()
+    let userInfo = UserProfileInformationGather.shared.getAllInformation()
+    
+    @StateObject private var supabaseLogic = SupabaseLogic()
+    @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationView {
@@ -71,19 +77,30 @@ struct ProcessThree: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    Button(action: {}) {
-                        NavigationLink(
-                            destination: AddWorkout(),
-                            label: {
-                                Text("Next")
-                                    .frame(width: 340, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories) ? Color.gray : Color("ButtonColor"))
-                                    .cornerRadius(5)
+                    Button(action: {
+                        if !processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories) {
+                            Task{
+                                await supabaseLogic.appendUserProfile(user_id: authViewModel.uid!, name: userInfo.name, calorie_goal: calories, weight: userInfo.weight, height: userInfo.height, sex: userInfo.sex, activity: userInfo.activity, body_goal: selectedTitle, age: userInfo.age)
+                                shouldNavigate = true
                             }
-                        )
-                        .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
+                        }
+                    }) {
+                        Text("Next")
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories) ? Color.gray : Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
+                    .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
+
+                    NavigationLink(
+                        destination: Homepage(),
+                        isActive: $shouldNavigate,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                    .hidden()
                 }
             }
         }
