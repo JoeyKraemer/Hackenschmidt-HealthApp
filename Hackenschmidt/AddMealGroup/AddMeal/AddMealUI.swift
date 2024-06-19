@@ -8,24 +8,77 @@
 import SwiftUI
 
 struct AddMealUI: View {
+    @State private var isAdding: Bool = false
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
                 VStack {
-                    VStack {
-                        SearchBar()
-                    }
+                    
+                    VStack{
+                        VStack {
+                            SearchBar()
+                        }
 
-                    VStack {
-                        Text("My meals")
-                            .foregroundStyle(Color("ButtonColor"))
-                            .font(.system(size: 15, weight: .bold))
-                    }
+                        VStack {
+                            Text("My meals")
+                                .foregroundStyle(Color("ButtonColor"))
+                                .font(.system(size: 15, weight: .bold))
+                        }
 
-                    VStack {
-                        FoodCard(title: "Title", subtitle: "hello very very big and big and text and it is very very big text yes it is big very", calories: 900)
+                        VStack {
+                            FoodCard(title: "Title", subtitle: "hello very very big and big and text and it is very very big text yes it is big very", calories: 900)
+                        }
+                    }
+                    .blur(radius: isAdding ? 5 : 0)
+                    .animation(.default, value: isAdding)
+                    
+                    
+                    Spacer()
+
+                    HStack {
+                        Spacer()
+
+                        VStack {
+                            if isAdding {
+                                Button(action: {}) {
+                                    VStack{
+                                        Image(systemName: "camera.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                        Text("Camera")
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                .padding(.bottom, 10)
+
+                                Button(action: {}) {
+                                    VStack{
+                                        Image(systemName: "pencil.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                        Text("Manual")
+                                            .foregroundColor(.black)
+                                    }
+                                    
+                                }
+                                .padding(.bottom, 10)
+                            }
+
+                            Button(action: {
+                                withAnimation {
+                                    self.isAdding.toggle()
+                                }
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.system(size: 60))
+                                    .foregroundColor(.purple)
+                            }
+                            .padding(.bottom, 30)
+                        }
+                        .padding(.trailing, 20)
                     }
                 }
             }
