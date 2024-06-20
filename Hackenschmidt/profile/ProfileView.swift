@@ -17,8 +17,7 @@ struct ProfileView: View {
     @State private var caloriesIntakeGoal: String = "2,000 cal"
     @State private var activityLevel: String = "Active"
     @State private var notificationsEnabled = UserDefaults.standard.bool(forKey: "notifications")
-    
-    
+
     private let healthStore = HKHealthStore()
 
     var body: some View {
@@ -96,7 +95,7 @@ struct ProfileView: View {
         }
         .onAppear {
             requestHealthKitAuthorization()
-            Task{
+            Task {
                 await supabasLogic.fetchUserProfile()
             }
         }

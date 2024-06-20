@@ -27,7 +27,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchUserProfile() async {
         authViewModel.isLoading = true
         do {
