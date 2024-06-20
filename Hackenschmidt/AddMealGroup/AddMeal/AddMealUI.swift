@@ -10,36 +10,52 @@ import SwiftUI
 struct AddMealUI: View {
     @State private var isAdding: Bool = false
     @StateObject private var supabasLogic = SupabaseLogic()
-  
+    
     var body: some View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-
+                
                 VStack {
                     VStack {
                         VStack {
                             SearchBar()
                         }
-
+                        
                         VStack {
                             Text("My meals")
                                 .foregroundStyle(Color("ButtonColor"))
                                 .font(.system(size: 15, weight: .bold))
                         }
-
-                        VStack {
-                            FoodCard(title: "Title", subtitle: "hello very very big and big and text and it is very very big text yes it is big very", calories: 900)
-                        }
+                        
                     }
                     .blur(radius: isAdding ? 5 : 0)
                     .animation(.default, value: isAdding)
-
+                    
+                    VStack {
+                        if supabasLogic.isLoading {
+                            ProgressView("Loading...")
+                        } else if let errorMessage = supabasLogic.errorMessage {
+                            Text(errorMessage).foregroundColor(.red)
+                        } else {
+                            List(supabasLogic.foods, id: \.self) { food in
+                                FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
+                            }
+                        }
+                    }
+    
+                    .onAppear {
+                        Task {
+                            await supabasLogic.fetchFoods()
+                        }
+                    }
+                    
+                    
                     Spacer()
-
+                    
                     HStack {
                         Spacer()
-
+                        
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
@@ -52,7 +68,7 @@ struct AddMealUI: View {
                                     }
                                 }
                                 .padding(.bottom, 10)
-
+                                
                                 Button(action: {}) {
                                     VStack {
                                         Image(systemName: "pencil.circle.fill")
@@ -64,7 +80,7 @@ struct AddMealUI: View {
                                 }
                                 .padding(.bottom, 10)
                             }
-
+                            
                             Button(action: {
                                 withAnimation {
                                     self.isAdding.toggle()
@@ -77,27 +93,16 @@ struct AddMealUI: View {
                             .padding(.bottom, 30)
                         }
                         .padding(.trailing, 20)
-                      
-                    VStack {
-                        if supabasLogic.isLoading {
-                            ProgressView("Loading...")
-                        } else if let errorMessage = supabasLogic.errorMessage {
-                            Text(errorMessage).foregroundColor(.red)
-                        } else {
-                            List(supabasLogic.foods, id: \.self) { food in
-                                FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
-                            }
-                        }
+                        
+
                     }
-                    .onAppear {
-                        Task {
-                            await supabasLogic.fetchFoods()
-                        }
-                    }
+                    
+                    
                 }
             }
         }
     }
+    
 }
 
 #Preview {
