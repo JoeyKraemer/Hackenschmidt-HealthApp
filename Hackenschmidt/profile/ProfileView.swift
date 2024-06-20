@@ -8,15 +8,17 @@ import HealthKit
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var supabasLogic = SupabaseLogic()
     @State private var isEditViewPresented = false
-    @State private var name: String = "Jane"
+    @State private var name: String = ""
     @State private var weight: String = "60 kg"
     @State private var height: String = "175 cm"
     @State private var sex: String = "Female"
     @State private var caloriesIntakeGoal: String = "2,000 cal"
     @State private var activityLevel: String = "Active"
     @State private var notificationsEnabled = UserDefaults.standard.bool(forKey: "notifications")
-
+    
+    
     private let healthStore = HKHealthStore()
 
     var body: some View {
@@ -26,7 +28,7 @@ struct ProfileView: View {
                     .resizable()
                     .frame(width: 50, height: 50)
                     .foregroundColor(.purple)
-                Text(name)
+                Text(supabasLogic.user_profiles.description)
                     .font(.title)
                     .bold()
             }
@@ -94,6 +96,9 @@ struct ProfileView: View {
         }
         .onAppear {
             requestHealthKitAuthorization()
+            Task{
+                await supabasLogic.fetchUserProfile()
+            }
         }
     }
 

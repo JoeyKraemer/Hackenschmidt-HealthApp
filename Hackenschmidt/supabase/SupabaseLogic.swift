@@ -10,6 +10,7 @@ import SwiftUI
 class SupabaseLogic: ObservableObject {
     @StateObject private var authViewModel = AuthViewModel.shared
     @Published var foods: [Food] = []
+    @Published var user_profiles: [UserProfile] = []
     @Published var isLoading = false
     @Published var errorMessage: String? = nil
 
@@ -18,6 +19,22 @@ class SupabaseLogic: ObservableObject {
         do {
             let response: [Food] = try await authViewModel.client.from("food").select().execute().value
             foods = response
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func fetchUserProfile() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
+            user_profiles = response
+            print(response)
+            print(user_profiles)
             authViewModel.isLoading = false
         } catch {
             DispatchQueue.main.async {

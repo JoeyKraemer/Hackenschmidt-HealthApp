@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile: Codable {
+struct UserProfile: Codable, Hashable {
     var user_id: UUID
     var name: String
     var calorie_goal: Int
