@@ -34,7 +34,7 @@ class SupabaseLogic: ObservableObject {
             user_profiles = response
             print(response)
             print(user_profiles)
-            self.user_loading = false
+            user_loading = false
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
@@ -112,7 +112,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func updateUserProfile(user_id: UUID, name: String, calorie_goal: Int, weight: Int, height: Int, sex: String, activity: String, body_goal: String, age: Int) async {
         let updatedUserProfile = UserProfile(
             name: name,
@@ -124,10 +124,10 @@ class SupabaseLogic: ObservableObject {
             body_goal: body_goal,
             age: age
         )
-        
+
         do {
             let _ = try await authViewModel.client.from("user_profile").update(updatedUserProfile)
-            .eq("user_id", value: user_id).execute()
+                .eq("user_id", value: user_id).execute()
         } catch {
             DispatchQueue.main.async {
                 print(error.localizedDescription)

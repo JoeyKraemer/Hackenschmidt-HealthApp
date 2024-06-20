@@ -37,7 +37,7 @@ struct ProfileView: View {
                     Text(supabasLogic.user_profiles[0].name)
                         .font(.title)
                         .bold()
-                        .onAppear{
+                        .onAppear {
                             name = supabasLogic.user_profiles[0].name
                             sex = supabasLogic.user_profiles[0].sex
                             weight = supabasLogic.user_profiles[0].weight

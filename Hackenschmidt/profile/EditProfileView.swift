@@ -19,7 +19,7 @@ struct EditProfileView: View {
     @Binding var body_goal: String
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
-    
+
     let notificationHandler = NotificationHandler()
 
     @Environment(\.presentationMode) var presentationMode
@@ -71,7 +71,7 @@ struct EditProfileView: View {
                     ))
                     .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Age")) {
                     TextField("Age", text: Binding(
                         get: { "\(age)" },
@@ -83,7 +83,7 @@ struct EditProfileView: View {
                     ))
                     .keyboardType(.decimalPad)
                 }
-                
+
                 Section(header: Text("Body Goal")) {
                     TextField("Body Goal", text: $body_goal)
                 }
@@ -102,8 +102,8 @@ struct EditProfileView: View {
             .navigationBarTitle("Edit Profile", displayMode: .inline)
             .navigationBarItems(trailing: Button("Save") {
                 saveToHealthKit()
-                Task{
-                    await supabaseLogic.updateUserProfile(user_id: authViewModel.uid!, name: name, calorie_goal:caloriesIntakeGoal, weight: weight, height: height, sex: sex, activity: activityLevel, body_goal: body_goal, age: age)
+                Task {
+                    await supabaseLogic.updateUserProfile(user_id: authViewModel.uid!, name: name, calorie_goal: caloriesIntakeGoal, weight: weight, height: height, sex: sex, activity: activityLevel, body_goal: body_goal, age: age)
                 }
                 presentationMode.wrappedValue.dismiss()
             })
