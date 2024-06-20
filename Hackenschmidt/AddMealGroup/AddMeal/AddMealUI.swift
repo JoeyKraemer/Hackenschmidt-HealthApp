@@ -1,10 +1,3 @@
-//
-//  AddMealUI.swift
-//  Hackenschmidt
-//
-//  Created by Богдан Закусило on 08.06.2024.
-//
-
 import SwiftUI
 
 struct AddMealUI: View {
@@ -36,6 +29,8 @@ struct AddMealUI: View {
                                 List(supabasLogic.foods, id: \.self) { food in
                                     FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
                                 }
+                                .listStyle(PlainListStyle()) 
+                                .background(Color("NormalBackground"))
                             }
                         }
                         .onAppear {
@@ -48,31 +43,23 @@ struct AddMealUI: View {
                     .animation(.default, value: isAdding)
 
                     Spacer()
-
+                    
                     HStack {
                         Spacer()
 
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
-                                    VStack {
-                                        Image(systemName: "camera.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                        Text("Camera")
-                                            .foregroundColor(.black)
-                                    }
+                                    Image(systemName: "fork.knife.circle.fill")
+                                        .font(.system(size: 50))
+                                        .foregroundColor(.purple)
                                 }
                                 .padding(.bottom, 10)
 
                                 Button(action: {}) {
-                                    VStack {
-                                        Image(systemName: "pencil.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                        Text("Manual")
-                                            .foregroundColor(.black)
-                                    }
+                                    Image(systemName: "trophy.circle.fill")
+                                        .font(.system(size: 50))
+                                        .foregroundColor(.purple)
                                 }
                                 .padding(.bottom, 10)
                             }
@@ -90,12 +77,29 @@ struct AddMealUI: View {
                         }
                         .padding(.trailing, 20)
                     }
+
+//                    HStack {
+//                        Spacer()
+//
+//                        Button(action: {
+//                            withAnimation {
+//                                self.isAdding.toggle()
+//                            }
+//                        }) {
+//                            Image(systemName: "plus.circle.fill")
+//                                .font(.system(size: 60))
+//                                .foregroundColor(.purple)
+//                        }
+//                        .padding(.bottom, 30)
+//                    }
+//                    .padding(.trailing, 20)
                 }
             }
         }
     }
 }
 
+// Preview for the SwiftUI view
 #Preview {
     AddMealUI()
 }

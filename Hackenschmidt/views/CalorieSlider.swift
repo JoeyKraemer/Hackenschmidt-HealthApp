@@ -49,7 +49,7 @@ struct CalorieSlider: View {
                             .font(.system(size: 14, weight: .thin, design: .default))
                     }
                 }
-                .frame(width: 150, height: 150)
+                .frame(width: 125, height: 125)
                 .padding()
 
                 VStack(alignment: .leading, spacing: 10) {
@@ -76,7 +76,7 @@ struct CalorieSlider: View {
         .padding()
         .background(Color.white)
         .cornerRadius(14)
-        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
+//        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
         .padding()
     }
 }
