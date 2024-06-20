@@ -26,7 +26,7 @@ struct AddMealUI: View {
                     }
 
                     VStack {
-                        if supabasLogic.isLoading {
+                        if supabasLogic.authViewModel.isLoading {
                             ProgressView("Loading...")
                         } else if let errorMessage = supabasLogic.errorMessage {
                             Text(errorMessage).foregroundColor(.red)
