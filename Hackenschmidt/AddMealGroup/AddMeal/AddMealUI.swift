@@ -27,9 +27,8 @@ struct AddMealUI: View {
                                 .foregroundStyle(Color("ButtonColor"))
                                 .font(.system(size: 15, weight: .bold))
                         }
-
                         VStack {
-                            if supabasLogic.isLoading {
+                            if supabasLogic.authViewModel.isLoading {
                                 ProgressView("Loading...")
                             } else if let errorMessage = supabasLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
