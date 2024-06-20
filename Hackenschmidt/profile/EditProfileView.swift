@@ -7,20 +7,19 @@
 import HealthKit
 import SwiftUI
 
-
 enum Sex: String, CaseIterable, Identifiable {
     case male = "Male"
     case female = "Female"
-    
-    var id: String { self.rawValue }
+
+    var id: String { rawValue }
 }
 
 enum ActivityLevel: String, CaseIterable, Identifiable {
     case veryActive = "Very Active"
     case active = "Active"
     case notVeryActive = "Not Very Active"
-    
-    var id: String { self.rawValue }
+
+    var id: String { rawValue }
 }
 
 struct EditProfileView: View {
