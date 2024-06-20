@@ -15,11 +15,15 @@ struct AddExercise: View {
     @State private var isDropdownOpen = false
     @State private var selectedEquipment = ""
     @State private var selectedButton: Int?
+    @State private var shouldNavigate = false
 
     let equipmentOptions = ["Treadmill", "Dumbbells", "Stationary Bike", "Elliptical"]
     let muscles = ["Shoulders", "Back", "Chest", "Legs"]
 
     let addExerciseChecker = AddExerciseChecker()
+
+    @StateObject private var supabaseLogic = SupabaseLogic()
+    @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationView {
@@ -69,7 +73,7 @@ struct AddExercise: View {
                             }
                         }) {
                             HStack {
-                                Text("Select equipment")
+                                Text(selectedEquipment.isEmpty ? "Select equipment" : selectedEquipment)
                                     .foregroundColor(.black)
                                 Spacer()
                                 Image(systemName: "chevron.down")
@@ -148,19 +152,31 @@ struct AddExercise: View {
                         }
                     }
                     Spacer()
-                    Button(action: {}) {
-                        NavigationLink(
-                            destination: AddWorkout(),
-                            label: {
-                                Text("ADD")
-                                    .frame(width: 340, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment) ? Color.gray : Color("ButtonColor"))
-                                    .cornerRadius(5)
+                    Button(action: {
+                        Task {
+                            if !addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment) {
+                                await supabaseLogic.appendExercise(exercise_name: name, sets: sets, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment)
+                                print("Processed")
+                                shouldNavigate = true
                             }
-                        )
-                        .disabled(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment))
+                        }
+                    }) {
+                        Text("ADD")
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment) ? Color.gray : Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
+                    .disabled(addExerciseChecker.checkAll(name: name, sets: sets, weight: weight, group: muscleGroup, equipment: selectedEquipment))
+
+                    NavigationLink(
+                        destination: AddWorkout(),
+                        isActive: $shouldNavigate,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                    .hidden()
                 }
             }
         }

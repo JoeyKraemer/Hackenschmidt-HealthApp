@@ -113,7 +113,6 @@ struct ProfileView: View {
 
         healthStore.requestAuthorization(toShare: healthKitTypesToWrite, read: healthKitTypesToRead) { success, error in
             if !success {
-                // Handle the error
                 print("HealthKit authorization failed: \(String(describing: error))")
             }
         }

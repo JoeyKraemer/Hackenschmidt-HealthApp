@@ -13,12 +13,15 @@ import SwiftUI
 class AuthViewModel: ObservableObject {
     @Published var userEmail: String?
     @Published var errorMessage: String?
+    @Published var uid: UUID?
     @Published var isLoading: Bool = false
 
     let client: SupabaseClient
     let keychain: Keychain
 
-    init() {
+    static let shared = AuthViewModel()
+
+    private init() {
         client = SupabaseClient(
             supabaseURL: URL(string: "https://ggelsjpzpdreuoxgaxid.supabase.co")!,
             supabaseKey:
@@ -27,6 +30,10 @@ class AuthViewModel: ObservableObject {
         keychain = Keychain(service: "com.hackenschmidt.Hackenschmidt")
         Task {
             await restoreSession()
+        }
+
+        Task {
+            print("I am initialised")
         }
     }
 
@@ -37,6 +44,7 @@ class AuthViewModel: ObservableObject {
             saveSession(session)
             DispatchQueue.main.async {
                 self.userEmail = session.user.email
+                self.uid = session.user.id
                 self.isLoading = false
             }
         } catch {
@@ -45,6 +53,8 @@ class AuthViewModel: ObservableObject {
                 self.isLoading = false
             }
         }
+
+        print("Succes")
     }
 
     func saveSession(_ session: Session) {

@@ -28,7 +28,6 @@ class CameraTextRecognition {
                 textLines.append(topCandidate.string)
             }
 
-            // Log recognized text lines
             print("Recognized Text Lines: \(textLines)")
 
             var currentKey: String? = nil

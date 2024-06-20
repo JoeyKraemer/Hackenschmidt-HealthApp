@@ -12,9 +12,13 @@ struct ProcessOne: View {
     @State private var userName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var age = 0
+    @State private var shouldNavigate = false
 
     let processOneChecker = ProcessOneChecker()
     let notificationHandler = NotificationHandler()
+
+    @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationView {
@@ -52,6 +56,22 @@ struct ProcessOne: View {
                             .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
 
+                        Text("What is your age")
+                            .foregroundStyle(Color("TextColor"))
+                        TextField("Enter your age", text: Binding(
+                            get: { "\(age)" },
+                            set: {
+                                if let value = Int($0) {
+                                    age = value
+                                    CalorieCalculator.shared.setAge(age: age)
+                                }
+                            }
+                        ))
+                        .frame(width: 313)
+                        .padding()
+                        .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                        .cornerRadius(10)
+
                         Text("What is your email?")
                             .foregroundStyle(Color("TextColor"))
                         TextField("Enter your email", text: $email)
@@ -85,23 +105,37 @@ struct ProcessOne: View {
                     Spacer()
                     Spacer()
                     Button(action: {
-                        notificationHandler.askPermission()
-                    }) {
-                        NavigationLink(
-                            destination: ProcessTwo(),
-                            label: {
-                                Text("Next")
-                                    .frame(width: 340, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(processOneChecker.checkAll(username: userName, email: email, password: password) ? Color.gray : Color("ButtonColor"))
-                                    .cornerRadius(5)
+                        Task {
+                            await authViewModel.signIn(email: "test@test.com", password: "verytest")
+                        }
+                        Task {
+                            if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {
+                                UserProfileInformationGather.shared.setName(name: userName)
+                                UserProfileInformationGather.shared.setAge(age: age)
+                                shouldNavigate = true
                             }
-                        )
-                        .disabled(processOneChecker.checkAll(username: userName, email: email, password: password))
+                        }
+                    }) {
+                        Text("Next")
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(processOneChecker.checkAll(username: userName, email: email, password: password, age: age) ? Color.gray : Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
+                    .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
+
+                    NavigationLink(
+                        destination: ProcessTwo(),
+                        isActive: $shouldNavigate,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                    .hidden()
                 }
             }
         }
+        .onAppear {}
     }
 }
 

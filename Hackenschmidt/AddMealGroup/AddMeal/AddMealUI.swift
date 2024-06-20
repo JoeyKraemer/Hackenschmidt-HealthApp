@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AddMealUI: View {
     @State private var isAdding: Bool = false
-
+    @StateObject private var supabasLogic = SupabaseLogic()
+  
     var body: some View {
         NavigationView {
             ZStack {
@@ -76,6 +77,22 @@ struct AddMealUI: View {
                             .padding(.bottom, 30)
                         }
                         .padding(.trailing, 20)
+                      
+                    VStack {
+                        if supabasLogic.isLoading {
+                            ProgressView("Loading...")
+                        } else if let errorMessage = supabasLogic.errorMessage {
+                            Text(errorMessage).foregroundColor(.red)
+                        } else {
+                            List(supabasLogic.foods, id: \.self) { food in
+                                FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
+                            }
+                        }
+                    }
+                    .onAppear {
+                        Task {
+                            await supabasLogic.fetchFoods()
+                        }
                     }
                 }
             }
