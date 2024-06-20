@@ -8,4 +8,10 @@ Welcome to Hackenschmidt, your ultimate fitness companion! Hackenschmidt is a ve
 - **Food Logging**: Effortlessly log your meals and snacks throughout the day. Keep a detailed record of your food consumption to stay accountable and make healthier choices.
 - **Cross-Platform Syncing**: Access your data seamlessly across all your iOS and macOS devices. Your progress, workouts, recipes, and food log sync automatically, ensuring you're always up to date.
 ## Getting Started
-To get started with Hackenschmidt, ….. TO BE DONE
+To get started with Hackenschmidt, you need a Mac with XCode installed and an iPhone running atleast iOS 16.0 and developer mode activated.
+- Connect iPhone to Mac wirelessly or with a wire
+- Click start button (check if iPhone is selected as target device)
+- (If needed trust app in iPhone settings under VPN & Device management)
+- Run App
+- Login or Signup
+- LETS GOOO!
