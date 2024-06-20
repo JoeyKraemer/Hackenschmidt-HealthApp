@@ -28,7 +28,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchMeals() async {
         authViewModel.isLoading = true
         do {
@@ -57,7 +57,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func appendMeal(
         meal_name: String,
         collection_of_food: [Food],
@@ -70,7 +70,7 @@ class SupabaseLogic: ObservableObject {
             cooking_steps: cooking_steps,
             user_id: user_id
         )
-        
+
         do {
             let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
         } catch {
