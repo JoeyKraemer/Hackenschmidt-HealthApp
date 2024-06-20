@@ -7,6 +7,22 @@
 import HealthKit
 import SwiftUI
 
+
+enum Sex: String, CaseIterable, Identifiable {
+    case male = "Male"
+    case female = "Female"
+    
+    var id: String { self.rawValue }
+}
+
+enum ActivityLevel: String, CaseIterable, Identifiable {
+    case veryActive = "Very Active"
+    case active = "Active"
+    case notVeryActive = "Not Very Active"
+    
+    var id: String { self.rawValue }
+}
+
 struct EditProfileView: View {
     @Binding var name: String
     @Binding var weight: String
@@ -39,7 +55,12 @@ struct EditProfileView: View {
                 }
 
                 Section(header: Text("Sex")) {
-                    TextField("Sex", text: $sex)
+                    Picker("Sex", selection: $sex) {
+                        ForEach(Sex.allCases) { sex in
+                            Text(sex.rawValue).tag(sex)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Calories intake goal")) {
@@ -48,7 +69,12 @@ struct EditProfileView: View {
                 }
 
                 Section(header: Text("Activity level")) {
-                    TextField("Activity level", text: $activityLevel)
+                    Picker("Activity level", selection: $activityLevel) {
+                        ForEach(ActivityLevel.allCases) { level in
+                            Text(level.rawValue).tag(level)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Notifications")) {

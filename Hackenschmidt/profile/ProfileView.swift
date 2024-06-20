@@ -20,6 +20,7 @@ struct ProfileView: View {
     private let healthStore = HKHealthStore()
 
     var body: some View {
+        
         VStack(spacing: 20) {
             HStack {
                 Image(systemName: "person.circle.fill")
@@ -73,7 +74,7 @@ struct ProfileView: View {
                 }
             }
             .padding()
-            .background(Color(UIColor.systemGray6))
+            .background(Color("NormalBackground"))
             .cornerRadius(10)
 
             Button(action: {
