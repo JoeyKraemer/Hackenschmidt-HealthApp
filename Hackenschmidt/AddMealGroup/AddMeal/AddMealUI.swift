@@ -10,24 +10,24 @@ import SwiftUI
 struct AddMealUI: View {
     @State private var isAdding: Bool = false
     @StateObject private var supabasLogic = SupabaseLogic()
-    
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     VStack {
                         VStack {
                             SearchBar()
                         }
-                        
+
                         VStack {
                             Text("My meals")
                                 .foregroundStyle(Color("ButtonColor"))
                                 .font(.system(size: 15, weight: .bold))
                         }
-                        
+
                         VStack {
                             if supabasLogic.isLoading {
                                 ProgressView("Loading...")
@@ -44,19 +44,15 @@ struct AddMealUI: View {
                                 await supabasLogic.fetchFoods()
                             }
                         }
-                        
                     }
                     .blur(radius: isAdding ? 5 : 0)
                     .animation(.default, value: isAdding)
-                    
-                    
-                    
-                    
+
                     Spacer()
-                    
+
                     HStack {
                         Spacer()
-                        
+
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
@@ -69,7 +65,7 @@ struct AddMealUI: View {
                                     }
                                 }
                                 .padding(.bottom, 10)
-                                
+
                                 Button(action: {}) {
                                     VStack {
                                         Image(systemName: "pencil.circle.fill")
@@ -81,7 +77,7 @@ struct AddMealUI: View {
                                 }
                                 .padding(.bottom, 10)
                             }
-                            
+
                             Button(action: {
                                 withAnimation {
                                     self.isAdding.toggle()
@@ -94,16 +90,11 @@ struct AddMealUI: View {
                             .padding(.bottom, 30)
                         }
                         .padding(.trailing, 20)
-                        
-
                     }
-                    
-                    
                 }
             }
         }
     }
-    
 }
 
 #Preview {
