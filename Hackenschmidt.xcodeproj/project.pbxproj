@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		421BF6DB2C2097390097B3AE /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421BF6DA2C2097390097B3AE /* Homepage.swift */; };
+		42F835662C24F39000D9E51E /* MealStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F835652C24F39000D9E51E /* MealStruct.swift */; };
 		6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101152A2C21D013005CC443 /* SupabaseLogic.swift */; };
 		6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE2D2C14F9F200B17BB8 /* ProcessOneLogic.swift */; };
 		6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE312C14FBBF00B17BB8 /* AddExerciseLogic.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		421BF6DA2C2097390097B3AE /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
+		42F835652C24F39000D9E51E /* MealStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealStruct.swift; sourceTree = "<group>"; };
 		6101152A2C21D013005CC443 /* SupabaseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseLogic.swift; sourceTree = "<group>"; };
 		6111BE2D2C14F9F200B17BB8 /* ProcessOneLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOneLogic.swift; sourceTree = "<group>"; };
 		6111BE312C14FBBF00B17BB8 /* AddExerciseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseLogic.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				61ADFBDA2C21E089005B4A74 /* FoodStruct.swift */,
 				61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */,
 				6177EFCE2C22662600316DF6 /* UserProfileStruct.swift */,
+				42F835652C24F39000D9E51E /* MealStruct.swift */,
 			);
 			path = DbStrcuts;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				D431E57F2C209B41006AB28D /* FoodFormCameraView.swift in Sources */,
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
 				616878C12C1A431800A35247 /* LogInUI.swift in Sources */,
+				42F835662C24F39000D9E51E /* MealStruct.swift in Sources */,
 				6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */,
 				617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */,
 				6177EFCF2C22662600316DF6 /* UserProfileStruct.swift in Sources */,

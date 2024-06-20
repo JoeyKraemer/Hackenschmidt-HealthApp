@@ -10,6 +10,7 @@ import SwiftUI
 class SupabaseLogic: ObservableObject {
     @StateObject public var authViewModel = AuthViewModel.shared
     @Published var foods: [Food] = []
+    @Published var meals: [Meal] = []
     @Published var user_profiles: [UserProfile] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
@@ -19,6 +20,20 @@ class SupabaseLogic: ObservableObject {
         do {
             let response: [Food] = try await authViewModel.client.from("food").select().execute().value
             foods = response
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func fetchMeals() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [Meal] = try await authViewModel.client.from("meals").select().execute().value
+            meals = response
             authViewModel.isLoading = false
         } catch {
             DispatchQueue.main.async {
@@ -39,6 +54,29 @@ class SupabaseLogic: ObservableObject {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.user_loading = false
+            }
+        }
+    }
+    
+    func appendMeal(
+        meal_name: String,
+        collection_of_food: [Food],
+        cooking_steps: [String],
+        user_id: UUID
+    ) async {
+        let newMeal = Meal(
+            meal_name: meal_name,
+            collection_of_food: collection_of_food,
+            cooking_steps: cooking_steps,
+            user_id: user_id
+        )
+        
+        do {
+            let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
             }
         }
     }
