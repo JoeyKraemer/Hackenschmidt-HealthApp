@@ -77,22 +77,6 @@ struct AddMealUI: View {
                         }
                         .padding(.trailing, 20)
                     }
-
-//                    HStack {
-//                        Spacer()
-//
-//                        Button(action: {
-//                            withAnimation {
-//                                self.isAdding.toggle()
-//                            }
-//                        }) {
-//                            Image(systemName: "plus.circle.fill")
-//                                .font(.system(size: 60))
-//                                .foregroundColor(.purple)
-//                        }
-//                        .padding(.bottom, 30)
-//                    }
-//                    .padding(.trailing, 20)
                 }
             }
         }
