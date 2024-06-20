@@ -29,7 +29,7 @@ struct AddMealUI: View {
                                 List(supabasLogic.foods, id: \.self) { food in
                                     FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
                                 }
-                                .listStyle(PlainListStyle()) 
+                                .listStyle(PlainListStyle())
                                 .background(Color("NormalBackground"))
                             }
                         }
@@ -43,7 +43,7 @@ struct AddMealUI: View {
                     .animation(.default, value: isAdding)
 
                     Spacer()
-                    
+
                     HStack {
                         Spacer()
 
