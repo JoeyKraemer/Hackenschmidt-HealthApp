@@ -2,13 +2,13 @@ import SwiftUI
 
 struct Homepage: View {
     @State private var isAdding: Bool = false
-    
+
     var body: some View {
         NavigationView {
             TabView {
                 ZStack {
                     Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                    
+
                     VStack {
                         VStack {
                             HStack {
@@ -21,7 +21,7 @@ struct Homepage: View {
                             }
                             .padding(.horizontal)
                             CalorieSlider(goal: 3000, food: 1750, burned: 700)
-                            
+
                             Spacer()
                         }
                         .frame(height: 340)
@@ -31,7 +31,7 @@ struct Homepage: View {
                         .padding()
                         .blur(radius: isAdding ? 10 : 0)
                         .animation(.default, value: isAdding)
-                        
+
                         VStack {
                             HStack {
                                 Text("Workouts")
@@ -65,13 +65,13 @@ struct Homepage: View {
                         .padding()
                         .blur(radius: isAdding ? 10 : 0)
                         .animation(.default, value: isAdding)
-                        
+
                         Spacer()
                     }
-                    
+
                     VStack {
                         Spacer()
-                        
+
                         HStack {
                             Spacer()
                             VStack {
@@ -91,7 +91,7 @@ struct Homepage: View {
                                             .animation(.easeInOut)
                                     }
                                 }
-                                
+
                                 Button(action: {
                                     withAnimation {
                                         self.isAdding.toggle()
@@ -124,7 +124,7 @@ struct Homepage: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 5)
                 }
-                
+
                 AddMealUI()
                     .tabItem {
                         VStack {
@@ -143,7 +143,7 @@ struct Homepage: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 5)
                     }
-                
+
                 ProfileView()
                     .tabItem {
                         VStack {

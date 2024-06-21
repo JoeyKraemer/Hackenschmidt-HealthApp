@@ -12,7 +12,7 @@ struct LogInUI: View {
     @State private var password: String = ""
     @State private var shouldNavigate = false
     @State private var errorMessage: String?
-    
+
     @StateObject private var authViewModel = AuthViewModel.shared
     let logInChecker = LogInChecker()
 
@@ -76,13 +76,13 @@ struct LogInUI: View {
                         }
                     }) {
                         Text("Log In")
-                        .frame(width: 340, height: 40)
-                        .foregroundColor(Color.white)
-                        .background(logInChecker.checkAll(password: password, email: email) ? Color.gray : Color("ButtonColor"))
-                        .cornerRadius(5)
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(logInChecker.checkAll(password: password, email: email) ? Color.gray : Color("ButtonColor"))
+                            .cornerRadius(5)
                     }
                     .disabled(logInChecker.checkAll(password: password, email: email))
-                    
+
                     NavigationLink(
                         destination: Homepage(),
                         isActive: $shouldNavigate,
