@@ -28,9 +28,10 @@ struct AddMealUI: View {
                             } else {
                                 List(supabasLogic.foods, id: \.self) { food in
                                     FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
+                                        .listRowBackground(Color.clear)
+                                        .foregroundColor(.black)
                                 }
                                 .listStyle(PlainListStyle())
-                                .background(Color("NormalBackground"))
                             }
                         }
                         .onAppear {
