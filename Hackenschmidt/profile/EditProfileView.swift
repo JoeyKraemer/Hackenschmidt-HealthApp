@@ -44,6 +44,7 @@ struct EditProfileView: View {
     @StateObject private var authViewModel = AuthViewModel.shared
 
     let notificationHandler = NotificationHandler()
+    let calorieCalculator = CalorieCalculator.shared
 
     @Environment(\.presentationMode) var presentationMode
 
@@ -88,18 +89,6 @@ struct EditProfileView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
 
-                Section(header: Text("Calories intake goal")) {
-                    TextField("Calories", text: Binding(
-                        get: { "\(caloriesIntakeGoal)" },
-                        set: {
-                            if let value = Int($0) {
-                                caloriesIntakeGoal = value
-                            }
-                        }
-                    ))
-                    .keyboardType(.decimalPad)
-                }
-
                 Section(header: Text("Age")) {
                     TextField("Age", text: Binding(
                         get: { "\(age)" },
@@ -141,6 +130,15 @@ struct EditProfileView: View {
             .navigationBarItems(trailing: Button("Save") {
                 saveToHealthKit()
                 Task {
+                    calorieCalculator.setAge(age: age)
+                    calorieCalculator.setSex(sex: sex)
+                    calorieCalculator.setGoal(goal: body_goal)
+                    calorieCalculator.setHeight(height: height)
+                    calorieCalculator.setWeight(weight: weight)
+                    calorieCalculator.setActivityLevel(activityLevel: activityLevel)
+                    
+                    caloriesIntakeGoal = calorieCalculator.getTotalCalories()
+                    
                     await supabaseLogic.updateUserProfile(user_id: authViewModel.uid!, name: name, calorie_goal: caloriesIntakeGoal, weight: weight, height: height, sex: sex, activity: activityLevel, body_goal: body_goal, age: age)
                 }
                 presentationMode.wrappedValue.dismiss()

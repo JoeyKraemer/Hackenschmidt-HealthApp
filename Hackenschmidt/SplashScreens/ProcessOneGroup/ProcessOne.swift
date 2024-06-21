@@ -125,7 +125,7 @@ struct ProcessOne: View {
                     .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
 
                     NavigationLink(
-                        destination: Homepage(),
+                        destination: ProfileView(),
                         isActive: $shouldNavigate,
                         label: {
                             EmptyView()
