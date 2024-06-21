@@ -11,4 +11,5 @@ struct Workout: Codable {
     var workout_id: UUID?
     var workout_name: String
     var collection_of_exercise: [String]
+    var calories: Int
 }

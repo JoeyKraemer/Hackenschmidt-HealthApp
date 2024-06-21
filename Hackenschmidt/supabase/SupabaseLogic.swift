@@ -14,6 +14,7 @@ class SupabaseLogic: ObservableObject {
     @Published var exercises: [Exercise] = []
     @Published var meals: [Meal] = []
     @Published var user_profiles: [UserProfile] = []
+    @Published var logs: [Log] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
 
@@ -61,16 +62,15 @@ class SupabaseLogic: ObservableObject {
     }
     
     func fetchLog() async {
+        authViewModel.isLoading = true
         do {
-            let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
-            user_profiles = response
-            print(response)
-            print(user_profiles)
-            user_loading = false
+            let response: [Log] = try await authViewModel.client.from("logs").select().execute().value
+            logs = response
+            authViewModel.isLoading = false
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
-                self.user_loading = false
+                self.authViewModel.isLoading = false
             }
         }
     }
@@ -95,12 +95,21 @@ class SupabaseLogic: ObservableObject {
             let response: [Exercise] = try await authViewModel.client.from("exercise").select().execute().value
             exercises = response
             authViewModel.isLoading = false
-    func appendMeal(meal_name: String,collection_of_food: [Food],cooking_steps: [String],user_id: UUID) async {
+        }catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func appendMeal(meal_name: String,collection_of_food: [Food],cooking_steps: [String],user_id: UUID, calories: Int) async {
         let newMeal = Meal(
             meal_name: meal_name,
             collection_of_food: collection_of_food,
             cooking_steps: cooking_steps,
-            user_id: user_id
+            user_id: user_id,
+            calories: calories
         )
         do {
             let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
@@ -136,11 +145,11 @@ class SupabaseLogic: ObservableObject {
     }
 
     func appendWorkout(
-        workout_name: String, collection_of_exercises: [String]
-    ) async {
+        workout_name: String, collection_of_exercises: [String], calories: Int) async {
         let newWorkout = Workout(
             workout_name: workout_name,
-            collection_of_exercise: collection_of_exercises
+            collection_of_exercise: collection_of_exercises,
+            calories: calories
         )
         do {
             let _ = try await authViewModel.client.from("workout").insert(newWorkout).execute()
@@ -199,6 +208,24 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
+    
+    func appendLog(log_id: UUID, log_date: Date, user_id: UUID, meals: [Meal], workouts: [Workout]) async {
+        let newLog = Log(
+            log_id: log_id,
+            log_date: log_date,
+            meals: meals,
+            workouts: workouts
+        )
+        do {
+            let _ = try await
+                authViewModel.client.from("logs").insert(newLog).execute()
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
 
     func updateUserProfile(user_id: UUID, name: String, calorie_goal: Int, weight: Int, height: Int, sex: String, activity: String, body_goal: String, age: Int) async {
         let updatedUserProfile = UserProfile(
@@ -215,6 +242,26 @@ class SupabaseLogic: ObservableObject {
         do {
             let _ = try await authViewModel.client.from("user_profile").update(updatedUserProfile)
                 .eq("user_id", value: user_id).execute()
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription)
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func updateLog(log_id: UUID, log_date: Date, user_id: UUID, meals: [Meal], workouts: [Workout]) async {
+        let updateLog = Log(
+            log_id: log_id,
+            log_date: log_date,
+            user_id: user_id,
+            meals: meals,
+            workouts: workouts
+        )
+        do {
+            let _ = try await authViewModel.client.from("logs").update(updateLog)
+                .eq("log_id", value: log_id).execute()
         } catch {
             DispatchQueue.main.async {
                 print(error.localizedDescription)

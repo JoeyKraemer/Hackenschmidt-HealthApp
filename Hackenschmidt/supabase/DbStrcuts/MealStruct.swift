@@ -8,8 +8,9 @@
 import Foundation
 
 struct Meal: Codable, Hashable {
-    let meal_name: String
-    let collection_of_food: [Food]
-    let cooking_steps: [String]
-    let user_id: UUID
+    var meal_name: String
+    var collection_of_food: [Food]
+    var cooking_steps: [String]
+    var user_id: UUID
+    var calories: Int
 }
