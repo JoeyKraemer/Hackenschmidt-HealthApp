@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CalorieSlider: View {
-    let goal: Double
-    let food: Double
-    let burned: Double
+    @State var goal: Double = 0
+    var food: Double
+    var burned: Double
+    @StateObject private var supabasLogic = SupabaseLogic()
 
     var remaining: Double {
         goal - food + burned
@@ -28,56 +29,69 @@ struct CalorieSlider: View {
                     .foregroundColor(.gray)
                     .padding(.bottom)
             }
-            HStack {
-                ZStack {
-                    Circle()
-                        .stroke(lineWidth: 20)
-                        .opacity(0.3)
-                        .foregroundColor(Color.purple)
+            if supabasLogic.user_loading {
+                ProgressView("Loading...")
+            } else if let errorMessage = supabasLogic.errorMessage {
+                Text(errorMessage).foregroundColor(.red)
+            } else {
+                HStack {
+                    ZStack {
+                        Circle()
+                            .stroke(lineWidth: 20)
+                            .opacity(0.3)
+                            .foregroundColor(Color.purple)
 
-                    Circle()
-                        .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
-                        .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
-                        .foregroundColor(Color.purple)
-                        .rotationEffect(Angle(degrees: 270.0))
-                        .animation(.linear, value: progress)
+                        Circle()
+                            .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
+                            .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
+                            .foregroundColor(Color.purple)
+                            .rotationEffect(Angle(degrees: 270.0))
+                            .animation(.linear, value: progress)
 
-                    VStack {
-                        Text("\(Int(remaining))")
-                            .font(.system(size: 20, weight: .bold, design: .default))
-                        Text("Remaining")
-                            .font(.system(size: 14, weight: .thin, design: .default))
+                        VStack {
+                            Text("\(Int(remaining))")
+                                .font(.system(size: 20, weight: .bold, design: .default))
+                            Text("Remaining")
+                                .font(.system(size: 14, weight: .thin, design: .default))
+                        }
+                    }
+                    .frame(width: 125, height: 125)
+                    .padding()
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading) {
+                            Text("Goal")
+                                .font(.system(size: 18, weight: .regular, design: .default))
+                            Text("\(Int(supabasLogic.user_profiles[0].calorie_goal))")
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Food")
+                                .font(.system(size: 18, weight: .regular, design: .default))
+                            Text("\(Int(food))")
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Burned")
+                                .font(.system(size: 18, weight: .regular, design: .default))
+                            Text("\(Int(burned))")
+                        }
+                    }
+                    .padding()
+                    .font(.headline)
+                    .onAppear{
+                        goal = Double(supabasLogic.user_profiles[0].calorie_goal)
                     }
                 }
-                .frame(width: 125, height: 125)
-                .padding()
-
-                VStack(alignment: .leading, spacing: 10) {
-                    VStack(alignment: .leading) {
-                        Text("Goal")
-                            .font(.system(size: 18, weight: .regular, design: .default))
-                        Text("\(Int(goal))")
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Food")
-                            .font(.system(size: 18, weight: .regular, design: .default))
-                        Text("\(Int(food))")
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Burned")
-                            .font(.system(size: 18, weight: .regular, design: .default))
-                        Text("\(Int(burned))")
-                    }
-                }
-                .padding()
-                .font(.headline)
             }
         }
         .padding()
         .background(Color.white)
         .cornerRadius(14)
-//        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
         .padding()
+        .onAppear{
+            Task{
+                await supabasLogic.fetchUserProfile()
+            }
+        }
     }
 }
 
