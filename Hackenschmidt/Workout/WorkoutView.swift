@@ -10,7 +10,7 @@ import UIKit
 struct WorkoutView: View {
     @State private var isAdding: Bool = false
 
-    var workouts: [Workout] []
+    var workouts: [Workout][]
 
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),

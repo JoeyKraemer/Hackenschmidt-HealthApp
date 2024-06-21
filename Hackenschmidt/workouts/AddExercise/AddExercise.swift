@@ -28,9 +28,9 @@ struct AddExercise: View {
 
     var body: some View {
         NavigationView {
-             ZStack {
-                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                 ScrollView {
+            ZStack {
+                Color("NormalBackground").edgesIgnoringSafeArea(.all)
+                ScrollView {
                     VStack {
                         VStack {
                             Text("What is the exercise name?")
@@ -41,7 +41,7 @@ struct AddExercise: View {
                                 .background(addExerciseChecker.checkName(name: name) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                                 .cornerRadius(10)
                         }
-                        
+
                         VStack {
                             Text("How many sets did you do?")
                                 .foregroundStyle(Color("TextColor"))
@@ -66,7 +66,7 @@ struct AddExercise: View {
                                 }
                             )
                         }
-                        
+
                         VStack {
                             Text("How many reps did you do?")
                                 .foregroundStyle(Color("TextColor"))
@@ -91,7 +91,7 @@ struct AddExercise: View {
                                 }
                             )
                         }
-                        
+
                         VStack {
                             Button(action: {
                                 withAnimation {
@@ -111,7 +111,7 @@ struct AddExercise: View {
                                 .cornerRadius(10)
                             }
                             .frame(width: 340)
-                            
+
                             if isDropdownOpen {
                                 VStack(alignment: .leading, spacing: 0) {
                                     ForEach(equipmentOptions, id: \.self) { option in
@@ -139,7 +139,7 @@ struct AddExercise: View {
                             }
                         }
                         .padding()
-                        
+
                         VStack {
                             Text("How much weight did you use?")
                                 .foregroundStyle(Color("TextColor"))
@@ -165,11 +165,11 @@ struct AddExercise: View {
                             )
                         }
                         .padding(.bottom, 15)
-                        
+
                         VStack {
                             Text("What muscle group does it use?")
                                 .foregroundStyle(Color("TextColor"))
-                            
+
                             ForEach(0 ..< 4, id: \.self) { index in
                                 ExerciseButtonView(muscle: muscles[index], tag: index, showNextScreen: addExerciseChecker.checkMuscleGroup(group: muscleGroup), selectedButton: $selectedButton)
                             }
@@ -194,7 +194,7 @@ struct AddExercise: View {
                                 .cornerRadius(5)
                         }
                         .disabled(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment))
-                        
+
                         NavigationLink(
                             destination: AddWorkout(),
                             isActive: $shouldNavigate,
@@ -203,7 +203,6 @@ struct AddExercise: View {
                             }
                         )
                         .hidden()
-                       
                     }
                 }
             }

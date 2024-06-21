@@ -44,7 +44,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchLog() async {
         do {
             let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
@@ -59,7 +59,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchWorkout() async {
         authViewModel.isLoading = true
         do {
@@ -73,7 +73,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchExercise() async {
         authViewModel.isLoading = true
         do {
@@ -110,9 +110,10 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func appendWorkout(
-        workout_name: String, collection_of_exercises: [String]) async {
+        workout_name: String, collection_of_exercises: [String]
+    ) async {
         let newWorkout = Workout(
             workout_name: workout_name,
             collection_of_exercise: collection_of_exercises
