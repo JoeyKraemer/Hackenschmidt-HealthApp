@@ -77,7 +77,7 @@ struct CalorieSlider: View {
                     }
                     .padding()
                     .font(.headline)
-                    .onAppear{
+                    .onAppear {
                         goal = Double(supabasLogic.user_profiles[0].calorie_goal)
                     }
                 }
@@ -87,8 +87,8 @@ struct CalorieSlider: View {
         .background(Color.white)
         .cornerRadius(14)
         .padding()
-        .onAppear{
-            Task{
+        .onAppear {
+            Task {
                 await supabasLogic.fetchUserProfile()
             }
         }
