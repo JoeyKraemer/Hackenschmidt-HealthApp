@@ -193,8 +193,12 @@ struct ProcessTwo: View {
                         )
                         .hidden()
                     }
+                    .padding()
+                    .background(Color("NormalBackground"))
+                    .cornerRadius(10)
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
                 }
-                .padding(.horizontal, 20)
             }
         }
         .navigationBarBackButtonHidden(true)

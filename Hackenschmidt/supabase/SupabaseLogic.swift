@@ -8,9 +8,10 @@ import Foundation
 import SwiftUI
 
 class SupabaseLogic: ObservableObject {
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @StateObject public var authViewModel = AuthViewModel.shared
     @Published var foods: [Food] = []
-    @Published var isLoading = false
+    @Published var user_profiles: [UserProfile] = []
+    @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
 
     func fetchFoods() async {
@@ -23,6 +24,21 @@ class SupabaseLogic: ObservableObject {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
+            }
+        }
+    }
+
+    func fetchUserProfile() async {
+        do {
+            let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
+            user_profiles = response
+            print(response)
+            print(user_profiles)
+            user_loading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.user_loading = false
             }
         }
     }
@@ -91,6 +107,30 @@ class SupabaseLogic: ObservableObject {
                 authViewModel.client.from("user_profile").insert(newUserProfile).execute()
         } catch {
             DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+
+    func updateUserProfile(user_id: UUID, name: String, calorie_goal: Int, weight: Int, height: Int, sex: String, activity: String, body_goal: String, age: Int) async {
+        let updatedUserProfile = UserProfile(
+            name: name,
+            calorie_goal: calorie_goal,
+            weight: weight,
+            height: height,
+            sex: sex,
+            activity: activity,
+            body_goal: body_goal,
+            age: age
+        )
+
+        do {
+            let _ = try await authViewModel.client.from("user_profile").update(updatedUserProfile)
+                .eq("user_id", value: user_id).execute()
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription)
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }

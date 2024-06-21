@@ -8,92 +8,154 @@ import HealthKit
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var supabasLogic = SupabaseLogic()
     @State private var isEditViewPresented = false
-    @State private var name: String = "Jane"
-    @State private var weight: String = "60 kg"
-    @State private var height: String = "175 cm"
-    @State private var sex: String = "Female"
-    @State private var caloriesIntakeGoal: String = "2,000 cal"
-    @State private var activityLevel: String = "Active"
+    @State private var name: String = ""
+    @State private var weight: Int = 0
+    @State private var height: Int = 0
+    @State private var sex: String = ""
+    @State private var caloriesIntakeGoal: Int = 0
+    @State private var activityLevel: String = ""
+    @State private var age: Int = 0
+    @State private var body_goal: String = ""
     @State private var notificationsEnabled = UserDefaults.standard.bool(forKey: "notifications")
 
     private let healthStore = HKHealthStore()
 
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundColor(.purple)
-                Text(name)
-                    .font(.title)
-                    .bold()
+        ZStack {
+            Color("NormalBackground")
+                .edgesIgnoringSafeArea(.all) // Extend background color into the safe area
+
+            VStack(spacing: 20) {
+                HStack {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(.purple)
+                    if supabasLogic.user_loading {
+                        ProgressView("Loading...")
+                    } else if let errorMessage = supabasLogic.errorMessage {
+                        Text(errorMessage).foregroundColor(.red)
+                    } else {
+                        Text(supabasLogic.user_profiles[0].name)
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(Color("TextColor"))
+                            .onAppear {
+                                name = supabasLogic.user_profiles[0].name
+                                sex = supabasLogic.user_profiles[0].sex
+                                weight = supabasLogic.user_profiles[0].weight
+                                height = supabasLogic.user_profiles[0].height
+                                caloriesIntakeGoal = supabasLogic.user_profiles[0].calorie_goal
+                                activityLevel = supabasLogic.user_profiles[0].activity
+                                age = supabasLogic.user_profiles[0].age
+                                body_goal = supabasLogic.user_profiles[0].body_goal
+                            }
+                    }
+                }
+                .padding()
+                .background(Color("NormalBackground"))
+                .cornerRadius(10)
+
+                VStack(alignment: .leading, spacing: 15) {
+                    if supabasLogic.user_loading {
+                        ProgressView("Loading...")
+                    } else if let errorMessage = supabasLogic.errorMessage {
+                        Text(errorMessage).foregroundColor(.red)
+                    } else {
+                        HStack {
+                            Text("Weight")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text("\(weight)")
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Height")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(height.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Sex")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(sex.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Calories intake goal")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(caloriesIntakeGoal.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Activity level")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(activityLevel.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Body Goal")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(body_goal.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Age")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(age.description)
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        HStack {
+                            Text("Notifications")
+                                .bold()
+                                .foregroundStyle(Color("TextColor"))
+                            Spacer()
+                            Text(notificationsEnabled ? "Enabled" : "Disabled")
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                    }
+                }
+                .padding()
+                .background(Color("NormalBackground"))
+                .cornerRadius(10)
+
+                Button(action: {
+                    isEditViewPresented = true
+                }) {
+                    Text("CHANGE DATA")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.purple)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.top)
             }
             .padding()
-            .background(Color(UIColor.systemGray6))
-            .cornerRadius(10)
-
-            VStack(alignment: .leading, spacing: 15) {
-                HStack {
-                    Text("Weight")
-                        .bold()
-                    Spacer()
-                    Text(weight)
-                }
-                HStack {
-                    Text("Height")
-                        .bold()
-                    Spacer()
-                    Text(height)
-                }
-                HStack {
-                    Text("Sex")
-                        .bold()
-                    Spacer()
-                    Text(sex)
-                }
-                HStack {
-                    Text("Calories intake goal")
-                        .bold()
-                    Spacer()
-                    Text(caloriesIntakeGoal)
-                }
-                HStack {
-                    Text("Activity level")
-                        .bold()
-                    Spacer()
-                    Text(activityLevel)
-                }
-                HStack {
-                    Text("Notifications")
-                        .bold()
-                    Spacer()
-                    Text(notificationsEnabled ? "Enabled" : "Disabled")
+            .sheet(isPresented: $isEditViewPresented) {
+                EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, notificationsEnabled: $notificationsEnabled, age: $age, body_goal: $body_goal, healthStore: healthStore)
+            }
+            .onAppear {
+                requestHealthKitAuthorization()
+                Task {
+                    await supabasLogic.fetchUserProfile()
                 }
             }
-            .padding()
-            .background(Color(UIColor.systemGray6))
-            .cornerRadius(10)
-
-            Button(action: {
-                isEditViewPresented = true
-            }) {
-                Text("CHANGE DATA")
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.purple)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding(.top)
-        }
-        .padding()
-        .sheet(isPresented: $isEditViewPresented) {
-            EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, notificationsEnabled: $notificationsEnabled, healthStore: healthStore)
-        }
-        .onAppear {
-            requestHealthKitAuthorization()
         }
     }
 

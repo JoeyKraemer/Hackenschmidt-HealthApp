@@ -26,13 +26,13 @@ struct ProcessOne: View {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        RoundedRectangle(cornerRadius: 25.0)
                             .frame(width: 80, height: 8)
                             .foregroundStyle(Color("ProgressBarColor"))
                         RoundedRectangle(cornerRadius: 25.0)
                             .frame(width: 80, height: 8)
                             .foregroundStyle(Color.gray)
-                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        RoundedRectangle(cornerRadius: 25.0)
                             .frame(width: 80, height: 8)
                             .foregroundStyle(Color.gray)
                     }
@@ -133,6 +133,11 @@ struct ProcessOne: View {
                     )
                     .hidden()
                 }
+                .padding()
+                .background(Color("NormalBackground"))
+                .cornerRadius(10)
+                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
             }
         }
         .onAppear {}
