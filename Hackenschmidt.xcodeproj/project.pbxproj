@@ -613,6 +613,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your Camera to use this feature";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to access Health if you want us to sync its data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to access Health if you want us to sync its data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -658,6 +659,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your Camera to use this feature";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to access Health if you want us to sync its data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to access Health if you want us to sync its data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

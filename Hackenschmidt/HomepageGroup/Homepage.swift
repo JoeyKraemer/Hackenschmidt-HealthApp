@@ -75,23 +75,19 @@ struct Homepage: View {
                         Spacer()
                         VStack {
                             if isAdding {
-                                NavigationLink(destination: AddMealUI()) {
-                                    Button(action: {}) {
-                                        Image(systemName: "fork.knife.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                    }
-                                    .transition(.move(edge: .bottom))
-                                    .animation(.easeInOut)
+                                NavigationLink(destination: AddMealForm()) {
+                                    Image(systemName: "fork.knife.circle.fill")
+                                        .font(.system(size: 50))
+                                        .foregroundColor(.purple)
+                                        .transition(.move(edge: .bottom))
+                                        .animation(.easeInOut)
                                 }
                                 NavigationLink(destination: AddWorkout()) {
-                                    Button(action: {}) {
-                                        Image(systemName: "trophy.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                    }
-                                    .transition(.move(edge: .bottom))
-                                    .animation(.easeInOut)
+                                    Image(systemName: "trophy.circle.fill")
+                                        .font(.system(size: 50))
+                                        .foregroundColor(.purple)
+                                        .transition(.move(edge: .bottom))
+                                        .animation(.easeInOut)
                                 }
                             }
 
