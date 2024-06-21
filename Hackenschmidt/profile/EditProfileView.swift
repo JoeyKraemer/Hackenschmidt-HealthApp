@@ -7,6 +7,29 @@
 import HealthKit
 import SwiftUI
 
+enum Sex: String, CaseIterable, Identifiable {
+    case male = "Male"
+    case female = "Female"
+
+    var id: String { rawValue }
+}
+
+enum ActivityLevel: String, CaseIterable, Identifiable {
+    case veryActive = "Very Active"
+    case active = "Active"
+    case notVeryActive = "Not Very Active"
+
+    var id: String { rawValue }
+}
+
+enum BodyGoal: String, CaseIterable, Identifiable {
+    case loseWeight = "Lose Weight"
+    case maintainWeight = "Maintain Weight"
+    case growMuscles = "Grow Muscles"
+
+    var id: String { rawValue }
+}
+
 struct EditProfileView: View {
     @Binding var name: String
     @Binding var weight: Int
@@ -57,7 +80,12 @@ struct EditProfileView: View {
                 }
 
                 Section(header: Text("Sex")) {
-                    TextField("Sex", text: $sex)
+                    Picker("Sex", selection: $sex) {
+                        ForEach(Sex.allCases) { sex in
+                            Text(sex.rawValue).tag(sex)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Calories intake goal")) {
@@ -85,11 +113,21 @@ struct EditProfileView: View {
                 }
 
                 Section(header: Text("Body Goal")) {
-                    TextField("Body Goal", text: $body_goal)
+                    Picker("Activity level", selection: $body_goal) {
+                        ForEach(BodyGoal.allCases) { level in
+                            Text(level.rawValue).tag(level)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Activity level")) {
-                    TextField("Activity level", text: $activityLevel)
+                    Picker("Activity level", selection: $activityLevel) {
+                        ForEach(ActivityLevel.allCases) { level in
+                            Text(level.rawValue).tag(level)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Notifications")) {

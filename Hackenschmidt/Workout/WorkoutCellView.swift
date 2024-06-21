@@ -21,6 +21,7 @@ struct WorkoutCellView: View {
                         Spacer()
                         Text("\(workout.sets[index].weight) kg x \(workout.sets[index].reps) reps")
                     }
+                    .foregroundStyle(Color("TextColor"))
                 }
             }
             .padding()

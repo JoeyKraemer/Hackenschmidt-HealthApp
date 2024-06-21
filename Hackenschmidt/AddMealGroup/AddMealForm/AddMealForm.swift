@@ -32,7 +32,7 @@ struct AddMealForm: View {
                             .foregroundStyle(Color("TextColor"))
                             .padding(.bottom, 20)
 
-                        NavigationLink(destination: AddExercise()) {
+                        NavigationLink(destination: ProductFormView()) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
@@ -43,6 +43,25 @@ struct AddMealForm: View {
                                     .frame(width: 340, height: 70)
 
                                 Text("Add a product")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(Color("TextColor"))
+                                    .frame(width: 340, height: 70, alignment: .center)
+                            }
+                        }
+                        .frame(width: 340, height: 70)
+                        .buttonStyle(PlainButtonStyle())
+
+                        NavigationLink(destination: FoodFormCameraView()) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.gray.opacity(0.0))
+                                    .frame(width: 340, height: 70)
+
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.black)
+                                    .frame(width: 340, height: 70)
+
+                                Text("Add a product with Camera")
                                     .font(.system(size: 20))
                                     .foregroundColor(Color("TextColor"))
                                     .frame(width: 340, height: 70, alignment: .center)

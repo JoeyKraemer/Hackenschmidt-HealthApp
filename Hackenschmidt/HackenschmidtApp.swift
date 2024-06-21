@@ -28,7 +28,7 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    ProcessOne()
+                    Homepage()
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

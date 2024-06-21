@@ -23,7 +23,7 @@ struct Homepage: View {
 
                         Spacer()
                     }
-                    .frame(height: 350)
+                    .frame(height: 340)
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)
@@ -41,10 +41,23 @@ struct Homepage: View {
                             Spacer()
                         }
                         .padding(.horizontal)
-
+                        WorkoutChartView(workoutData: [
+                            WorkoutData(day: "Day 9", count: 1),
+                            WorkoutData(day: "Day 10", count: 2),
+                            WorkoutData(day: "Day 11", count: 3),
+                            WorkoutData(day: "Day 12", count: 4),
+                            WorkoutData(day: "Day 13", count: 2),
+                            WorkoutData(day: "Day 14", count: 1),
+                            WorkoutData(day: "Day 15", count: 3),
+                            WorkoutData(day: "Day 16", count: 0),
+                            WorkoutData(day: "Day 17", count: 0),
+                            WorkoutData(day: "Day 18", count: 3),
+                            WorkoutData(day: "Day 19", count: 3),
+                            WorkoutData(day: "Day 20", count: 4),
+                        ])
                         Spacer()
                     }
-                    .frame(height: 200)
+                    .frame(height: 280)
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)
@@ -62,21 +75,20 @@ struct Homepage: View {
                         Spacer()
                         VStack {
                             if isAdding {
-                                Button(action: {}) {
+                                NavigationLink(destination: AddMealForm()) {
                                     Image(systemName: "fork.knife.circle.fill")
                                         .font(.system(size: 50))
                                         .foregroundColor(.purple)
+                                        .transition(.move(edge: .bottom))
+                                        .animation(.easeInOut)
                                 }
-                                .transition(.move(edge: .bottom))
-                                .animation(.easeInOut)
-
-                                Button(action: {}) {
+                                NavigationLink(destination: AddWorkout()) {
                                     Image(systemName: "trophy.circle.fill")
                                         .font(.system(size: 50))
                                         .foregroundColor(.purple)
+                                        .transition(.move(edge: .bottom))
+                                        .animation(.easeInOut)
                                 }
-                                .transition(.move(edge: .bottom))
-                                .animation(.easeInOut)
                             }
 
                             Button(action: {

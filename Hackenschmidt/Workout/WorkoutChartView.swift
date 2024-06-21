@@ -27,6 +27,7 @@ struct WorkoutChartView: View {
         }
         .frame(height: 200)
         .padding()
+        .foregroundStyle(Color("TextColor"))
     }
 }
 

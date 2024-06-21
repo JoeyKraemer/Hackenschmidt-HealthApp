@@ -50,16 +50,24 @@ struct AddMealUI: View {
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
-                                    Image(systemName: "fork.knife.circle.fill")
-                                        .font(.system(size: 50))
-                                        .foregroundColor(.purple)
+                                    VStack {
+                                        Image(systemName: "pencil.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                        Text("Manual")
+                                            .foregroundColor(.black)
+                                    }
                                 }
                                 .padding(.bottom, 10)
 
                                 Button(action: {}) {
-                                    Image(systemName: "trophy.circle.fill")
-                                        .font(.system(size: 50))
-                                        .foregroundColor(.purple)
+                                    VStack {
+                                        Image(systemName: "camera.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                        Text("Camera")
+                                            .foregroundColor(.black)
+                                    }
                                 }
                                 .padding(.bottom, 10)
                             }

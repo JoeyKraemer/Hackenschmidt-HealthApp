@@ -74,6 +74,7 @@ struct LogInUI: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
