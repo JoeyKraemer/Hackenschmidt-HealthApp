@@ -5,15 +5,13 @@
 //  Created by paul on 29/04/2024.
 //
 
-// import Supabase
 import SwiftUI
 
 @main
 struct HackenschmidtApp: App {
     let persistenceController = PersistenceController.shared
-
-//     supabase connection test
-//    let client = SupabaseClient(supabaseURL: URL(string: "https://ggelsjpzpdreuoxgaxid.supabase.co")!, supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdnZWxzanB6cGRyZXVveGdheGlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ3MjgxMzcsImV4cCI6MjAzMDMwNDEzN30.X4BYTMMVwqSCExMOb-7UeqDciaQBmZxNfhiInR-S178")
+    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var isLoginCheckFinished = false
 
     @State private var showSecondSplash = false
 
@@ -24,14 +22,34 @@ struct HackenschmidtApp: App {
                     ContentView()
                         .onAppear {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                self.authViewModel.checkLoginStatus {
+                                    self.isLoginCheckFinished = true
+                                    print("done")
+                                }
                                 self.showSecondSplash = true
                             }
                         }
+                } else if !self.isLoginCheckFinished {
+                    ZStack {
+                        Color("BackgroundSplashSCreenColor").edgesIgnoringSafeArea(.all)
+                        VStack {
+                            ProgressView("Logging in...")
+                                .tint(.black)
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .scaleEffect(1.5)
+                                .padding()
+                        }
+                    }
                 } else {
-                    Homepage()
+                    if authViewModel.isLoggedIn {
+                        Homepage()
+                    } else {
+                        ProcessOne()
+                    }
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environmentObject(authViewModel)
         }
     }
 }

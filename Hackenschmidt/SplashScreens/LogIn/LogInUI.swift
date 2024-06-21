@@ -10,8 +10,12 @@ import SwiftUI
 struct LogInUI: View {
     @State private var email: String = ""
     @State private var password: String = ""
-
+    @State private var shouldNavigate = false
+    @State private var errorMessage: String?
+    
+    @StateObject private var authViewModel = AuthViewModel.shared
     let logInChecker = LogInChecker()
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -54,23 +58,37 @@ struct LogInUI: View {
                             .background(logInChecker.checkPassword(password: password) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                             .cornerRadius(10)
                     }
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    Button(action: {}) {
-                        NavigationLink(
-                            destination: LogInUI(),
-                            label: {
-                                Text("Log In")
-                                    .frame(width: 340, height: 40)
-                                    .foregroundColor(Color.white)
-                                    .background(logInChecker.checkAll(password: password, email: email) ? Color.gray : Color("ButtonColor"))
-                                    .cornerRadius(5)
-                            }
-                        )
-                        .disabled(logInChecker.checkAll(password: password, email: email))
+                    if errorMessage != nil {
+                        Text("There was an error logging you in.")
                     }
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            await authViewModel.signIn(email: email, password: password)
+                            if let error = authViewModel.errorMessage {
+                                errorMessage = error
+                            } else {
+                                shouldNavigate = true
+                            }
+                        }
+                    }) {
+                        Text("Log In")
+                        .frame(width: 340, height: 40)
+                        .foregroundColor(Color.white)
+                        .background(logInChecker.checkAll(password: password, email: email) ? Color.gray : Color("ButtonColor"))
+                        .cornerRadius(5)
+                    }
+                    .disabled(logInChecker.checkAll(password: password, email: email))
+                    
+                    NavigationLink(
+                        destination: Homepage(),
+                        isActive: $shouldNavigate,
+                        label: { EmptyView() }
+                    )
+                    .hidden()
                 }
             }
         }
