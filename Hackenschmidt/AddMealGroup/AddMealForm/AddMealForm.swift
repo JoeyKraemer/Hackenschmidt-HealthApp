@@ -50,7 +50,7 @@ struct AddMealForm: View {
                         }
                         .frame(width: 340, height: 70)
                         .buttonStyle(PlainButtonStyle())
-                        
+
                         NavigationLink(destination: FoodFormCameraView()) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
