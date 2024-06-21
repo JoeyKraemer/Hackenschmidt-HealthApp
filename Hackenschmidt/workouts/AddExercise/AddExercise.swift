@@ -25,7 +25,7 @@ struct AddExercise: View {
 
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
-    
+
     var body: some View {
         NavigationView {
             ZStack {

@@ -52,7 +52,7 @@ struct AddWorkoutForm: View {
                         .frame(width: 340, height: 70)
                         .buttonStyle(PlainButtonStyle())
                     }
-                    
+
                     VStack(alignment: .leading) {
                         Text("Exercise list")
                             .foregroundStyle(Color("TextColor"))
@@ -101,7 +101,6 @@ struct AddWorkoutForm: View {
                     }
                     .disabled(workoutName.isEmpty || isSaving) // Disable the button if workoutName is empty or saving
                     .opacity(workoutName.isEmpty || isSaving ? 0.5 : 1.0) // Change the opacity based on the button state
-
                 }
                 .padding()
                 .alert(isPresented: $showAlert) {

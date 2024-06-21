@@ -60,7 +60,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchLog() async {
         authViewModel.isLoading = true
         do {
@@ -95,15 +95,15 @@ class SupabaseLogic: ObservableObject {
             let response: [Exercise] = try await authViewModel.client.from("exercise").select().execute().value
             exercises = response
             authViewModel.isLoading = false
-        }catch {
+        } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
         }
     }
-    
-    func appendMeal(meal_name: String,collection_of_food: [Food],cooking_steps: [String],user_id: UUID, calories: Int) async {
+
+    func appendMeal(meal_name: String, collection_of_food: [Food], cooking_steps: [String], user_id: UUID, calories: Int) async {
         let newMeal = Meal(
             meal_name: meal_name,
             collection_of_food: collection_of_food,
@@ -164,7 +164,8 @@ class SupabaseLogic: ObservableObject {
     }
 
     func appendExercise(
-        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String) async {
+        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String
+    ) async {
         let newExercise = Exercise(
             exercise_name: exercise_name,
             user_id: user_id,
@@ -209,8 +210,8 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
-    func appendLog(log_id: UUID, log_date: Date, user_id: UUID, meals: [Meal], workouts: [Workout]) async {
+
+    func appendLog(log_id: UUID, log_date: Date, user_id _: UUID, meals: [Meal], workouts: [Workout]) async {
         let newLog = Log(
             log_id: log_id,
             log_date: log_date,
@@ -251,7 +252,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func updateLog(log_id: UUID, log_date: Date, user_id: UUID, meals: [Meal], workouts: [Workout]) async {
         let updateLog = Log(
             log_id: log_id,

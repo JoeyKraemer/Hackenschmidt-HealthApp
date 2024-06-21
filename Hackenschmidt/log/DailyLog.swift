@@ -6,8 +6,6 @@
 //
 import SwiftUI
 
-
-
 struct DailyLog: View {
     var body: some View {
         VStack {
@@ -33,7 +31,7 @@ struct DailyLog: View {
                 }
             }
             .padding()
-            
+
             // Calories Circular Progress
             VStack {
                 Text("Calories")
@@ -42,7 +40,7 @@ struct DailyLog: View {
                     .frame(width: 150, height: 150)
             }
             .padding()
-            
+
             // Meal List
             VStack(alignment: .leading) {
                 Text("Meal list")
@@ -52,7 +50,7 @@ struct DailyLog: View {
                 MealItemView(name: "Pasta", details: "80g pasta, 10 cherry to...", calories: 450)
             }
             .padding()
-            
+
             // Workout List
             VStack(alignment: .leading) {
                 Text("Workout list")
@@ -62,9 +60,9 @@ struct DailyLog: View {
                 WorkoutItemView(name: "Push", details: "3x 20 push-ups, 3x 20 fl...", calories: 250)
             }
             .padding()
-            
+
             Spacer()
-            
+
             // Add button
             Button(action: {
                 // Add action
@@ -87,21 +85,21 @@ struct CircularProgressView: View {
     var goal: Int
     var food: Int
     var burned: Int
-    
+
     var body: some View {
         ZStack {
             Circle()
                 .stroke(lineWidth: 20.0)
                 .opacity(0.3)
                 .foregroundColor(.gray)
-            
+
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(Double(remaining) / Double(goal), 1.0)))
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.purple)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.linear)
-            
+
             VStack {
                 Text("\(remaining)")
                     .font(.largeTitle)
@@ -116,7 +114,7 @@ struct MealItemView: View {
     var name: String
     var details: String
     var calories: Int
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -140,7 +138,7 @@ struct WorkoutItemView: View {
     var name: String
     var details: String
     var calories: Int
-    
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
