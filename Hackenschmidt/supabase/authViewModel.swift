@@ -107,7 +107,7 @@ class AuthViewModel: ObservableObject {
     }
 
     func setLoggedIn() {
-        if !containsCredentials() {
+        if containsCredentials() {
             Task {
                 await self.restoreSession()
                 if let _ = self.uid {
@@ -115,12 +115,12 @@ class AuthViewModel: ObservableObject {
                 }
             }
         }
+    }
 
-        func checkLoginStatus(completion: @escaping () -> Void) {
-            setLoggedIn()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                completion()
-            }
+    func checkLoginStatus(completion: @escaping () -> Void) {
+        setLoggedIn()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            completion()
         }
     }
 }
