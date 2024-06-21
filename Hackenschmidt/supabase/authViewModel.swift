@@ -118,10 +118,9 @@ class AuthViewModel: ObservableObject {
     }
 
     func checkLoginStatus(completion: @escaping () -> Void) {
-        self.setLoggedIn()
+        setLoggedIn()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             completion()
         }
     }
-    
 }
