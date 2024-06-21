@@ -8,13 +8,16 @@ import HealthKit
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject private var supabasLogic = SupabaseLogic()
     @State private var isEditViewPresented = false
-    @State private var name: String = "Jane"
-    @State private var weight: String = "60 kg"
-    @State private var height: String = "175 cm"
+    @State private var name: String = ""
+    @State private var weight: Int = 0
+    @State private var height: Int = 0
     @State private var sex: String = "Female"
-    @State private var caloriesIntakeGoal: String = "2,000 cal"
+    @State private var caloriesIntakeGoal: Int = 0
     @State private var activityLevel: String = "Active"
+    @State private var age: Int = 0
+    @State private var body_goal: String = ""
     @State private var notificationsEnabled = UserDefaults.standard.bool(forKey: "notifications")
 
     private let healthStore = HKHealthStore()
@@ -26,50 +29,84 @@ struct ProfileView: View {
                     .resizable()
                     .frame(width: 50, height: 50)
                     .foregroundColor(.purple)
-                Text(name)
-                    .font(.title)
-                    .bold()
+                if supabasLogic.user_loading {
+                    ProgressView("Loading...")
+                } else if let errorMessage = supabasLogic.errorMessage {
+                    Text(errorMessage).foregroundColor(.red)
+                } else {
+                    Text(supabasLogic.user_profiles[0].name)
+                        .font(.title)
+                        .bold()
+                        .onAppear {
+                            name = supabasLogic.user_profiles[0].name
+                            sex = supabasLogic.user_profiles[0].sex
+                            weight = supabasLogic.user_profiles[0].weight
+                            height = supabasLogic.user_profiles[0].height
+                            caloriesIntakeGoal = supabasLogic.user_profiles[0].calorie_goal
+                            activityLevel = supabasLogic.user_profiles[0].activity
+                            age = supabasLogic.user_profiles[0].age
+                            body_goal = supabasLogic.user_profiles[0].body_goal
+                        }
+                }
             }
             .padding()
             .background(Color(UIColor.systemGray6))
             .cornerRadius(10)
 
             VStack(alignment: .leading, spacing: 15) {
-                HStack {
-                    Text("Weight")
-                        .bold()
-                    Spacer()
-                    Text(weight)
-                }
-                HStack {
-                    Text("Height")
-                        .bold()
-                    Spacer()
-                    Text(height)
-                }
-                HStack {
-                    Text("Sex")
-                        .bold()
-                    Spacer()
-                    Text(sex)
-                }
-                HStack {
-                    Text("Calories intake goal")
-                        .bold()
-                    Spacer()
-                    Text(caloriesIntakeGoal)
-                }
-                HStack {
-                    Text("Activity level")
-                        .bold()
-                    Spacer()
-                    Text(activityLevel)
-                }
-                HStack {
-                    Text("Notifications")
-                        .bold()
-                    Spacer()
-                    Text(notificationsEnabled ? "Enabled" : "Disabled")
+                if supabasLogic.user_loading {
+                    ProgressView("Loading...")
+                } else if let errorMessage = supabasLogic.errorMessage {
+                    Text(errorMessage).foregroundColor(.red)
+                } else {
+                    HStack {
+                        Text("Weight")
+                            .bold()
+                        Spacer()
+                        Text("\(weight)")
+                    }
+                    HStack {
+                        Text("Height")
+                            .bold()
+                        Spacer()
+                        Text(height.description)
+                    }
+                    HStack {
+                        Text("Sex")
+                            .bold()
+                        Spacer()
+                        Text(sex.description)
+                    }
+                    HStack {
+                        Text("Calories intake goal")
+                            .bold()
+                        Spacer()
+                        Text(caloriesIntakeGoal.description)
+                    }
+                    HStack {
+                        Text("Activity level")
+                            .bold()
+                        Spacer()
+                        Text(activityLevel.description)
+                    }
+                    HStack {
+                        Text("Body Goal")
+                            .bold()
+                        Spacer()
+                        Text(body_goal.description)
+                    }
+                    HStack {
+                        Text("Age")
+                            .bold()
+                        Spacer()
+                        Text(age.description)
+                    }
+                    HStack {
+                        Text("Notifications")
+                            .bold()
+                        Spacer()
+                        Text(notificationsEnabled ? "Enabled" : "Disabled")
+                    }
                 }
             }
             .padding()
@@ -90,10 +127,13 @@ struct ProfileView: View {
         }
         .padding()
         .sheet(isPresented: $isEditViewPresented) {
-            EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, notificationsEnabled: $notificationsEnabled, healthStore: healthStore)
+            EditProfileView(name: $name, weight: $weight, height: $height, sex: $sex, caloriesIntakeGoal: $caloriesIntakeGoal, activityLevel: $activityLevel, notificationsEnabled: $notificationsEnabled, age: $age, body_goal: $body_goal, healthStore: healthStore)
         }
         .onAppear {
             requestHealthKitAuthorization()
+            Task {
+                await supabasLogic.fetchUserProfile()
+            }
         }
     }
 

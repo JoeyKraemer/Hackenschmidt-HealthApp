@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 
 struct Homepage: View {
     @State private var isAdding: Bool = false
@@ -7,7 +6,7 @@ struct Homepage: View {
     var body: some View {
         TabView {
             ZStack {
-                Color(UIColor.systemPurple).opacity(0.1).edgesIgnoringSafeArea(.all)
+                Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
                 VStack {
                     VStack {
@@ -20,10 +19,11 @@ struct Homepage: View {
                             Spacer()
                         }
                         .padding(.horizontal)
+                        CalorieSlider(goal: 3000, food: 1750, burned: 700)
 
                         Spacer()
                     }
-                    .frame(height: 200)
+                    .frame(height: 350)
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)
@@ -53,10 +53,13 @@ struct Homepage: View {
                     .animation(.default, value: isAdding)
 
                     Spacer()
+                }
+
+                VStack {
+                    Spacer()
 
                     HStack {
                         Spacer()
-
                         VStack {
                             if isAdding {
                                 Button(action: {}) {
@@ -64,14 +67,16 @@ struct Homepage: View {
                                         .font(.system(size: 50))
                                         .foregroundColor(.purple)
                                 }
-                                .padding(.bottom, 10)
+                                .transition(.move(edge: .bottom))
+                                .animation(.easeInOut)
 
                                 Button(action: {}) {
                                     Image(systemName: "trophy.circle.fill")
                                         .font(.system(size: 50))
                                         .foregroundColor(.purple)
                                 }
-                                .padding(.bottom, 10)
+                                .transition(.move(edge: .bottom))
+                                .animation(.easeInOut)
                             }
 
                             Button(action: {
@@ -85,8 +90,8 @@ struct Homepage: View {
                             }
                             .padding(.bottom, 30)
                         }
-                        .padding(.trailing, 20)
                     }
+                    .padding(.trailing, 20) // Adjust padding here as needed
                 }
             }
             .tabItem {

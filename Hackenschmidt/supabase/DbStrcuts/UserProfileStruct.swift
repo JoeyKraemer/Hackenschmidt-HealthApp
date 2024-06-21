@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct UserProfile: Codable {
-    var user_id: UUID
+struct UserProfile: Codable, Hashable {
+    var user_id: UUID?
     var name: String
     var calorie_goal: Int
     var weight: Int
