@@ -14,9 +14,9 @@ struct ProductFormView: View {
     @State private var fat: String = ""
     @State private var protein: String = ""
     @State private var calories: String = ""
-    
+
     var body: some View {
-        ZStack{
+        ZStack {
             Color("NormalBackground").edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack {
@@ -30,7 +30,7 @@ struct ProductFormView: View {
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(10)
                         }
-                        
+
                         VStack {
                             Text("What is the product weight?")
                                 .foregroundStyle(Color("TextColor"))
@@ -48,7 +48,7 @@ struct ProductFormView: View {
                                     }
                                 )
                         }
-                        
+
                         VStack {
                             Text("Nutrition per 100g")
                                 .foregroundStyle(Color("TextColor"))
@@ -66,7 +66,7 @@ struct ProductFormView: View {
                                         }
                                     )
                             }
-                            
+
                             HStack {
                                 TextField("Fat", text: $fat)
                                     .padding()
@@ -81,7 +81,7 @@ struct ProductFormView: View {
                                         }
                                     )
                             }
-                            
+
                             HStack {
                                 TextField("Protein", text: $protein)
                                     .padding()
@@ -98,7 +98,7 @@ struct ProductFormView: View {
                             }
                         }
                         .padding()
-                        
+
                         VStack {
                             Text("Calorie on 100g")
                                 .foregroundStyle(Color("TextColor"))
@@ -119,7 +119,7 @@ struct ProductFormView: View {
                     }
                     Spacer()
                     Spacer()
-                    
+
                     Button(action: {
                         // Add action here
                     }) {

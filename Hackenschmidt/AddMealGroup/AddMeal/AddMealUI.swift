@@ -30,7 +30,6 @@ struct AddMealUI: View {
                                     FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
                                         .listRowBackground(Color.clear)
                                         .foregroundColor(.black)
-                                        
                                 }
                                 .listStyle(PlainListStyle())
                             }
