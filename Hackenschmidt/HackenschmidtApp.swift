@@ -24,7 +24,6 @@ struct HackenschmidtApp: App {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                 self.authViewModel.checkLoginStatus {
                                     self.isLoginCheckFinished = true
-                                    print("done")
                                 }
                                 self.showSecondSplash = true
                             }
