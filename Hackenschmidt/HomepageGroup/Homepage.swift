@@ -75,21 +75,24 @@ struct Homepage: View {
                         Spacer()
                         VStack {
                             if isAdding {
-                                Button(action: {}) {
-                                    Image(systemName: "fork.knife.circle.fill")
-                                        .font(.system(size: 50))
-                                        .foregroundColor(.purple)
+                                NavigationLink(destination: AddMealUI()) {
+                                    Button(action: {}) {
+                                        Image(systemName: "fork.knife.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                    }
+                                    .transition(.move(edge: .bottom))
+                                    .animation(.easeInOut)
                                 }
-                                .transition(.move(edge: .bottom))
-                                .animation(.easeInOut)
-
-                                Button(action: {}) {
-                                    Image(systemName: "trophy.circle.fill")
-                                        .font(.system(size: 50))
-                                        .foregroundColor(.purple)
+                                NavigationLink(destination: AddWorkout()) {
+                                    Button(action: {}) {
+                                        Image(systemName: "trophy.circle.fill")
+                                            .font(.system(size: 50))
+                                            .foregroundColor(.purple)
+                                    }
+                                    .transition(.move(edge: .bottom))
+                                    .animation(.easeInOut)
                                 }
-                                .transition(.move(edge: .bottom))
-                                .animation(.easeInOut)
                             }
 
                             Button(action: {

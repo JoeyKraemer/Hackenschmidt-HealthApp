@@ -28,7 +28,7 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    ProfileView()
+                    Homepage()
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

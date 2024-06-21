@@ -157,6 +157,7 @@
 		6111BE352C15041200B17BB8 /* AddMealGroup */ = {
 			isa = PBXGroup;
 			children = (
+				D48973482C0C9330006C39B4 /* FoodFormView.swift */,
 				D431E57D2C209B2C006AB28D /* textRecognition */,
 				6111BE372C15043C00B17BB8 /* AddMealForm */,
 				6111BE362C15042100B17BB8 /* AddMeal */,
@@ -318,7 +319,6 @@
 				DA80AFFC2BDFEE6400980333 /* Hackenschmidt.entitlements */,
 				DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */,
 				DA80AFFD2BDFEE6400980333 /* Preview Content */,
-				D48973482C0C9330006C39B4 /* FoodFormView.swift */,
 			);
 			path = Hackenschmidt;
 			sourceTree = "<group>";
