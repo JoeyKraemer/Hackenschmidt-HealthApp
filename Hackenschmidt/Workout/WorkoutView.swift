@@ -10,12 +10,7 @@ import UIKit
 struct WorkoutView: View {
     @State private var isAdding: Bool = false
 
-    var workouts: [Workout] = [
-        Workout(exercise: "Bench Press", sets: [(0, 20), (20, 8), (20, 8), (20, 8)]),
-        Workout(exercise: "Barbell row", sets: [(20, 8), (20, 8), (20, 8), (20, 8)]),
-        Workout(exercise: "Dumbbell Shoulder Press", sets: [(10, 8), (10, 8), (10, 8), (10, 8)]),
-        Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)]),
-    ]
+    var workouts: [Workout] []
 
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),

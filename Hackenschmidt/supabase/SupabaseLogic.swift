@@ -10,6 +10,8 @@ import SwiftUI
 class SupabaseLogic: ObservableObject {
     @StateObject public var authViewModel = AuthViewModel.shared
     @Published var foods: [Food] = []
+    @Published var workouts: [Workout] = []
+    @Published var exercises: [Exercise] = []
     @Published var user_profiles: [UserProfile] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
@@ -42,6 +44,49 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
+    
+    func fetchLog() async {
+        do {
+            let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
+            user_profiles = response
+            print(response)
+            print(user_profiles)
+            user_loading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.user_loading = false
+            }
+        }
+    }
+    
+    func fetchWorkout() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [Workout] = try await authViewModel.client.from("workouts").select().execute().value
+            workouts = response
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func fetchExercise() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [Exercise] = try await authViewModel.client.from("exercise").select().execute().value
+            exercises = response
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
 
     func appendFood(
         food_name: String, calories: Int8, weight: Float16, protein: Float16, carbohydrates: Float16,
@@ -65,13 +110,30 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
+    
+    func appendWorkout(
+        workout_name: String, collection_of_exercises: [String]) async {
+        let newWorkout = Workout(
+            workout_name: workout_name,
+            collection_of_exercise: collection_of_exercises
+        )
+        do {
+            let _ = try await authViewModel.client.from("workout").insert(newWorkout).execute()
+        } catch {
+            DispatchQueue.main.async {
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
 
     func appendExercise(
-        exercise_name: String, sets: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String
+        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String
     ) async {
         let newExercise = Exercise(
             exercise_name: exercise_name,
             sets: sets,
+            reps: reps,
             user_id: user_id,
             weight: weight,
             muscle_group: muscle_group,

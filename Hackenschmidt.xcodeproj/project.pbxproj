@@ -34,6 +34,8 @@
 		61ADFBDD2C21E269005B4A74 /* ExerciseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */; };
+		D41A8F522C2574DC00E06190 /* WorkoutStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A8F512C2574DC00E06190 /* WorkoutStruct.swift */; };
+		D41A8F542C257B9E00E06190 /* LogStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41A8F532C257B9E00E06190 /* LogStruct.swift */; };
 		D42D889E2C206ADC00B179EA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889D2C206ADC00B179EA /* EditProfileView.swift */; };
 		D42D88A02C206DAD00B179EA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889F2C206DAD00B179EA /* ProfileView.swift */; };
 		D431E57F2C209B41006AB28D /* FoodFormCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E57E2C209B41006AB28D /* FoodFormCameraView.swift */; };
@@ -42,9 +44,10 @@
 		D431E5852C209BBF006AB28D /* TextRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431E5842C209BBF006AB28D /* TextRecognition.swift */; };
 		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
-		D4AC459F2C05E38100038144 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459E2C05E38100038144 /* Workout.swift */; };
 		D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */; };
 		D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */; };
+		D4C9BD492C25693E00FB0D1C /* AddWorkoutUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9BD482C25693E00FB0D1C /* AddWorkoutUI.swift */; };
+		D4C9BD4B2C256C7100FB0D1C /* WorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9BD4A2C256C7100FB0D1C /* WorkoutCard.swift */; };
 		DA80AFF22BDFEE6200980333 /* HackenschmidtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */; };
 		DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF32BDFEE6200980333 /* Persistence.swift */; };
 		DA80AFF72BDFEE6200980333 /* Hackenschmidt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA80AFF52BDFEE6200980333 /* Hackenschmidt.xcdatamodeld */; };
@@ -83,6 +86,8 @@
 		61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStruct.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOne.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwo.swift; sourceTree = "<group>"; };
+		D41A8F512C2574DC00E06190 /* WorkoutStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutStruct.swift; sourceTree = "<group>"; };
+		D41A8F532C257B9E00E06190 /* LogStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogStruct.swift; sourceTree = "<group>"; };
 		D42D889D2C206ADC00B179EA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D42D889F2C206DAD00B179EA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D431E57E2C209B41006AB28D /* FoodFormCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodFormCameraView.swift; path = Hackenschmidt/addMealGroup/textRecognition/FoodFormCameraView.swift; sourceTree = SOURCE_ROOT; };
@@ -91,9 +96,10 @@
 		D431E5842C209BBF006AB28D /* TextRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognition.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
-		D4AC459E2C05E38100038144 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCellView.swift; sourceTree = "<group>"; };
 		D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutChartView.swift; sourceTree = "<group>"; };
+		D4C9BD482C25693E00FB0D1C /* AddWorkoutUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutUI.swift; sourceTree = "<group>"; };
+		D4C9BD4A2C256C7100FB0D1C /* WorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCard.swift; sourceTree = "<group>"; };
 		DA80AFEE2BDFEE6200980333 /* Hackenschmidt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackenschmidt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80AFF12BDFEE6200980333 /* HackenschmidtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackenschmidtApp.swift; sourceTree = "<group>"; };
 		DA80AFF32BDFEE6200980333 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -248,6 +254,8 @@
 				61ADFBDA2C21E089005B4A74 /* FoodStruct.swift */,
 				61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */,
 				6177EFCE2C22662600316DF6 /* UserProfileStruct.swift */,
+				D41A8F512C2574DC00E06190 /* WorkoutStruct.swift */,
+				D41A8F532C257B9E00E06190 /* LogStruct.swift */,
 			);
 			path = DbStrcuts;
 			sourceTree = "<group>";
@@ -276,9 +284,10 @@
 			isa = PBXGroup;
 			children = (
 				D4AC459B2C05D9E900038144 /* WorkoutView.swift */,
-				D4AC459E2C05E38100038144 /* Workout.swift */,
 				D4AC45A22C05E3F200038144 /* WorkoutCellView.swift */,
 				D4AC45A52C05EE5700038144 /* WorkoutChartView.swift */,
+				D4C9BD482C25693E00FB0D1C /* AddWorkoutUI.swift */,
+				D4C9BD4A2C256C7100FB0D1C /* WorkoutCard.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -443,6 +452,7 @@
 				616878C12C1A431800A35247 /* LogInUI.swift in Sources */,
 				6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */,
 				617C34562C1646F3004FC095 /* SearchBarMeal.swift in Sources */,
+				D41A8F542C257B9E00E06190 /* LogStruct.swift in Sources */,
 				6177EFCF2C22662600316DF6 /* UserProfileStruct.swift in Sources */,
 				61ADFBDD2C21E269005B4A74 /* ExerciseStruct.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThree.swift in Sources */,
@@ -450,9 +460,11 @@
 				D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */,
 				6111BE3B2C1506B000B17BB8 /* AddMealUI.swift in Sources */,
 				619E4FE22C20ECAC00C58A21 /* NotoficationHandler.swift in Sources */,
-				D4AC459F2C05E38100038144 /* Workout.swift in Sources */,
+				D4C9BD4B2C256C7100FB0D1C /* WorkoutCard.swift in Sources */,
+				D41A8F522C2574DC00E06190 /* WorkoutStruct.swift in Sources */,
 				421BF6DB2C2097390097B3AE /* Homepage.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
+				D4C9BD492C25693E00FB0D1C /* AddWorkoutUI.swift in Sources */,
 				6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */,
 				D431E5852C209BBF006AB28D /* TextRecognition.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwo.swift in Sources */,
