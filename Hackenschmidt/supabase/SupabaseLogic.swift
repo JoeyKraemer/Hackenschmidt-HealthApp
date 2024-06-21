@@ -144,31 +144,32 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendWorkout(
-        workout_name: String, collection_of_exercises: [String], calories: Int) async {
+    func appendWorkout(workout_name: String, collection_of_exercises: [Exercise], calories: Int) async -> Bool {
         let newWorkout = Workout(
+            workout_id: UUID(),
             workout_name: workout_name,
             collection_of_exercise: collection_of_exercises,
             calories: calories
         )
         do {
-            let _ = try await authViewModel.client.from("workout").insert(newWorkout).execute()
+            let _ = try await authViewModel.client.from("workouts").insert(newWorkout).execute()
+            return true
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
+            return false
         }
     }
 
     func appendExercise(
-        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String
-    ) async {
+        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String) async {
         let newExercise = Exercise(
             exercise_name: exercise_name,
+            user_id: user_id,
             sets: sets,
             reps: reps,
-            user_id: user_id,
             weight: weight,
             muscle_group: muscle_group,
             equipment: equipment

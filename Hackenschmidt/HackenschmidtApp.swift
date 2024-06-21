@@ -28,7 +28,7 @@ struct HackenschmidtApp: App {
                             }
                         }
                 } else {
-                    ProcessOne()
+                    WorkoutView()
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)

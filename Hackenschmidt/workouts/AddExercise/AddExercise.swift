@@ -25,7 +25,7 @@ struct AddExercise: View {
 
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -181,13 +181,13 @@ struct AddExercise: View {
                         Button(action: {
                             Task {
                                 if !addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment) {
-                                    await supabaseLogic.appendExercise(exercise_name: name, sets: sets, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment)
+                                    await supabaseLogic.appendExercise(exercise_name: name, sets: sets, reps: reps, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment)
                                     print("Processed")
                                     shouldNavigate = true
                                 }
                             }
                         }) {
-                            Text("ADD")
+                            Text("Add Exercise")
                                 .frame(width: 340, height: 40)
                                 .foregroundColor(Color.white)
                                 .background(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment) ? Color.gray : Color("ButtonColor"))

@@ -1,16 +1,9 @@
-//
-//  WorkoutView.swift
-//  Hackenschmidt
-//
-//  Created by Joey Krämer on 28.05.24.
-//
 import SwiftUI
-import UIKit
 
 struct WorkoutView: View {
+    @StateObject private var supabaseLogic = SupabaseLogic()
+    @State private var isLoading = true
     @State private var isAdding: Bool = false
-
-    var workouts: [Workout][]
 
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),
@@ -42,7 +35,6 @@ struct WorkoutView: View {
                         }
                         .padding(.horizontal)
 
-                        // Integrate WorkoutChartView
                         WorkoutChartView(workoutData: workoutData)
 
                         Spacer()
@@ -67,11 +59,19 @@ struct WorkoutView: View {
 
                         Spacer()
 
-                        List(workouts) { workout in
-                            WorkoutCellView(workout: workout)
+                        if isLoading {
+                            ProgressView("Loading workouts...")
+                        } else if let errorMessage = supabaseLogic.errorMessage {
+                            Text(errorMessage).foregroundColor(.red)
+                        } else {
+                            List {
+                                ForEach(supabaseLogic.workouts) { workout in
+                                    WorkoutCellView(workout: workout)
+                                }
+                            }
+                            .frame(minHeight: 750)
+                            .listStyle(PlainListStyle())
                         }
-                        .frame(minHeight: 750)
-                        .listStyle(PlainListStyle())
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
@@ -81,7 +81,6 @@ struct WorkoutView: View {
                     .blur(radius: isAdding ? 10 : 0)
                     .animation(.default, value: isAdding)
 
-                    // Plus icon menu
                     HStack {
                         Spacer()
 
@@ -116,7 +115,6 @@ struct WorkoutView: View {
                         .padding(.trailing, 20)
                     }
 
-                    // Menu bar
                     HStack(spacing: 0) {
                         Button(action: {}) {
                             VStack {
@@ -175,6 +173,12 @@ struct WorkoutView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 20)
                 }
+            }
+        }
+        .onAppear {
+            Task {
+                await supabaseLogic.fetchWorkout()
+                isLoading = false
             }
         }
     }

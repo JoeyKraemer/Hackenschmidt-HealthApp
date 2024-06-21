@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct Exercise: Codable {
+struct Exercise: Codable, Identifiable {
+    var id: UUID { exercise_id ?? UUID() }
+    var exercise_id: UUID?
     var exercise_name: String
+    var user_id: UUID?
     var sets: Int
     var reps: Int
-    var user_id: UUID
     var weight: Int
     var muscle_group: String
     var equipment: String

@@ -1,14 +1,8 @@
-//
-//  AddWorkoutUI.swift
-//  Hackenschmidt
-//
-//  Created by Joey Krämer on 21.06.24.
-//
 import SwiftUI
 
 struct AddWorkoutUI: View {
     @State private var isAdding: Bool = false
-    @StateObject private var supabasLogic = SupabaseLogic()
+    @StateObject private var supabaseLogic = SupabaseLogic()
 
     var body: some View {
         NavigationView {
@@ -17,23 +11,22 @@ struct AddWorkoutUI: View {
 
                 VStack {
                     VStack {
-                        VStack {
-                            SearchBar()
-                        }
+                        SearchBar()
 
                         VStack {
                             Text("My Workouts")
-                                .foregroundStyle(Color("ButtonColor"))
+                                .foregroundColor(Color("ButtonColor"))
                                 .font(.system(size: 15, weight: .bold))
                         }
+
                         VStack {
-                            if supabasLogic.authViewModel.isLoading {
+                            if supabaseLogic.user_loading {
                                 ProgressView("Loading...")
-                            } else if let errorMessage = supabasLogic.errorMessage {
+                            } else if let errorMessage = supabaseLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
                             } else {
-                                List(supabasLogic.workouts, id: \.self) { workouts in
-                                    FoodCard(title: workouts.food_name, subtitle: workouts.additional, calories: Int(workouts.calories))
+                                List(supabaseLogic.workouts) { workout in
+                                    WorkoutCellView(workout: workout)
                                 }
                                 .listStyle(PlainListStyle())
                                 .background(Color("NormalBackground"))
@@ -41,7 +34,7 @@ struct AddWorkoutUI: View {
                         }
                         .onAppear {
                             Task {
-                                await supabasLogic.fetchFoods()
+                                await supabaseLogic.fetchWorkout()
                             }
                         }
                     }
@@ -54,38 +47,14 @@ struct AddWorkoutUI: View {
                         Spacer()
 
                         VStack {
-                            if isAdding {
-                                Button(action: {}) {
-                                    VStack {
-                                        Image(systemName: "pencil.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                        Text("Manual")
-                                            .foregroundColor(.black)
-                                    }
+                            Button(action: {}) {
+                                NavigationLink(destination: AddWorkoutForm()) {
+                                    Image(systemName: "fork.knife.circle.fill")
+                                        .font(.system(size: 50))
+                                        .foregroundColor(.purple)
+                                        .transition(.move(edge: .bottom))
+                                        .animation(.easeInOut)
                                 }
-                                .padding(.bottom, 10)
-
-                                Button(action: {}) {
-                                    VStack {
-                                        Image(systemName: "camera.circle.fill")
-                                            .font(.system(size: 50))
-                                            .foregroundColor(.purple)
-                                        Text("Camera")
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .padding(.bottom, 10)
-                            }
-
-                            Button(action: {
-                                withAnimation {
-                                    self.isAdding.toggle()
-                                }
-                            }) {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.system(size: 60))
-                                    .foregroundColor(.purple)
                             }
                             .padding(.bottom, 30)
                         }
@@ -93,11 +62,12 @@ struct AddWorkoutUI: View {
                     }
                 }
             }
+            .navigationBarHidden(true)
         }
     }
 }
 
 // Preview for the SwiftUI view
 #Preview {
-    AddMealUI()
+    AddWorkoutUI()
 }
