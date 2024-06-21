@@ -50,8 +50,8 @@ struct EditProfileView: View {
     let healthStore: HKHealthStore
     var body: some View {
         NavigationView {
+            Color("NormalBackground").edgesIgnoringSafeArea(.all)
             Form {
-                Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 Section(header: Text("Name")) {
                     TextField("Name", text: $name)
                 }
