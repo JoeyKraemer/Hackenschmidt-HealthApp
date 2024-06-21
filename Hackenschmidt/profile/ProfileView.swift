@@ -38,7 +38,7 @@ struct ProfileView: View {
                     } else if let errorMessage = supabasLogic.errorMessage {
                         Text(errorMessage).foregroundColor(.red)
                     } else {
-                        Text(supabasLogic.user_profiles[0].name)
+                        Text(name)
                             .font(.title)
                             .bold()
                             .foregroundStyle(Color("TextColor"))
