@@ -26,7 +26,7 @@ struct ProfileView: View {
         ZStack {
             Color("NormalBackground")
                 .edgesIgnoringSafeArea(.all) // Extend background color into the safe area
-            
+
             VStack(spacing: 20) {
                 HStack {
                     Image(systemName: "person.circle.fill")
