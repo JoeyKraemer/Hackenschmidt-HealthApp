@@ -136,9 +136,9 @@ struct EditProfileView: View {
                     calorieCalculator.setHeight(height: height)
                     calorieCalculator.setWeight(weight: weight)
                     calorieCalculator.setActivityLevel(activityLevel: activityLevel)
-                    
+
                     caloriesIntakeGoal = calorieCalculator.getTotalCalories()
-                    
+
                     await supabaseLogic.updateUserProfile(user_id: authViewModel.uid!, name: name, calorie_goal: caloriesIntakeGoal, weight: weight, height: height, sex: sex, activity: activityLevel, body_goal: body_goal, age: age)
                 }
                 presentationMode.wrappedValue.dismiss()
