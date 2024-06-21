@@ -11,10 +11,10 @@ import Supabase
 import SwiftUI
 
 class AuthViewModel: ObservableObject {
-    @Published var userEmail: String?
     @Published var errorMessage: String?
     @Published var uid: UUID?
     @Published var isLoading: Bool = false
+    @Published var isLoggedIn: Bool = false
 
     let client: SupabaseClient
     let keychain: Keychain
@@ -38,12 +38,29 @@ class AuthViewModel: ObservableObject {
     }
 
     func signIn(email: String, password: String) async {
+        errorMessage = nil
         isLoading = true
         do {
             let session = try await client.auth.signIn(email: email, password: password)
             saveSession(session)
             DispatchQueue.main.async {
-                self.userEmail = session.user.email
+                self.uid = session.user.id
+                self.isLoading = false
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.errorMessage = error.localizedDescription
+                self.isLoading = false
+            }
+        }
+    }
+
+    func singUp(email: String, password: String) async {
+        isLoading = true
+        do {
+            let session = try await client.auth.signUp(email: email, password: password)
+            saveSession(session.session!)
+            DispatchQueue.main.async {
                 self.uid = session.user.id
                 self.isLoading = false
             }
@@ -71,7 +88,7 @@ class AuthViewModel: ObservableObject {
                     accessToken: accessToken, refreshToken: refreshToken
                 )
                 DispatchQueue.main.async {
-                    self.userEmail = session.user.email
+                    self.uid = session.user.id
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -81,11 +98,29 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func isLoggedIn() -> Bool {
+    func containsCredentials() -> Bool {
         if let _ = keychain["access_token"], let _ = keychain["refresh_token"] {
             return true
         } else {
             return false
+        }
+    }
+
+    func setLoggedIn() {
+        if !containsCredentials() {
+            Task {
+                await self.restoreSession()
+                if let _ = self.uid {
+                    self.isLoggedIn = true
+                }
+            }
+        }
+
+        func checkLoginStatus(completion: @escaping () -> Void) {
+            setLoggedIn()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                completion()
+            }
         }
     }
 }

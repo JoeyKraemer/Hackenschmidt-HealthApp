@@ -48,7 +48,7 @@ struct ProcessOne: View {
                                     .foregroundStyle(Color("TextColor"))
                             }
                             Spacer()
-
+                            
                             VStack {
                                 Text("What should we call you?")
                                     .foregroundStyle(Color("TextColor"))
@@ -57,7 +57,7 @@ struct ProcessOne: View {
                                     .padding()
                                     .background(processOneChecker.checkUsername(username: userName) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                                     .cornerRadius(10)
-
+                                
                                 Text("What is your age")
                                     .foregroundStyle(Color("TextColor"))
                                 TextField("Enter your age", text: Binding(
@@ -73,7 +73,7 @@ struct ProcessOne: View {
                                 .padding()
                                 .background(processOneChecker.checkAge(age: age) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                                 .cornerRadius(10)
-
+                                
                                 Text("What is your email?")
                                     .foregroundStyle(Color("TextColor"))
                                 TextField("Enter your email", text: $email)
@@ -81,7 +81,7 @@ struct ProcessOne: View {
                                     .padding()
                                     .background(processOneChecker.checkEmail(email: email) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
                                     .cornerRadius(10)
-
+                                
                                 Text("Come up with the password")
                                     .foregroundStyle(Color("TextColor"))
                                 SecureField("Enter your password", text: $password)
@@ -125,7 +125,7 @@ struct ProcessOne: View {
                                     .cornerRadius(5)
                             }
                             .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
-
+                            
                             NavigationLink(
                                 destination: ProfileView(),
                                 isActive: $shouldNavigate,
