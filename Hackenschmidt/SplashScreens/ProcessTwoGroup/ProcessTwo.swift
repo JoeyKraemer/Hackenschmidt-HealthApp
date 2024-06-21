@@ -20,7 +20,7 @@ struct ProcessTwo: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color("NormalBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                Color("NormalBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
                 GeometryReader { geometry in
                     ScrollView {
                         VStack {
