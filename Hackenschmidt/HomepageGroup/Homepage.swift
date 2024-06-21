@@ -23,7 +23,7 @@ struct Homepage: View {
 
                         Spacer()
                     }
-                    .frame(height: 350)
+                    .frame(height: 340)
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)
@@ -57,7 +57,7 @@ struct Homepage: View {
                         ])
                         Spacer()
                     }
-                    .frame(height: 300)
+                    .frame(height: 280)
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(radius: 5)

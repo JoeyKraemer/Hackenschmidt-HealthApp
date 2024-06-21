@@ -22,6 +22,14 @@ enum ActivityLevel: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
+enum BodyGoal: String, CaseIterable, Identifiable {
+    case loseWeight = "Lose Weight"
+    case maintainWeight = "Maintain Weight"
+    case growMuscles = "Grow Muscles"
+
+    var id: String { rawValue }
+}
+
 struct EditProfileView: View {
     @Binding var name: String
     @Binding var weight: Int
@@ -43,6 +51,7 @@ struct EditProfileView: View {
     var body: some View {
         NavigationView {
             Form {
+                Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 Section(header: Text("Name")) {
                     TextField("Name", text: $name)
                 }
@@ -105,7 +114,12 @@ struct EditProfileView: View {
                 }
 
                 Section(header: Text("Body Goal")) {
-                    TextField("Body Goal", text: $body_goal)
+                    Picker("Activity level", selection: $body_goal) {
+                        ForEach(BodyGoal.allCases) { level in
+                            Text(level.rawValue).tag(level)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
 
                 Section(header: Text("Activity level")) {
