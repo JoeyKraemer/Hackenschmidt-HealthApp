@@ -25,7 +25,7 @@ struct AddWorkoutUI: View {
                             } else if let errorMessage = supabaseLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
                             } else {
-                                List(supabaseLogic.workouts ,id: \.workout_id) { workout in
+                                List(supabaseLogic.workouts, id: \.workout_id) { workout in
                                     WorkoutCellView(workout: workout)
                                 }
                                 .listStyle(PlainListStyle())
