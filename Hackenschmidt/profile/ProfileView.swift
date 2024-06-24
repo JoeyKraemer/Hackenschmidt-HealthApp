@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @StateObject private var supabasLogic = SupabaseLogic()
     @State private var isEditViewPresented = false
+    @State private var isLoggedOut = false
     @State private var name: String = ""
     @State private var weight: Int = 0
     @State private var height: Int = 0
@@ -145,6 +146,32 @@ struct ProfileView: View {
                         .cornerRadius(10)
                 }
                 .padding(.top)
+                
+                Spacer()
+
+                Button(action: {
+                    Task {
+                        await supabasLogic.authViewModel.signOut()
+                        isLoggedOut = true
+                    }
+                }) {
+                    Text("LOGOUT")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom)
+
+                NavigationLink(
+                    destination: ProcessOne(),
+                    isActive: $isLoggedOut,
+                    label: {
+                        EmptyView()
+                    }
+                )
+                .hidden()
             }
             .padding()
             .sheet(isPresented: $isEditViewPresented) {

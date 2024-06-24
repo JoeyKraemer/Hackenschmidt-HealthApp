@@ -109,6 +109,7 @@ struct ProcessOne: View {
                             Button(action: {
                                 Task {
                                     if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {
+                                        await authViewModel.singUp(email: email, password: password)
                                         UserProfileInformationGather.shared.setName(name: userName)
                                         UserProfileInformationGather.shared.setAge(age: age)
                                         shouldNavigate = true
@@ -143,6 +144,7 @@ struct ProcessOne: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
