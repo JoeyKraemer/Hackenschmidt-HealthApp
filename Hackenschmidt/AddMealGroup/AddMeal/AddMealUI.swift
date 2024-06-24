@@ -28,9 +28,9 @@ struct AddMealUI: View {
                             } else {
                                 List(supabasLogic.meals, id: \.self) { meal in
 //                                    List(supabasLogic.foods, id: \.self){food in
-                                        MealCard(name: meal.meal_name, foods: meal.collection_of_food, calories: Int(meal.callories))
-                                            .listRowBackground(Color.clear)
-                                            .foregroundColor(.black)
+                                    MealCard(name: meal.meal_name, foods: meal.collection_of_food, calories: Int(meal.callories))
+                                        .listRowBackground(Color.clear)
+                                        .foregroundColor(.black)
 //                                    }
                                 }
                                 .listStyle(PlainListStyle())

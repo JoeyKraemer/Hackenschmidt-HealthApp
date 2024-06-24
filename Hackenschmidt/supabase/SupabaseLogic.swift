@@ -24,24 +24,24 @@ class SupabaseLogic: ObservableObject {
     }
 
     func fetchMeals() async {
-            authViewModel.isLoading = true
-            do {
-                let response: [Meal] = try await authViewModel.client
-                    .from("meals")
-                    .select()
-                    .eq("user_id", value: authViewModel.uid!)
-                    .execute()
-                    .value
-                meals = response
-                authViewModel.isLoading = false
-            } catch {
-                DispatchQueue.main.async {
-                    print(error.localizedDescription)
-                    self.authViewModel.errorMessage = error.localizedDescription
-                    self.authViewModel.isLoading = false
-                }
+        authViewModel.isLoading = true
+        do {
+            let response: [Meal] = try await authViewModel.client
+                .from("meals")
+                .select()
+                .eq("user_id", value: authViewModel.uid!)
+                .execute()
+                .value
+            meals = response
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription)
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
             }
         }
+    }
 
     func fetchUserProfile() async {
         do {
