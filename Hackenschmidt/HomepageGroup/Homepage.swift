@@ -7,7 +7,8 @@ struct Homepage: View {
         NavigationView {
             TabView {
                 ZStack {
-                    Color("NormalBackground").edgesIgnoringSafeArea(.all)
+                    Color("NormalBackground")
+                        .edgesIgnoringSafeArea(.all)
 
                     VStack {
                         VStack {
@@ -68,6 +69,9 @@ struct Homepage: View {
 
                         Spacer()
                     }
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
+                    .navigationBarHidden(true)
 
                     VStack {
                         Spacer()

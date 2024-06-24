@@ -89,14 +89,17 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func fetchExercise() async {
+    func fetchExercise(userId: UUID) async {
         authViewModel.isLoading = true
         do {
-            let response: [Exercise] = try await authViewModel.client.from("exercise").select().execute().value
-            exercises = response
-            authViewModel.isLoading = false
+            let response: [Exercise] = try await authViewModel.client.from("exercise").select().eq("user_id", value: userId).execute().value
+            DispatchQueue.main.async {
+                self.exercises = response
+                self.authViewModel.isLoading = false
+            }
         } catch {
             DispatchQueue.main.async {
+                print(error.localizedDescription)
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
@@ -163,9 +166,7 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendExercise(
-        exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String
-    ) async {
+    func appendExercise(exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String, calorie_burned: Int) async {
         let newExercise = Exercise(
             exercise_name: exercise_name,
             user_id: user_id,
@@ -173,7 +174,8 @@ class SupabaseLogic: ObservableObject {
             reps: reps,
             weight: weight,
             muscle_group: muscle_group,
-            equipment: equipment
+            equipment: equipment,
+            calorie_burned: calorie_burned
         )
         do {
             let _ = try await
@@ -186,9 +188,7 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendUserProfile(
-        user_id: UUID, name: String, calorie_goal: Int, weight: Int, height: Int, sex: String, activity: String, body_goal: String, age: Int
-    ) async {
+    func appendUserProfile(user_id: UUID, name: String, calorie_goal: Int, weight: Int, height: Int, sex: String, activity: String, body_goal: String, age: Int) async {
         let newUserProfile = UserProfile(
             user_id: user_id,
             name: name,

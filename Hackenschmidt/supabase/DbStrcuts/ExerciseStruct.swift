@@ -17,4 +17,5 @@ struct Exercise: Codable, Identifiable {
     var weight: Int
     var muscle_group: String
     var equipment: String
+    var calorie_burned: Int
 }

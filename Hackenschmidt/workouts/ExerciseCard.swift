@@ -45,7 +45,7 @@ struct ExerciseCard: View {
 
 struct ExerciseCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseCard(exercise: Exercise(exercise_id: UUID(), exercise_name: "Bench Press", sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell"))
+        ExerciseCard(exercise: Exercise(exercise_id: UUID(), exercise_name: "Bench Press", sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell", calorie_burned: 10))
             .previewLayout(.sizeThatFits)
             .padding()
     }

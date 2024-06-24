@@ -23,6 +23,10 @@ class AddExerciseChecker {
     func checkWeight(weight: Int) -> Bool {
         weight <= 0
     }
+    
+    func checkBurnedCalories(kcal: Int) -> Bool {
+        kcal <= 0
+    }
 
     func checkMuscleGroup(group: String) -> Bool {
         group.isEmpty
@@ -32,7 +36,7 @@ class AddExerciseChecker {
         equipment.isEmpty
     }
 
-    func checkAll(name: String, sets: Int, reps: Int, weight: Int, group: String, equipment: String) -> Bool {
+    func checkAll(name: String, sets: Int, reps: Int, weight: Int, group: String, equipment: String, burnedCalorie: Int) -> Bool {
         if name.isEmpty {
             return true
         }
@@ -46,6 +50,10 @@ class AddExerciseChecker {
         }
 
         if weight <= 0 {
+            return true
+        }
+        
+        if burnedCalorie <= 0 {
             return true
         }
 

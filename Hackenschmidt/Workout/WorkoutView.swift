@@ -17,7 +17,7 @@ struct WorkoutView: View {
         WorkoutData(day: "Day 17", count: 0),
         WorkoutData(day: "Day 18", count: 3),
         WorkoutData(day: "Day 19", count: 3),
-        WorkoutData(day: "Day 20", count: 4),
+        WorkoutData(day: "Day 20", count: 1),
     ]
 
     var body: some View {

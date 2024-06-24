@@ -15,7 +15,6 @@
 		6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE332C14FFEB00B17BB8 /* ExcerciseButtonView.swift */; };
 		6111BE392C15058600B17BB8 /* AddMealForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE382C15058600B17BB8 /* AddMealForm.swift */; };
 		6111BE3B2C1506B000B17BB8 /* AddMealUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE3A2C1506B000B17BB8 /* AddMealUI.swift */; };
-		611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71872BFE785D002F9BB6 /* AddWorkout.swift */; };
 		611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611C71892BFE7E37002F9BB6 /* AddExercise.swift */; };
 		6126E5142BE25FD70066E3A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80AFFA2BDFEE6400980333 /* Assets.xcassets */; };
 		6135F5B82C0E5752004138D9 /* ActivityButtomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6135F5B72C0E5752004138D9 /* ActivityButtomView.swift */; };
@@ -46,7 +45,6 @@
 		D43BBA8A2C258424007C3A8B /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BBA892C258424007C3A8B /* DailyLog.swift */; };
 		D43BBA8C2C25842E007C3A8B /* ListOfLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BBA8B2C25842E007C3A8B /* ListOfLogs.swift */; };
 		D468BA7A2C259B03006179A4 /* AddWorkoutForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA792C259B03006179A4 /* AddWorkoutForm.swift */; };
-		D468BA7C2C259E0D006179A4 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA7B2C259E0D006179A4 /* ExerciseList.swift */; };
 		D468BA7E2C259ECC006179A4 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */; };
 		D48973492C0C9330006C39B4 /* FoodFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48973482C0C9330006C39B4 /* FoodFormView.swift */; };
 		D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC459B2C05D9E900038144 /* WorkoutView.swift */; };
@@ -74,7 +72,6 @@
 		6111BE332C14FFEB00B17BB8 /* ExcerciseButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseButtonView.swift; sourceTree = "<group>"; };
 		6111BE382C15058600B17BB8 /* AddMealForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealForm.swift; sourceTree = "<group>"; };
 		6111BE3A2C1506B000B17BB8 /* AddMealUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealUI.swift; sourceTree = "<group>"; };
-		611C71872BFE785D002F9BB6 /* AddWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkout.swift; sourceTree = "<group>"; };
 		611C71892BFE7E37002F9BB6 /* AddExercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExercise.swift; sourceTree = "<group>"; };
 		6135F5B72C0E5752004138D9 /* ActivityButtomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityButtomView.swift; sourceTree = "<group>"; };
 		6135F5B92C0E582E004138D9 /* ProcessTwoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwoLogic.swift; sourceTree = "<group>"; };
@@ -104,7 +101,6 @@
 		D43BBA892C258424007C3A8B /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
 		D43BBA8B2C25842E007C3A8B /* ListOfLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLogs.swift; sourceTree = "<group>"; };
 		D468BA792C259B03006179A4 /* AddWorkoutForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutForm.swift; sourceTree = "<group>"; };
-		D468BA7B2C259E0D006179A4 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		D48973482C0C9330006C39B4 /* FoodFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodFormView.swift; sourceTree = "<group>"; };
 		D4AC459B2C05D9E900038144 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
@@ -157,7 +153,6 @@
 		6111BE2F2C14FB9A00B17BB8 /* AddWorkoutGroup */ = {
 			isa = PBXGroup;
 			children = (
-				611C71872BFE785D002F9BB6 /* AddWorkout.swift */,
 			);
 			path = AddWorkoutGroup;
 			sourceTree = "<group>";
@@ -207,7 +202,6 @@
 				6111BE302C14FBA900B17BB8 /* AddExercise */,
 				6111BE2F2C14FB9A00B17BB8 /* AddWorkoutGroup */,
 				D468BA792C259B03006179A4 /* AddWorkoutForm.swift */,
-				D468BA7B2C259E0D006179A4 /* ExerciseList.swift */,
 				D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */,
 			);
 			path = workouts;
@@ -511,14 +505,12 @@
 				D4AC45A32C05E3F200038144 /* WorkoutCellView.swift in Sources */,
 				611C718A2BFE7E37002F9BB6 /* AddExercise.swift in Sources */,
 				D42D88A02C206DAD00B179EA /* ProfileView.swift in Sources */,
-				D468BA7C2C259E0D006179A4 /* ExerciseList.swift in Sources */,
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
 				616878C32C1A432600A35247 /* LogInLogic.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
 				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
 				617C34582C164B78004FC095 /* FoodCart.swift in Sources */,
 				617800B82C234EC60021FCC6 /* UserProfileGather.swift in Sources */,
-				611C71882BFE785D002F9BB6 /* AddWorkout.swift in Sources */,
 				D43BBA8A2C258424007C3A8B /* DailyLog.swift in Sources */,
 				6135F5C02C0E86A2004138D9 /* ProcessThreeLogic.swift in Sources */,
 			);

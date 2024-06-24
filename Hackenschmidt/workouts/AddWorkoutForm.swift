@@ -33,7 +33,7 @@ struct AddWorkoutForm: View {
                         Text("Add Exercise")
                             .foregroundStyle(Color("TextColor"))
                             .padding(.bottom, 20)
-                        NavigationLink(destination: AddExercise()) {
+                        NavigationLink(destination: AddExercise(workoutName: $workoutName)) {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.gray.opacity(0.0))
@@ -111,7 +111,9 @@ struct AddWorkoutForm: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             Task {
-                await supabaseLogic.fetchExercise()
+                guard let userId = supabaseLogic.authViewModel.uid else { return }
+                await supabaseLogic.fetchExercise(userId: userId)
+                exercises = supabaseLogic.exercises
                 isLoading = false
             }
         }

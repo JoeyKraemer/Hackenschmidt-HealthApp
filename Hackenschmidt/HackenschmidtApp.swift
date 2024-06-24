@@ -39,8 +39,7 @@ struct HackenschmidtApp: App {
                                 .padding()
                         }
                     }
-                } else {
-                    WorkoutView()
+                } else { 
                     if authViewModel.isLoggedIn {
                         Homepage()
                     } else {

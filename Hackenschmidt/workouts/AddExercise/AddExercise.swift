@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct AddExercise: View {
+    @Binding var workoutName: String
     @State private var name: String = ""
     @State private var sets: Int = 0
     @State private var reps: Int = 0
     @State private var weight: Int = 0
+    @State private var kcal: Int = 0
     @State private var muscleGroup = ""
     @State private var isDropdownOpen = false
     @State private var selectedEquipment = ""
     @State private var selectedButton: Int?
     @State private var shouldNavigate = false
 
-    let equipmentOptions = ["Treadmill", "Dumbbells", "Stationary Bike", "Elliptical"]
-    let muscles = ["Shoulders", "Back", "Chest", "Legs"]
+    let equipmentOptions = ["Bodyweight", "Dumbbell", "Barbell", "Kettlebell", "Treadmill", "Bicycle", "Rowing machine", "Machine"]
+    let muscles = ["Shoulders", "Back", "Chest", "Legs","Arms","Core"]
 
     let addExerciseChecker = AddExerciseChecker()
 
@@ -45,7 +47,7 @@ struct AddExercise: View {
                         VStack {
                             Text("How many sets did you do?")
                                 .foregroundStyle(Color("TextColor"))
-                            TextField("Enter your Weight", text: Binding(
+                            TextField("Enter your Sets", text: Binding(
                                 get: { "\(sets)" },
                                 set: {
                                     if let value = Int($0) {
@@ -70,7 +72,7 @@ struct AddExercise: View {
                         VStack {
                             Text("How many reps did you do?")
                                 .foregroundStyle(Color("TextColor"))
-                            TextField("Enter your Weight", text: Binding(
+                            TextField("Enter your Reps", text: Binding(
                                 get: { "\(reps)" },
                                 set: {
                                     if let value = Int($0) {
@@ -165,12 +167,38 @@ struct AddExercise: View {
                             )
                         }
                         .padding(.bottom, 15)
+                        
+                        VStack {
+                            Text("How many calories did you burn?")
+                                .foregroundStyle(Color("TextColor"))
+                            TextField("Enter your kcal", text: Binding(
+                                get: { "\(kcal)" },
+                                set: {
+                                    if let value = Int($0) {
+                                        kcal = value
+                                    }
+                                }
+                            ))
+                            .frame(width: 313)
+                            .padding()
+                            .background(addExerciseChecker.checkReps(reps: reps) ? Color.red.opacity(0.1) : Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                            .overlay(
+                                HStack {
+                                    Spacer()
+                                    Text("Amount")
+                                        .padding(.trailing, 8)
+                                        .foregroundColor(Color("TextColor"))
+                                }
+                            )
+                        }
+
 
                         VStack {
                             Text("What muscle group does it use?")
                                 .foregroundStyle(Color("TextColor"))
 
-                            ForEach(0 ..< 4, id: \.self) { index in
+                            ForEach(0 ..< muscles.count, id: \.self) { index in
                                 ExerciseButtonView(muscle: muscles[index], tag: index, showNextScreen: addExerciseChecker.checkMuscleGroup(group: muscleGroup), selectedButton: $selectedButton)
                             }
                             .onReceive(selectedButton.publisher) { index in
@@ -180,8 +208,8 @@ struct AddExercise: View {
                         Spacer()
                         Button(action: {
                             Task {
-                                if !addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment) {
-                                    await supabaseLogic.appendExercise(exercise_name: name, sets: sets, reps: reps, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment)
+                                if !addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment, burnedCalorie: kcal) {
+                                    await supabaseLogic.appendExercise(exercise_name: name, sets: sets, reps: reps, user_id: authViewModel.uid!, weight: weight, muscle_group: muscleGroup, equipment: selectedEquipment, calorie_burned: kcal)
                                     print("Processed")
                                     shouldNavigate = true
                                 }
@@ -190,13 +218,13 @@ struct AddExercise: View {
                             Text("Add Exercise")
                                 .frame(width: 340, height: 40)
                                 .foregroundColor(Color.white)
-                                .background(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment) ? Color.gray : Color("ButtonColor"))
+                                .background(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment, burnedCalorie: kcal) ? Color.gray : Color("ButtonColor"))
                                 .cornerRadius(5)
                         }
-                        .disabled(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment))
+                        .disabled(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment, burnedCalorie: kcal))
 
                         NavigationLink(
-                            destination: AddWorkout(),
+                            destination: AddWorkoutForm(),
                             isActive: $shouldNavigate,
                             label: {
                                 EmptyView()
@@ -211,6 +239,3 @@ struct AddExercise: View {
     }
 }
 
-#Preview {
-    AddExercise()
-}
