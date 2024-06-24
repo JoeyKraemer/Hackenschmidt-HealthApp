@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Workout: Codable, Identifiable {
-    var id: UUID { workout_id ?? UUID() }
+struct Workout: Codable {
     var workout_id: UUID?
     var workout_name: String
     var collection_of_exercise: [Exercise]
