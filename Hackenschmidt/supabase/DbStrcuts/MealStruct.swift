@@ -9,7 +9,8 @@ import Foundation
 
 struct Meal: Codable, Hashable {
     let meal_name: String
-    let collection_of_food: [Food]
+    let collection_of_food: [String]
     let cooking_steps: [String]
     let user_id: UUID
+    let callories: Int
 }

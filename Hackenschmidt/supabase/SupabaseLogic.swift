@@ -1,9 +1,3 @@
-//
-//  SupabaseLogic.swift
-//  Hackenschmidt
-//
-//  Created by Богдан Закусило on 18.06.2024.
-//
 import Foundation
 import SwiftUI
 
@@ -30,18 +24,24 @@ class SupabaseLogic: ObservableObject {
     }
 
     func fetchMeals() async {
-        authViewModel.isLoading = true
-        do {
-            let response: [Meal] = try await authViewModel.client.from("meals").select().execute().value
-            meals = response
-            authViewModel.isLoading = false
-        } catch {
-            DispatchQueue.main.async {
-                self.authViewModel.errorMessage = error.localizedDescription
-                self.authViewModel.isLoading = false
+            authViewModel.isLoading = true
+            do {
+                let response: [Meal] = try await authViewModel.client
+                    .from("meals")
+                    .select()
+                    .eq("user_id", value: authViewModel.uid!)
+                    .execute()
+                    .value
+                meals = response
+                authViewModel.isLoading = false
+            } catch {
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                    self.authViewModel.errorMessage = error.localizedDescription
+                    self.authViewModel.isLoading = false
+                }
             }
         }
-    }
 
     func fetchUserProfile() async {
         do {
@@ -60,15 +60,17 @@ class SupabaseLogic: ObservableObject {
 
     func appendMeal(
         meal_name: String,
-        collection_of_food: [Food],
+        collection_of_food: [String],
         cooking_steps: [String],
-        user_id: UUID
+        user_id: UUID,
+        callories: Int
     ) async {
         let newMeal = Meal(
             meal_name: meal_name,
             collection_of_food: collection_of_food,
             cooking_steps: cooking_steps,
-            user_id: user_id
+            user_id: user_id,
+            callories: callories
         )
 
         do {
@@ -116,8 +118,7 @@ class SupabaseLogic: ObservableObject {
             equipment: equipment
         )
         do {
-            let _ = try await
-                authViewModel.client.from("exercise").insert(newExercise).execute()
+            let _ = try await authViewModel.client.from("exercise").insert(newExercise).execute()
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
@@ -141,8 +142,7 @@ class SupabaseLogic: ObservableObject {
             age: age
         )
         do {
-            let _ = try await
-                authViewModel.client.from("user_profile").insert(newUserProfile).execute()
+            let _ = try await authViewModel.client.from("user_profile").insert(newUserProfile).execute()
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription

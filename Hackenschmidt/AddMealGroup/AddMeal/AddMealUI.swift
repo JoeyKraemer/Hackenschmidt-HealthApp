@@ -26,16 +26,19 @@ struct AddMealUI: View {
                             } else if let errorMessage = supabasLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
                             } else {
-                                List(supabasLogic.foods, id: \.self) { food in
-                                    FoodCard(title: food.food_name, subtitle: food.additional, calories: Int(food.calories))
+                                List(supabasLogic.meals, id: \.self) { meal in
+//                                    List(supabasLogic.foods, id: \.self){food in
+                                        MealCard(name: meal.meal_name, foods: meal.collection_of_food, calories: Int(meal.callories))
+                                            .listRowBackground(Color.clear)
+                                            .foregroundColor(.black)
+//                                    }
                                 }
                                 .listStyle(PlainListStyle())
-                                .background(Color("NormalBackground"))
                             }
                         }
                         .onAppear {
                             Task {
-                                await supabasLogic.fetchFoods()
+                                await supabasLogic.fetchMeals()
                             }
                         }
                     }

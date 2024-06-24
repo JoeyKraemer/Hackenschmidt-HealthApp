@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		421BF6DB2C2097390097B3AE /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421BF6DA2C2097390097B3AE /* Homepage.swift */; };
+		424767882C25A0BB009DBC27 /* MealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424767872C25A0BB009DBC27 /* MealCard.swift */; };
 		42F835662C24F39000D9E51E /* MealStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F835652C24F39000D9E51E /* MealStruct.swift */; };
 		6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101152A2C21D013005CC443 /* SupabaseLogic.swift */; };
 		6111BE2E2C14F9F200B17BB8 /* ProcessOneLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE2D2C14F9F200B17BB8 /* ProcessOneLogic.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		421BF6DA2C2097390097B3AE /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
+		424767872C25A0BB009DBC27 /* MealCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCard.swift; sourceTree = "<group>"; };
 		42F835652C24F39000D9E51E /* MealStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealStruct.swift; sourceTree = "<group>"; };
 		6101152A2C21D013005CC443 /* SupabaseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseLogic.swift; sourceTree = "<group>"; };
 		6111BE2D2C14F9F200B17BB8 /* ProcessOneLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOneLogic.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				6111BE3A2C1506B000B17BB8 /* AddMealUI.swift */,
 				617C34552C1646F3004FC095 /* SearchBarMeal.swift */,
 				617C34572C164B78004FC095 /* FoodCart.swift */,
+				424767872C25A0BB009DBC27 /* MealCard.swift */,
 			);
 			path = AddMeal;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				6135F5C32C0E8711004138D9 /* ButtonView.swift in Sources */,
 				616878C32C1A432600A35247 /* LogInLogic.swift in Sources */,
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
+				424767882C25A0BB009DBC27 /* MealCard.swift in Sources */,
 				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
 				617C34582C164B78004FC095 /* FoodCart.swift in Sources */,
 				617800B82C234EC60021FCC6 /* UserProfileGather.swift in Sources */,
