@@ -21,7 +21,7 @@ struct AddExercise: View {
     @State private var shouldNavigate = false
 
     let equipmentOptions = ["Bodyweight", "Dumbbell", "Barbell", "Kettlebell", "Treadmill", "Bicycle", "Rowing machine", "Machine"]
-    let muscles = ["Shoulders", "Back", "Chest", "Legs","Arms","Core"]
+    let muscles = ["Shoulders", "Back", "Chest", "Legs", "Arms", "Core"]
 
     let addExerciseChecker = AddExerciseChecker()
 
@@ -167,7 +167,7 @@ struct AddExercise: View {
                             )
                         }
                         .padding(.bottom, 15)
-                        
+
                         VStack {
                             Text("How many calories did you burn?")
                                 .foregroundStyle(Color("TextColor"))
@@ -192,7 +192,6 @@ struct AddExercise: View {
                                 }
                             )
                         }
-
 
                         VStack {
                             Text("What muscle group does it use?")
@@ -238,4 +237,3 @@ struct AddExercise: View {
         .navigationBarBackButtonHidden(true)
     }
 }
-

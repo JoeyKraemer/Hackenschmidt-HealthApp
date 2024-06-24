@@ -23,7 +23,7 @@ class AddExerciseChecker {
     func checkWeight(weight: Int) -> Bool {
         weight <= 0
     }
-    
+
     func checkBurnedCalories(kcal: Int) -> Bool {
         kcal <= 0
     }
@@ -52,7 +52,7 @@ class AddExerciseChecker {
         if weight <= 0 {
             return true
         }
-        
+
         if burnedCalorie <= 0 {
             return true
         }

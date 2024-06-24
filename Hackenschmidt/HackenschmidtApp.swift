@@ -39,7 +39,7 @@ struct HackenschmidtApp: App {
                                 .padding()
                         }
                     }
-                } else { 
+                } else {
                     if authViewModel.isLoggedIn {
                         Homepage()
                     } else {

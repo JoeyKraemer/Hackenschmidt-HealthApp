@@ -31,7 +31,7 @@ struct WorkoutCellView: View {
 
 struct WorkoutCellView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutCellView(workout: Workout(workout_id: UUID(), workout_name: "Sample Workout", collection_of_exercise: [Exercise(exercise_id: UUID(), exercise_name: "Bench Press", sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell", calorie_burned: 10),], calories: 300))
+        WorkoutCellView(workout: Workout(workout_id: UUID(), workout_name: "Sample Workout", collection_of_exercise: [Exercise(exercise_id: UUID(), exercise_name: "Bench Press", sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell", calorie_burned: 10)], calories: 300))
             .previewLayout(.sizeThatFits)
     }
 }
