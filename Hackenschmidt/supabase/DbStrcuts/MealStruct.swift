@@ -12,5 +12,5 @@ struct Meal: Codable, Hashable {
     let collection_of_food: [String]
     let cooking_steps: [String]
     let user_id: UUID
-    let callories: Int
+    let calories: Int
 }
