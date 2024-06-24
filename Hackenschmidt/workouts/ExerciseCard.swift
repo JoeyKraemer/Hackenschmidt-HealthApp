@@ -8,45 +8,50 @@ import SwiftUI
 
 struct ExerciseCard: View {
     var exercise: Exercise
-    @State private var isChecked: Bool = false
-
+    @Binding var isChecked: Bool
+    
     var body: some View {
-        HStack {
-            Button(action: {
-                isChecked.toggle()
-            }) {
-                Image(systemName: isChecked ? "checkmark.square" : "square")
-                    .foregroundColor(.purple)
-            }
-
-            VStack(alignment: .leading, spacing: 8) {
-                Text(exercise.exercise_name)
-                    .font(.headline)
-                    .foregroundColor(.purple)
-                HStack {
-                    Text("Sets: \(exercise.sets)")
-                        .font(.subheadline)
-                    Spacer()
-                    Text("Reps: \(exercise.reps)")
-                        .font(.subheadline)
-                    Spacer()
-                    Text("Weight: \(exercise.weight) kg")
-                        .font(.subheadline)
+        ZStack {
+            Color.white // Set the background of the card to white
+            HStack {
+                Button(action: {
+                    isChecked.toggle()
+                }) {
+                    Image(systemName: isChecked ? "checkmark.square" : "square")
+                        .foregroundColor(.purple)
                 }
-                .foregroundColor(Color("TextColor"))
+                VStack(alignment: .leading) {
+                    
+                    Text(exercise.exercise_name)
+                        .font(.headline)
+                        .foregroundStyle(Color("TextColor"))
+                    HStack {
+                        if let sets = exercise.sets {
+                            Text("Sets: \(sets)")
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        Spacer()
+                        if let reps = exercise.reps {
+                            Text("Reps: \(reps)")
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                        Spacer()
+                        if let weight = exercise.weight {
+                            Text("Weight: \(weight) kg")
+                                .foregroundStyle(Color("TextColor"))
+                        }
+                    }
+                }
             }
         }
-        .padding()
-        .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 2)
+        .background(Color("NormalBackground"))
     }
 }
 
 struct ExerciseCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseCard(exercise: Exercise(exercise_id: UUID(), exercise_name: "Bench Press", sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell", calorie_burned: 10))
+        ExerciseCard(exercise: Exercise(exercise_id: 1, exercise_name: "Bench Press", user_id: UUID(), sets: 3, reps: 10, weight: 100, muscle_group: "Chest", equipment: "Barbell", calorie_burned: 50), isChecked: .constant(false))
             .previewLayout(.sizeThatFits)
-            .padding()
     }
 }

@@ -13,6 +13,7 @@ class SupabaseLogic: ObservableObject {
     @Published var workouts: [Workout] = []
     @Published var exercises: [Exercise] = []
     @Published var meals: [Meal] = []
+    @Published var workoutExercise: [WorkoutExercise] = []
     @Published var user_profiles: [UserProfile] = []
     @Published var logs: [Log] = []
     @Published var user_loading: Bool = true
@@ -89,17 +90,32 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func fetchExercise(userId: UUID) async {
+    func fetchExercise() async {
         authViewModel.isLoading = true
         do {
-            let response: [Exercise] = try await authViewModel.client.from("exercise").select().eq("user_id", value: userId).execute().value
+            let response: [Exercise] = try await authViewModel.client.from("exercise").select().execute().value
+            exercises = response
             DispatchQueue.main.async {
-                self.exercises = response
                 self.authViewModel.isLoading = false
             }
         } catch {
             DispatchQueue.main.async {
-                print(error.localizedDescription)
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func fetchWorkoutExercise() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [WorkoutExercise] = try await authViewModel.client.from("workouts_exercises").select().execute().value
+            workoutExercise = response
+            DispatchQueue.main.async {
+                self.authViewModel.isLoading = false
+            }
+        } catch {
+            DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
@@ -147,11 +163,11 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendWorkout(workout_name: String, collection_of_exercises: [Exercise], calories: Int) async -> Bool {
+    func appendWorkout(workout_name: String, user_id: UUID, calories: Int? = nil) async -> Bool {
         let newWorkout = Workout(
-            workout_id: UUID(),
+            workout_id: Int(),
             workout_name: workout_name,
-            collection_of_exercise: collection_of_exercises,
+            user_id: user_id,
             calories: calories
         )
         do {
@@ -159,6 +175,7 @@ class SupabaseLogic: ObservableObject {
             return true
         } catch {
             DispatchQueue.main.async {
+                print(error.localizedDescription, "1111")
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
@@ -166,8 +183,9 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendExercise(exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String, calorie_burned: Int) async {
+    func appendExercise(exercise_id: Int? = nil,exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String, calorie_burned: Int) async {
         let newExercise = Exercise(
+            exercise_id: exercise_id,
             exercise_name: exercise_name,
             user_id: user_id,
             sets: sets,
@@ -185,6 +203,26 @@ class SupabaseLogic: ObservableObject {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
+        }
+    }
+    
+    func appendWorkoutExercise(workout_exercise_combination_id: Int, workout_id: Int, exercise_id: Int, log_id: Int) async -> Bool {
+        let newExercise = WorkoutExercise(
+            workout_exercise_combination_id: workout_exercise_combination_id,
+            workout_id: workout_id,
+            exercise_id: exercise_id,
+            log_id: log_id
+        )
+        do {
+            let _ = try await authViewModel.client.from("workouts_exercises").insert(newExercise).execute()
+            return true
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription, "112244")
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+            return false
         }
     }
 

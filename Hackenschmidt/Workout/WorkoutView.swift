@@ -65,14 +65,18 @@ struct WorkoutView: View {
                             Text(errorMessage).foregroundColor(.red)
                         } else {
                             List {
-                                ForEach(supabaseLogic.workouts) { workout in
-                                    WorkoutCellView(workout: workout)
+                                ForEach(supabaseLogic.workouts, id: \.workout_id) { workout in
+                                    WorkoutCellView(
+                                        workout: workout,
+                                        workoutExercises: supabaseLogic.workoutExercise,
+                                        exercises: supabaseLogic.exercises
+                                    )
                                 }
                             }
-                            .frame(minHeight: 750)
-                            .listStyle(PlainListStyle())
                         }
+                        
                     }
+                    .listStyle(PlainListStyle())
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
                     .cornerRadius(15)
@@ -174,11 +178,13 @@ struct WorkoutView: View {
                     .padding(.bottom, 20)
                 }
             }
-        }
-        .onAppear {
-            Task {
-                await supabaseLogic.fetchWorkout()
-                isLoading = false
+            .onAppear {
+                Task {
+                    await supabaseLogic.fetchWorkoutExercise()
+                    await supabaseLogic.fetchWorkout()
+                    await supabaseLogic.fetchExercise()
+                    isLoading = false
+                }
             }
         }
     }

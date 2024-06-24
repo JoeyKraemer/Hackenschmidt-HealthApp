@@ -25,8 +25,12 @@ struct AddWorkoutUI: View {
                             } else if let errorMessage = supabaseLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
                             } else {
-                                List(supabaseLogic.workouts ,id: \.workout_id) { workout in
-                                    WorkoutCellView(workout: workout)
+                                List(supabaseLogic.workouts, id: \.workout_id) { workout in
+                                    WorkoutCellView(
+                                        workout: workout,
+                                        workoutExercises: supabaseLogic.workoutExercise,
+                                        exercises: supabaseLogic.exercises
+                                    )
                                 }
                                 .listStyle(PlainListStyle())
                                 .background(Color("NormalBackground"))
@@ -35,6 +39,8 @@ struct AddWorkoutUI: View {
                         .onAppear {
                             Task {
                                 await supabaseLogic.fetchWorkout()
+                                await supabaseLogic.fetchExercise()
+                                await supabaseLogic.fetchWorkoutExercise()
                             }
                         }
                     }
@@ -47,14 +53,12 @@ struct AddWorkoutUI: View {
                         Spacer()
 
                         VStack {
-                            Button(action: {}) {
-                                NavigationLink(destination: AddWorkoutForm()) {
-                                    Image(systemName: "fork.knife.circle.fill")
-                                        .font(.system(size: 50))
-                                        .foregroundColor(.purple)
-                                        .transition(.move(edge: .bottom))
-                                        .animation(.easeInOut)
-                                }
+                            NavigationLink(destination: AddWorkoutForm()) {
+                                Image(systemName: "fork.knife.circle.fill")
+                                    .font(.system(size: 50))
+                                    .foregroundColor(.purple)
+                                    .transition(.move(edge: .bottom))
+                                    .animation(.easeInOut)
                             }
                             .padding(.bottom, 30)
                         }

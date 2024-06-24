@@ -8,8 +8,8 @@
 import Foundation
 
 struct Workout: Codable {
-    var workout_id: UUID?
+    var workout_id: Int
     var workout_name: String
-    var collection_of_exercise: [Exercise]
-    var calories: Int
+    var user_id: UUID?
+    var calories: Int?
 }
