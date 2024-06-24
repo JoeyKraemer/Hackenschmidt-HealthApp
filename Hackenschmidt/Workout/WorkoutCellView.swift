@@ -11,7 +11,7 @@ struct WorkoutCellView: View {
             let workoutName = workout.workout_name
             Text(workoutName)
                 .font(.headline)
-            
+
             ForEach(filteredWorkoutExercises, id: \.workout_exercise_combination_id) { workoutExercise in
                 if let exercise = exercises.first(where: { $0.exercise_id == workoutExercise.exercise_id }) {
                     VStack(alignment: .leading, spacing: 8) {
