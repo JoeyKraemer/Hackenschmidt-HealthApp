@@ -73,11 +73,11 @@ class AuthViewModel: ObservableObject {
 
         print("Succes")
     }
-    
+
     func signOut() async {
         keychain["access_token"] = nil
         keychain["refresh_token"] = nil
-        
+
         do {
             try await client.auth.signOut()
         } catch {

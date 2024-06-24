@@ -146,7 +146,7 @@ struct ProfileView: View {
                         .cornerRadius(10)
                 }
                 .padding(.top)
-                
+
                 Spacer()
 
                 Button(action: {
