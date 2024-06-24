@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Exercise: Codable, Identifiable {
-    var id: UUID { exercise_id ?? UUID() }
+struct Exercise: Codable, Hashable {
     var exercise_id: UUID?
     var exercise_name: String
     var user_id: UUID?

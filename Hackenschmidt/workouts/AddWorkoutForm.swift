@@ -63,7 +63,7 @@ struct AddWorkoutForm: View {
                                 .foregroundStyle(Color.gray)
                                 .padding(.bottom, 20)
                         } else {
-                            List(exercises) { exercise in
+                            List(exercises, id: \.exercise_id) { exercise in
                                 ExerciseCard(exercise: exercise)
                             }
                             .listStyle(PlainListStyle())

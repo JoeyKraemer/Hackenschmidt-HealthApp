@@ -7,7 +7,7 @@ struct WorkoutCellView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(workout.workout_name)
                 .font(.headline)
-            ForEach(workout.collection_of_exercise) { exercise in
+            ForEach(workout.collection_of_exercise, id: \.exercise_id) { exercise in
                 VStack(alignment: .leading, spacing: 8) {
                     Text(exercise.exercise_name)
                         .font(.subheadline)
