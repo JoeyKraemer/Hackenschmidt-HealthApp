@@ -10,6 +10,7 @@ import SwiftUI
 class SupabaseLogic: ObservableObject {
     @StateObject public var authViewModel = AuthViewModel.shared
     @Published var foods: [Food] = []
+    @Published var meals: [Meal] = []
     @Published var user_profiles: [UserProfile] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
@@ -27,6 +28,51 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
+    
+    func fetchMeals() async {
+        authViewModel.isLoading = true
+        do {
+            let response: [Meal] = try await authViewModel.client
+                .from("meals")
+                .select()
+                .execute()
+                .value
+            meals = response
+            print("Hello", response)
+            authViewModel.isLoading = false
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription)
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
+    }
+    
+    func appendMeal(
+            meal_id: Int,
+            meal_name: String,
+            cooking_steps: String,
+            user_id: UUID,
+            calories: Int
+        ) async {
+            let newMeal = Meal(
+                meal_id: meal_id,
+                meal_name: meal_name,
+                cooking_steps: cooking_steps,
+                user_id: user_id,
+                calories: calories
+            )
+
+            do {
+                let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
+            } catch {
+                DispatchQueue.main.async {
+                    self.authViewModel.errorMessage = error.localizedDescription
+                    self.authViewModel.isLoading = false
+                }
+            }
+        }
 
     func fetchUserProfile() async {
         do {
@@ -136,4 +182,47 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
+    
+    func fetchMealFoodStructs(for mealId: Int) async -> [MealFoodStruct]? {
+           do {
+               let response: [MealFoodStruct] = try await authViewModel.client
+                   .from("meals_foods")
+                   .select()
+                   .eq("meal_id", value: mealId)
+                   .execute()
+                   .value
+               return response
+           } catch {
+               DispatchQueue.main.async {
+                   self.errorMessage = error.localizedDescription
+               }
+               return nil
+           }
+       }
+
+       func fetchFoods(for foodIds: [Int]) async -> [Food]? {
+           do {
+               let response: [Food] = try await authViewModel.client
+                   .from("food")
+                   .select()
+                   .in("food_id", values: foodIds)
+                   .execute()
+                   .value
+               return response
+           } catch {
+               DispatchQueue.main.async {
+                   self.errorMessage = error.localizedDescription
+               }
+               return nil
+           }
+       }
+
+       func fetchFoodItems(for mealId: Int) async -> [Food]? {
+           guard let mealFoodStructs = await fetchMealFoodStructs(for: mealId) else {
+               return nil
+           }
+
+           let foodIds = mealFoodStructs.map { $0.food_id }
+           return await fetchFoods(for: foodIds)
+       }
 }
