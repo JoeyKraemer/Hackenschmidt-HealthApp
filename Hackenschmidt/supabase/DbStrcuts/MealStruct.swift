@@ -13,8 +13,8 @@ struct Meal: Codable, Hashable, Identifiable {
     let cooking_steps: String?
     let user_id: UUID
     let calories: Int
-    
+
     var id: Int {
-           meal_id
+        meal_id
     }
 }
