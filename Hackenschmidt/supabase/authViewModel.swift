@@ -55,7 +55,7 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func singUp(email: String, password: String) async {
+    func signUp(email: String, password: String) async {
         isLoading = true
         do {
             let session = try await client.auth.signUp(email: email, password: password)
