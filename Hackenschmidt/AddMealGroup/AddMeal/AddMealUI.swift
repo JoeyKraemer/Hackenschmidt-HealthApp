@@ -18,7 +18,7 @@ struct AddMealUI: View {
 
                     VStack {
                         Text("My meals")
-                            .foregroundStyle(Color("ButtonColor"))
+                            .foregroundColor(Color("ButtonColor"))
                             .font(.system(size: 15, weight: .bold))
                     }
 
@@ -28,33 +28,24 @@ struct AddMealUI: View {
                         } else if let errorMessage = supabasLogic.errorMessage {
                             Text(errorMessage).foregroundColor(.red)
                         } else {
-                            List(supabasLogic.meals, id: \.self) { meal in
-                                VStack(alignment: .leading) {
-                                    MealCard(name: meal.meal_name, calories: Int(meal.calories))
-                                        .listRowBackground(Color.clear)
-                                        .foregroundColor(.black)
-                                        .onTapGesture {
-                                            selectedMeal = meal
-                                        }
-
-                                    if let foods = mealFoodItems[meal.meal_id] {
-                                        ForEach(foods, id: \.self) { food in
-                                            Text(food.food_name)
-                                                .padding(.vertical, 2)
-                                        }
-                                    } else {
-                                        ProgressView()
-                                            .onAppear {
-                                                Task {
-                                                    if let foods = await supabasLogic.fetchFoodItems(for: meal.meal_id) {
-                                                        mealFoodItems[meal.meal_id] = foods
-                                                    }
+                            ScrollView {
+                                VStack(spacing: 10) {
+                                    ForEach(supabasLogic.meals, id: \.self) { meal in
+                                        VStack(alignment: .leading) {
+                                            MealCard(name: meal.meal_name, calories: Int(meal.calories))
+                                                .foregroundColor(.black)
+                                                .onTapGesture {
+                                                    selectedMeal = meal
                                                 }
-                                            }
+                                        }
+                                        .padding()
+                                        .background(Color("NormalBackground"))
+                                        .cornerRadius(10)
                                     }
                                 }
+                                .padding(.horizontal)
                             }
-                            .listStyle(PlainListStyle())
+                            .background(Color("NormalBackground"))
                         }
                     }
                     .onAppear {

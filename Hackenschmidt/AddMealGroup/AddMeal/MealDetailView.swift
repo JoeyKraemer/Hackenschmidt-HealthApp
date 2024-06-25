@@ -20,7 +20,7 @@ struct MealDetailView: View {
                 .font(.headline)
                 .padding(.top)
 
-            Text(meal.cooking_steps!)
+            Text(meal.cooking_steps)
                 .padding()
 
             Text("Collection of Food:")
@@ -41,5 +41,21 @@ struct MealDetailView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            loadFoodItems()
+        }
+    }
+
+    func loadFoodItems() {
+        isLoading = true
+        errorMessage = nil
+        Task {
+            if let fetchedFoodItems = await supabaseLogic.fetchFoodItems(for: meal.meal_id) {
+                foodItems = fetchedFoodItems
+            } else {
+                errorMessage = supabaseLogic.errorMessage
+            }
+            isLoading = false
+        }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 struct Meal: Codable, Hashable, Identifiable {
     let meal_id: Int
     let meal_name: String
-    let cooking_steps: String?
+    let cooking_steps: String
     let user_id: UUID
     let calories: Int
 
