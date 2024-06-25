@@ -58,37 +58,7 @@ struct AddMealUI: View {
                 .animation(.default, value: isAdding)
 
                 VStack {
-                    if isAdding {
-                        Button(action: {}) {
-                            VStack {
-                                Image(systemName: "pencil.circle.fill")
-                                    .font(.system(size: 50))
-                                    .foregroundColor(.purple)
-                                Text("Manual")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .padding(.bottom, 10)
-                        .padding(.trailing, 20)
-
-                        Button(action: {}) {
-                            VStack {
-                                Image(systemName: "camera.circle.fill")
-                                    .font(.system(size: 50))
-                                    .foregroundColor(.purple)
-                                Text("Camera")
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .padding(.bottom, 10)
-                        .padding(.trailing, 20)
-                    }
-
-                    Button(action: {
-                        withAnimation {
-                            self.isAdding.toggle()
-                        }
-                    }) {
+                    NavigationLink(destination: AddMealForm()) {
                         Image(systemName: "plus.circle.fill")
                             .font(.system(size: 60))
                             .foregroundColor(.purple)
