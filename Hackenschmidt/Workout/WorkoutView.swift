@@ -1,21 +1,9 @@
-//
-//  WorkoutView.swift
-//  Hackenschmidt
-//
-//  Created by Joey Krämer on 28.05.24.
-//
 import SwiftUI
-import UIKit
 
 struct WorkoutView: View {
+    @StateObject private var supabaseLogic = SupabaseLogic()
+    @State private var isLoading = true
     @State private var isAdding: Bool = false
-
-    var workouts: [Workout] = [
-        Workout(exercise: "Bench Press", sets: [(0, 20), (20, 8), (20, 8), (20, 8)]),
-        Workout(exercise: "Barbell row", sets: [(20, 8), (20, 8), (20, 8), (20, 8)]),
-        Workout(exercise: "Dumbbell Shoulder Press", sets: [(10, 8), (10, 8), (10, 8), (10, 8)]),
-        Workout(exercise: "Inclined Machine Chest Press", sets: [(40, 8), (40, 8), (40, 8), (40, 8)]),
-    ]
 
     var workoutData: [WorkoutData] = [
         WorkoutData(day: "Day 9", count: 1),
@@ -29,7 +17,7 @@ struct WorkoutView: View {
         WorkoutData(day: "Day 17", count: 0),
         WorkoutData(day: "Day 18", count: 3),
         WorkoutData(day: "Day 19", count: 3),
-        WorkoutData(day: "Day 20", count: 4),
+        WorkoutData(day: "Day 20", count: 1),
     ]
 
     var body: some View {
@@ -47,7 +35,6 @@ struct WorkoutView: View {
                         }
                         .padding(.horizontal)
 
-                        // Integrate WorkoutChartView
                         WorkoutChartView(workoutData: workoutData)
 
                         Spacer()
@@ -72,12 +59,23 @@ struct WorkoutView: View {
 
                         Spacer()
 
-                        List(workouts) { workout in
-                            WorkoutCellView(workout: workout)
+                        if isLoading {
+                            ProgressView("Loading workouts...")
+                        } else if let errorMessage = supabaseLogic.errorMessage {
+                            Text(errorMessage).foregroundColor(.red)
+                        } else {
+                            List {
+                                ForEach(supabaseLogic.workouts, id: \.workout_id) { workout in
+                                    WorkoutCellView(
+                                        workout: workout,
+                                        workoutExercises: supabaseLogic.workoutExercise,
+                                        exercises: supabaseLogic.exercises
+                                    )
+                                }
+                            }
                         }
-                        .frame(minHeight: 750)
-                        .listStyle(PlainListStyle())
                     }
+                    .listStyle(PlainListStyle())
                     .frame(maxWidth: .infinity)
                     .background(Color.white)
                     .cornerRadius(15)
@@ -86,7 +84,6 @@ struct WorkoutView: View {
                     .blur(radius: isAdding ? 10 : 0)
                     .animation(.default, value: isAdding)
 
-                    // Plus icon menu
                     HStack {
                         Spacer()
 
@@ -121,7 +118,6 @@ struct WorkoutView: View {
                         .padding(.trailing, 20)
                     }
 
-                    // Menu bar
                     HStack(spacing: 0) {
                         Button(action: {}) {
                             VStack {
@@ -179,6 +175,14 @@ struct WorkoutView: View {
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 20)
+                }
+            }
+            .onAppear {
+                Task {
+                    await supabaseLogic.fetchWorkoutExercise()
+                    await supabaseLogic.fetchWorkout()
+                    await supabaseLogic.fetchExercise()
+                    isLoading = false
                 }
             }
         }

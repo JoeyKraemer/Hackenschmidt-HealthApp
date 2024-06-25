@@ -7,7 +7,8 @@ struct Homepage: View {
         NavigationView {
             TabView {
                 ZStack {
-                    Color("NormalBackground").edgesIgnoringSafeArea(.all)
+                    Color("NormalBackground")
+                        .edgesIgnoringSafeArea(.all)
 
                     VStack {
                         VStack {
@@ -68,6 +69,9 @@ struct Homepage: View {
 
                         Spacer()
                     }
+                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
+                    .navigationBarHidden(true)
 
                     VStack {
                         Spacer()
@@ -76,14 +80,14 @@ struct Homepage: View {
                             Spacer()
                             VStack {
                                 if isAdding {
-                                    NavigationLink(destination: AddMealForm()) {
+                                    NavigationLink(destination: AddMealUI()) {
                                         Image(systemName: "fork.knife.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
                                             .transition(.move(edge: .bottom))
                                             .animation(.easeInOut)
                                     }
-                                    NavigationLink(destination: AddWorkout()) {
+                                    NavigationLink(destination: AddWorkoutUI()) {
                                         Image(systemName: "trophy.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)

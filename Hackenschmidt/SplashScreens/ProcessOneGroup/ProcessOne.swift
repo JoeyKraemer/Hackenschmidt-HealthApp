@@ -138,6 +138,50 @@ struct ProcessOne: View {
                         .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                         .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
                     }
+                    Spacer()
+                    VStack {
+                        Text("Already have an account?")
+                            .foregroundColor(Color("TextColor"))
+                        NavigationLink(
+                            destination: LogInUI(),
+                            label: {
+                                Text("Log in")
+                                    .foregroundColor(Color("ButtonColor"))
+                            }
+                        )
+                    }
+                    .padding(.top, 20)
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            await authViewModel.signIn(email: "test@test.com", password: "verytest")
+                        }
+                        Task {
+                            if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {
+                                UserProfileInformationGather.shared.setName(name: userName)
+                                UserProfileInformationGather.shared.setAge(age: age)
+                                shouldNavigate = true
+                            }
+                        }
+                    }) {
+                        Text("Next")
+                            .frame(width: 340, height: 40)
+                            .foregroundColor(Color.white)
+                            .background(processOneChecker.checkAll(username: userName, email: email, password: password, age: age) ? Color.gray : Color("ButtonColor"))
+                            .cornerRadius(5)
+                    }
+                    .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
+
+                    NavigationLink(
+                        destination: Homepage(),
+                        isActive: $shouldNavigate,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                    .hidden()
                     .frame(minHeight: geometry.size.height)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
                 }
