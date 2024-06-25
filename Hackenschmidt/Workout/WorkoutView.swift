@@ -74,7 +74,6 @@ struct WorkoutView: View {
                                 }
                             }
                         }
-                        
                     }
                     .listStyle(PlainListStyle())
                     .frame(maxWidth: .infinity)

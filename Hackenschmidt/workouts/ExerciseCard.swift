@@ -9,7 +9,7 @@ import SwiftUI
 struct ExerciseCard: View {
     var exercise: Exercise
     @Binding var isChecked: Bool
-    
+
     var body: some View {
         ZStack {
             Color.white // Set the background of the card to white
@@ -21,7 +21,6 @@ struct ExerciseCard: View {
                         .foregroundColor(.purple)
                 }
                 VStack(alignment: .leading) {
-                    
                     Text(exercise.exercise_name)
                         .font(.headline)
                         .foregroundStyle(Color("TextColor"))

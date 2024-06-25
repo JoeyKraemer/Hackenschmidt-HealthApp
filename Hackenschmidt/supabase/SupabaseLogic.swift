@@ -105,7 +105,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func fetchWorkoutExercise() async {
         authViewModel.isLoading = true
         do {
@@ -183,7 +183,7 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendExercise(exercise_id: Int? = nil,exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String, calorie_burned: Int) async {
+    func appendExercise(exercise_id: Int? = nil, exercise_name: String, sets: Int, reps: Int, user_id: UUID, weight: Int, muscle_group: String, equipment: String, calorie_burned: Int) async {
         let newExercise = Exercise(
             exercise_id: exercise_id,
             exercise_name: exercise_name,

@@ -10,7 +10,7 @@ struct AddWorkoutForm: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var shouldNavigate = false
-    
+
     @StateObject private var supabaseLogic = SupabaseLogic()
     @StateObject private var authViewModel = AuthViewModel.shared
 
@@ -18,7 +18,7 @@ struct AddWorkoutForm: View {
         NavigationView {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
-                
+
                 ScrollView {
                     VStack {
                         VStack(alignment: .leading) {
@@ -33,7 +33,7 @@ struct AddWorkoutForm: View {
                         }
                         .padding(.bottom, 10)
                         .padding(.top, 50)
-                        
+
                         VStack(alignment: .leading) {
                             Text("Add Exercise")
                                 .foregroundColor(Color("TextColor"))
@@ -43,11 +43,11 @@ struct AddWorkoutForm: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color.gray.opacity(0.0))
                                         .frame(width: 340, height: 70)
-                                    
+
                                     RoundedRectangle(cornerRadius: 6)
                                         .stroke(Color.black)
                                         .frame(width: 340, height: 70)
-                                    
+
                                     Text("Add an exercise")
                                         .font(.system(size: 20))
                                         .foregroundColor(Color("TextColor"))
@@ -57,12 +57,12 @@ struct AddWorkoutForm: View {
                             .frame(width: 340, height: 70)
                             .buttonStyle(PlainButtonStyle())
                         }
-                        
+
                         VStack(alignment: .leading) {
                             Text("Exercise list")
                                 .foregroundColor(Color("TextColor"))
                                 .padding(.bottom, 20)
-                            
+
                             if supabaseLogic.exercises.isEmpty {
                                 Text("No exercises added")
                                     .foregroundColor(Color.gray)
@@ -82,13 +82,13 @@ struct AddWorkoutForm: View {
                         }
                         .padding()
                         .frame(height: 400)
-                        
+
                         // Added Exercises List
                         VStack(alignment: .leading) {
                             Text("Added exercises")
                                 .foregroundColor(Color("TextColor"))
                                 .padding(.bottom, 20)
-                            
+
                             if addedExercises.isEmpty {
                                 Text("No exercises added yet")
                                     .foregroundColor(Color.gray)
@@ -103,7 +103,7 @@ struct AddWorkoutForm: View {
                         }
                         .padding()
                         .frame(height: 200)
-                        
+
                         // Button to add checked exercises
                         Button(action: {
                             for exercise in exercises {
@@ -121,13 +121,13 @@ struct AddWorkoutForm: View {
                                 .cornerRadius(5)
                         }
                         .padding(.bottom, 10)
-                        
+
                         Spacer()
-                        
+
                         NavigationLink(destination: Homepage(), isActive: $shouldNavigate) {
                             EmptyView()
                         }
-                        
+
                         Button(action: {
                             Task {
                                 isSaving = true
@@ -142,7 +142,6 @@ struct AddWorkoutForm: View {
                                     alertMessage = "Failed to add workout."
                                     showAlert = true
                                 }
-                                
                             }
                         }) {
                             Text("ADD WORKOUT")
@@ -170,7 +169,7 @@ struct AddWorkoutForm: View {
             }
         }
     }
-    
+
     private func saveWorkoutAndExercises() async -> Bool {
         guard let userId = authViewModel.uid else {
             return false
@@ -182,12 +181,11 @@ struct AddWorkoutForm: View {
         }
         
         await supabaseLogic.fetchWorkout()
-        
         guard let newWorkout = supabaseLogic.workouts.last else {
             print("newWorkout triggered")
             return false
         }
-        
+
         for exercise in addedExercises {
             let workoutExerciseAdded = await supabaseLogic.appendWorkoutExercise(
                 workout_exercise_combination_id: nil,
