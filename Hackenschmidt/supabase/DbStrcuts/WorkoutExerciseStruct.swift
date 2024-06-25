@@ -8,7 +8,7 @@
 import Foundation
 
 struct WorkoutExercise: Codable, Hashable {
-    var workout_exercise_combination_id: Int
+    var workout_exercise_combination_id: Int?
     var workout_id: Int
     var exercise_id: Int
     var log_id: Int?

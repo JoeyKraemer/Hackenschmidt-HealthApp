@@ -8,7 +8,7 @@
 import Foundation
 
 struct Workout: Codable {
-    var workout_id: Int
+    var workout_id: Int?
     var workout_name: String
     var user_id: UUID?
     var calories: Int?

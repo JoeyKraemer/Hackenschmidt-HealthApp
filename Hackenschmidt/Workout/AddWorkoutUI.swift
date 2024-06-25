@@ -20,9 +20,7 @@ struct AddWorkoutUI: View {
                         }
 
                         VStack {
-                            if supabaseLogic.user_loading {
-                                ProgressView("Loading...")
-                            } else if let errorMessage = supabaseLogic.errorMessage {
+                            if let errorMessage = supabaseLogic.errorMessage {
                                 Text(errorMessage).foregroundColor(.red)
                             } else {
                                 List(supabaseLogic.workouts, id: \.workout_id) { workout in
@@ -54,7 +52,7 @@ struct AddWorkoutUI: View {
 
                         VStack {
                             NavigationLink(destination: AddWorkoutForm()) {
-                                Image(systemName: "fork.knife.circle.fill")
+                                Image(systemName: "trophy.circle.fill")
                                     .font(.system(size: 50))
                                     .foregroundColor(.purple)
                                     .transition(.move(edge: .bottom))

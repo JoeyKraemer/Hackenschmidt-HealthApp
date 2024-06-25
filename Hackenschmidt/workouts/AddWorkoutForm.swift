@@ -181,18 +181,22 @@ struct AddWorkoutForm: View {
             return false
         }
         
+        await supabaseLogic.fetchWorkout()
+        
         guard let newWorkout = supabaseLogic.workouts.last else {
+            print("newWorkout triggered")
             return false
         }
         
         for exercise in addedExercises {
             let workoutExerciseAdded = await supabaseLogic.appendWorkoutExercise(
-                workout_exercise_combination_id: Int.random(in: 1...Int.max),
-                workout_id: newWorkout.workout_id,
+                workout_exercise_combination_id: nil,
+                workout_id: newWorkout.workout_id!,
                 exercise_id: exercise.exercise_id!,
-                log_id: 0
+                log_id: nil
             )
             if !workoutExerciseAdded {
+                print("workoutExerciseAdded")
                 return false
             }
         }
