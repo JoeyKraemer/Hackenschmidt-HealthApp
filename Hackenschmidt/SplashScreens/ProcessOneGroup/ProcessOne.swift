@@ -108,9 +108,6 @@ struct ProcessOne: View {
                             Spacer()
                             Button(action: {
                                 Task {
-                                    await authViewModel.signIn(email: "test@test.com", password: "verytest")
-                                }
-                                Task {
                                     if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {
                                         UserProfileInformationGather.shared.setName(name: userName)
                                         UserProfileInformationGather.shared.setAge(age: age)
