@@ -163,7 +163,7 @@ class SupabaseLogic: ObservableObject {
         }
     }
 
-    func appendWorkout(workout_id: Int? = nil,workout_name: String, user_id: UUID, calories: Int? = nil) async -> Bool {
+    func appendWorkout(workout_id: Int? = nil, workout_name: String, user_id: UUID, calories: Int? = nil) async -> Bool {
         let newWorkout = Workout(
             workout_id: workout_id,
             workout_name: workout_name,
@@ -205,7 +205,7 @@ class SupabaseLogic: ObservableObject {
             }
         }
     }
-    
+
     func appendWorkoutExercise(workout_exercise_combination_id: Int? = nil, workout_id: Int, exercise_id: Int, log_id: Int? = nil) async -> Bool {
         let newExercise = WorkoutExercise(
             workout_exercise_combination_id: workout_exercise_combination_id,

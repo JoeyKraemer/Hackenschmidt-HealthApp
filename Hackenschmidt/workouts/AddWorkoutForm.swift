@@ -179,7 +179,7 @@ struct AddWorkoutForm: View {
         if !workoutAdded {
             return false
         }
-        
+
         await supabaseLogic.fetchWorkout()
         guard let newWorkout = supabaseLogic.workouts.last else {
             print("newWorkout triggered")
