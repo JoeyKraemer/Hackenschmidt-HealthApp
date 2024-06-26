@@ -139,7 +139,8 @@ struct FoodFormView: View {
               let protein = Float16(protein),
               let carbs = Float16(carbs),
               let fat = Float16(fat),
-              let calories = Int8(calories) else {
+              let calories = Int8(calories)
+        else {
             // Handle invalid input
             return
         }
