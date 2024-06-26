@@ -1,19 +1,14 @@
-//
-//  FoodFormView.swift
-//  Hackenschmidt
-//
-//  Created by Joey Krämer on 30.05.24.
-//
-
 import SwiftUI
 
-struct ProductFormView: View {
+struct FoodFormView: View {
     @State private var productName: String = ""
     @State private var productWeight: String = ""
     @State private var carbs: String = ""
     @State private var fat: String = ""
     @State private var protein: String = ""
     @State private var calories: String = ""
+    @StateObject private var supabaseLogic = SupabaseLogic()
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         ZStack {
@@ -121,7 +116,9 @@ struct ProductFormView: View {
                     Spacer()
 
                     Button(action: {
-                        // Add action here
+                        Task {
+                            await saveFood()
+                        }
                     }) {
                         Text("ADD")
                             .font(.headline)
@@ -136,10 +133,34 @@ struct ProductFormView: View {
             }
         }
     }
+
+    private func saveFood() async {
+        guard let weight = Float16(productWeight),
+              let protein = Float16(protein),
+              let carbs = Float16(carbs),
+              let fat = Float16(fat),
+              let calories = Int8(calories) else {
+            // Handle invalid input
+            return
+        }
+
+        await supabaseLogic.appendFood(
+            food_name: productName,
+            calories: calories,
+            weight: weight,
+            protein: protein,
+            carbohydrates: carbs,
+            fat: fat,
+            additional: ""
+        )
+
+        // Navigate back to AddMealForm
+        presentationMode.wrappedValue.dismiss()
+    }
 }
 
-struct ProductFormView_Previews: PreviewProvider {
+struct FoodFormView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductFormView()
+        FoodFormView()
     }
 }

@@ -26,7 +26,7 @@ struct AddMealForm: View {
                         .foregroundStyle(Color("TextColor"))
                         .padding(.bottom, 20)
 
-                    NavigationLink(destination: ProductFormView()) {
+                    NavigationLink(destination: FoodFormView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 6)
                                 .fill(Color.gray.opacity(0.0))
