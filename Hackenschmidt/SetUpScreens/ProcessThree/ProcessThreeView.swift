@@ -1,5 +1,5 @@
 //
-//  ProcessThree.swift
+//  ProcessThreeView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 11.05.2024.

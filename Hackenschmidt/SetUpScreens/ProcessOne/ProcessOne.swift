@@ -1,5 +1,5 @@
 //
-//  ProcessOneView.swift
+//  ProcessOne.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 01.05.2024.

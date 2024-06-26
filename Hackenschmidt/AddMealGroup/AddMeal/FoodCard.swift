@@ -1,5 +1,5 @@
 //
-//  FoodCart.swift
+//  FoodCard.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 09.06.2024.

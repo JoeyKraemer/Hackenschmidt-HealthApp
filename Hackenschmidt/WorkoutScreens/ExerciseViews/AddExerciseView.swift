@@ -1,5 +1,5 @@
 //
-//  AddExercise.swift
+//  AddExerciseView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 22.05.2024.
