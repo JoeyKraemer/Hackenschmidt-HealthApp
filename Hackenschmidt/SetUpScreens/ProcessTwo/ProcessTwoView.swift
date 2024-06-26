@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ProcessTwo: View {
+struct ProcessTwoView: View {
     let activityTitles = ["Very Active", "Active", "Not Very Active"]
     let textTitles = ["Spend most of the day doing heavy physical activity (e.g. food server, carpenter)", "Spend most of the day doing some physical activity (e.g. teacher, sales person)", "Spend most of the day sitting (e.g. desk job, bank teller)"]
 
@@ -180,7 +180,7 @@ struct ProcessTwo: View {
                                 .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
 
                                 NavigationLink(
-                                    destination: ProcessThree(),
+                                    destination: ProcessThreeView(),
                                     isActive: $shouldNavigate,
                                     label: {
                                         EmptyView()
@@ -200,5 +200,5 @@ struct ProcessTwo: View {
 }
 
 #Preview {
-    ProcessTwo()
+    ProcessTwoView()
 }

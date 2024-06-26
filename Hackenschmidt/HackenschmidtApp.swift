@@ -43,7 +43,7 @@ struct HackenschmidtApp: App {
                     if authViewModel.isLoggedIn {
                         Homepage()
                     } else {
-                        ProcessOne()
+                        ProcessOneView()
                     }
                 }
             }

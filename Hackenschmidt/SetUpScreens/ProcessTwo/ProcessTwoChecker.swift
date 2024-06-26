@@ -1,5 +1,5 @@
 //
-//  ProcessTwoLogic.swift
+//  ProcessTwoChecker.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 03.06.2024.

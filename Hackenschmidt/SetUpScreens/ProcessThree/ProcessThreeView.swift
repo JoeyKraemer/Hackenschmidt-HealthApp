@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProcessThree: View {
+struct ProcessThreeView: View {
     @State private var calories: Int = 0
     @State private var selectedButton: Int?
     @State private var selectedTitle: String = ""
@@ -45,7 +45,7 @@ struct ProcessThree: View {
                             .foregroundStyle(Color("TextColor"))
                         VStack(spacing: 20) {
                             ForEach(0 ..< 3, id: \.self) { index in
-                                ButtonView(title: buttonTitles[index], tag: index, showNextScreen: processThreeChecker.checkGoal(goal: selectedTitle), selectedButton: $selectedButton)
+                                BodyGoalButtonView(title: buttonTitles[index], tag: index, showNextScreen: processThreeChecker.checkGoal(goal: selectedTitle), selectedButton: $selectedButton)
                             }
                             .onReceive(selectedButton.publisher) { index in
                                 selectedTitle = buttonTitles[index]
@@ -122,5 +122,5 @@ private func checkEmpty(selectedTitle: String, calories: Int) -> Bool {
 }
 
 #Preview {
-    ProcessThree()
+    ProcessThreeView()
 }

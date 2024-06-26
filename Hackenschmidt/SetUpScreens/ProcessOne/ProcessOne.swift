@@ -1,5 +1,5 @@
 //
-//  ProcessOne.swift
+//  ProcessOneView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 01.05.2024.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ProcessOne: View {
+struct ProcessOneView: View {
     @State private var userName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""

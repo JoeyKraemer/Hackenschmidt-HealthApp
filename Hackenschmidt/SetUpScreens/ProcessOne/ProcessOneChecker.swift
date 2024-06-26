@@ -1,5 +1,5 @@
 //
-//  ProcessOneLogic.swift
+//  ProcessOneChecker.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 08.06.2024.

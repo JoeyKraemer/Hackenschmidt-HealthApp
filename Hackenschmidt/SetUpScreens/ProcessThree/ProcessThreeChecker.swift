@@ -1,5 +1,5 @@
 //
-//  ProcessThreeLogic.swift
+//  ProcessThreeChecker.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 04.06.2024.

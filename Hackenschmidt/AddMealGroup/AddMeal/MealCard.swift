@@ -10,12 +10,6 @@ struct MealCard: View {
                 Text(name)
                     .font(.system(size: 20, weight: .bold))
                     .bold()
-//                Text(foods.joined(separator: ", "))
-//                    .font(.subheadline)
-//                    .foregroundColor(.gray)
-//                    .lineLimit(1)
-//                    .truncationMode(.tail)
-//                    .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
             VStack {

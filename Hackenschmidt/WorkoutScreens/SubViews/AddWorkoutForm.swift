@@ -38,7 +38,7 @@ struct AddWorkoutForm: View {
                             Text("Add Exercise")
                                 .foregroundColor(Color("TextColor"))
                                 .padding(.bottom, 20)
-                            NavigationLink(destination: AddExercise(workoutName: $workoutName)) {
+                            NavigationLink(destination: AddExerciseView(workoutName: $workoutName)) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color.gray.opacity(0.0))

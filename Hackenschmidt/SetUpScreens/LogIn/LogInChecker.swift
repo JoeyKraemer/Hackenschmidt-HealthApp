@@ -1,5 +1,5 @@
 //
-//  LogInLogic.swift
+//  LogInChecker.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 12.06.2024.

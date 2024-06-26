@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AddWorkoutUI: View {
+struct AddWorkoutView: View {
     @State private var isAdding: Bool = false
     @StateObject private var supabaseLogic = SupabaseLogic()
 
@@ -71,5 +71,5 @@ struct AddWorkoutUI: View {
 
 // Preview for the SwiftUI view
 #Preview {
-    AddWorkoutUI()
+    AddWorkoutView()
 }

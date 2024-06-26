@@ -165,7 +165,7 @@ struct ProfileView: View {
                 .padding(.bottom)
 
                 NavigationLink(
-                    destination: ProcessOne(),
+                    destination: ProcessOneView(),
                     isActive: $isLoggedOut,
                     label: {
                         EmptyView()

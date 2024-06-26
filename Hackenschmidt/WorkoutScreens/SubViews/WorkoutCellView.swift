@@ -18,11 +18,11 @@ struct WorkoutCellView: View {
                         Text(exercise.exercise_name)
                             .font(.subheadline)
                         HStack {
-                            Text("Sets: \(exercise.sets)")
+                            Text("Sets: \(String(describing: exercise.sets))")
                             Spacer()
-                            Text("Reps: \(exercise.reps)")
+                            Text("Reps: \(String(describing: exercise.reps))")
                             Spacer()
-                            Text("Weight: \(exercise.weight) kg")
+                            Text("Weight: \(String(describing: exercise.weight)) kg")
                         }
                         .foregroundColor(Color("TextColor"))
                     }

@@ -87,7 +87,7 @@ struct Homepage: View {
                                             .transition(.move(edge: .bottom))
                                             .animation(.easeInOut)
                                     }
-                                    NavigationLink(destination: AddWorkoutUI()) {
+                                    NavigationLink(destination: AddWorkoutView()) {
                                         Image(systemName: "trophy.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)

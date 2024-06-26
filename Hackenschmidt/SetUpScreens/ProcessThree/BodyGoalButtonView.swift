@@ -1,5 +1,5 @@
 //
-//  ButtonView.swift
+//  BodyGoalButtonView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 04.06.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ButtonView: View {
+struct BodyGoalButtonView: View {
     let title: String
     let tag: Int
     let showNextScreen: Bool
