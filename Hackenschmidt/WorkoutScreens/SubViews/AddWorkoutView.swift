@@ -11,7 +11,7 @@ struct AddWorkoutView: View {
 
                 VStack {
                     VStack {
-                        SearchBar()
+                        SearchBarView()
 
                         VStack {
                             Text("My Workouts")

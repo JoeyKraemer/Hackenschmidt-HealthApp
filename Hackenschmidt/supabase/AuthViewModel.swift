@@ -1,5 +1,5 @@
 //
-//  authViewModel.swift
+//  AuthViewModel.swift
 //  Hackenschmidt
 //
 //  Created by paul on 17/06/2024.

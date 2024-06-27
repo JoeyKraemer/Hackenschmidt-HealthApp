@@ -80,7 +80,7 @@ struct Homepage: View {
                             Spacer()
                             VStack {
                                 if isAdding {
-                                    NavigationLink(destination: AddMealUI()) {
+                                    NavigationLink(destination: AddMealView()) {
                                         Image(systemName: "fork.knife.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
@@ -129,7 +129,7 @@ struct Homepage: View {
                     .padding(.horizontal, 5)
                 }
 
-                AddMealUI()
+                AddMealView()
                     .tabItem {
                         VStack {
                             Image(systemName: "book.circle.fill")

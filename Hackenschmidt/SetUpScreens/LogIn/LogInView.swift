@@ -1,5 +1,5 @@
 //
-//  LogInUI.swift
+//  LogInView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 12.06.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LogInUI: View {
+struct LogInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var shouldNavigate = false
@@ -97,5 +97,5 @@ struct LogInUI: View {
 }
 
 #Preview {
-    LogInUI()
+    LogInView()
 }

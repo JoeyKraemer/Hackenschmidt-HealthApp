@@ -1,5 +1,5 @@
 //
-//  SearchBarMeal.swift
+//  SearchBarView.swift
 //  Hackenschmidt
 //
 //  Created by Богдан Закусило on 09.06.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchBar: View {
+struct SearchBarView: View {
     @State private var searchText = ""
 
     var body: some View {

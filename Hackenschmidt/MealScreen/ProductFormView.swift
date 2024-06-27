@@ -1,5 +1,5 @@
 //
-//  FoodFormView.swift
+//  ProductFormView.swift
 //  Hackenschmidt
 //
 //  Created by Joey Krämer on 30.05.24.

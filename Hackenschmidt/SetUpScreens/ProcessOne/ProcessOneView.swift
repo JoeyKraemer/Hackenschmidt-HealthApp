@@ -95,7 +95,7 @@ struct ProcessOneView: View {
                                 Text("Already have an account?")
                                     .foregroundColor(Color("TextColor"))
                                 NavigationLink(
-                                    destination: LogInUI(),
+                                    destination: LogInView(),
                                     label: {
                                         Text("Log in")
                                             .foregroundColor(Color("ButtonColor"))

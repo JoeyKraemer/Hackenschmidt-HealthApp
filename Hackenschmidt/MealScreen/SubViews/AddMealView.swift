@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AddMealUI: View {
+struct AddMealView: View {
     @State private var isAdding: Bool = false
     @StateObject private var supabasLogic = SupabaseLogic()
     @State private var selectedMeal: Meal? = nil
@@ -13,7 +13,7 @@ struct AddMealUI: View {
 
                 VStack {
                     VStack {
-                        SearchBar()
+                        SearchBarView()
                     }
 
                     VStack {
@@ -76,5 +76,5 @@ struct AddMealUI: View {
 
 // Preview for the SwiftUI view
 #Preview {
-    AddMealUI()
+    AddMealView()
 }
