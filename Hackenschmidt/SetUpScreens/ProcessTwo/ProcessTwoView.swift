@@ -178,7 +178,7 @@ struct ProcessTwoView: View {
                                         .cornerRadius(5)
                                 }
                                 .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
-                                .navigationDestination(isPresented: $shouldNavigate){
+                                .navigationDestination(isPresented: $shouldNavigate) {
                                     ProcessThreeView()
                                 }
                             }

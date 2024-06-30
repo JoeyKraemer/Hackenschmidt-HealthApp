@@ -123,7 +123,7 @@ struct AddWorkoutForm: View {
                         .padding(.bottom, 10)
 
                         Spacer()
-                            .navigationDestination(isPresented: $shouldNavigate){
+                            .navigationDestination(isPresented: $shouldNavigate) {
                                 Homepage()
                             }
                         Button(action: {
