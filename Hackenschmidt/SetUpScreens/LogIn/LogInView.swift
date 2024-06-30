@@ -17,7 +17,7 @@ struct LogInView: View {
     let logInChecker = LogInChecker()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 VStack {
@@ -82,13 +82,9 @@ struct LogInView: View {
                             .cornerRadius(5)
                     }
                     .disabled(logInChecker.checkAll(password: password, email: email))
-
-                    NavigationLink(
-                        destination: Homepage(),
-                        isActive: $shouldNavigate,
-                        label: { EmptyView() }
-                    )
-                    .hidden()
+                    .navigationDestination(isPresented: $shouldNavigate){
+                        Homepage()
+                    }
                 }
             }
         }

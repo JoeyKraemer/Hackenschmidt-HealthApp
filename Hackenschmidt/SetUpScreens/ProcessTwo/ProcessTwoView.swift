@@ -18,7 +18,7 @@ struct ProcessTwoView: View {
     @State private var shouldNavigate = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/ .all/*@END_MENU_TOKEN@*/)
                 GeometryReader { geometry in
@@ -178,15 +178,9 @@ struct ProcessTwoView: View {
                                         .cornerRadius(5)
                                 }
                                 .disabled(processTwoChecker.checkForNil(weight: weight, height: height, gender: gender, activity: activity))
-
-                                NavigationLink(
-                                    destination: ProcessThreeView(),
-                                    isActive: $shouldNavigate,
-                                    label: {
-                                        EmptyView()
-                                    }
-                                )
-                                .hidden()
+                                .navigationDestination(isPresented: $shouldNavigate){
+                                    ProcessThreeView()
+                                }
                             }
                         }
                         .padding(.horizontal, 20)

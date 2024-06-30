@@ -29,7 +29,7 @@ struct AddExerciseView: View {
     @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 ScrollView {
@@ -221,15 +221,9 @@ struct AddExerciseView: View {
                                 .cornerRadius(5)
                         }
                         .disabled(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment, burnedCalorie: kcal))
-
-                        NavigationLink(
-                            destination: AddWorkoutForm(),
-                            isActive: $shouldNavigate,
-                            label: {
-                                EmptyView()
-                            }
-                        )
-                        .hidden()
+                        .navigationDestination(isPresented: $shouldNavigate){
+                            AddWorkoutForm()
+                        }
                     }
                 }
             }
