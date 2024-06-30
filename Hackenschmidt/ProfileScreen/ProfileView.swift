@@ -24,11 +24,11 @@ struct ProfileView: View {
     private let healthStore = HKHealthStore()
 
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
                 Color("NormalBackground")
                     .edgesIgnoringSafeArea(.all) // Extend background color into the safe area
-                
+
                 VStack(spacing: 20) {
                     HStack {
                         Image(systemName: "person.circle.fill")
@@ -59,7 +59,7 @@ struct ProfileView: View {
                     .padding()
                     .background(Color("NormalBackground"))
                     .cornerRadius(10)
-                    
+
                     VStack(alignment: .leading, spacing: 15) {
                         if supabasLogic.user_loading {
                             ProgressView("Loading...")
@@ -135,7 +135,7 @@ struct ProfileView: View {
                     .padding()
                     .background(Color("NormalBackground"))
                     .cornerRadius(10)
-                    
+
                     Button(action: {
                         isEditViewPresented = true
                     }) {
@@ -147,9 +147,9 @@ struct ProfileView: View {
                             .cornerRadius(10)
                     }
                     .padding(.top)
-                    
+
                     Spacer()
-                    
+
                     Button(action: {
                         Task {
                             await supabasLogic.authViewModel.signOut()
@@ -164,7 +164,7 @@ struct ProfileView: View {
                             .cornerRadius(10)
                     }
                     .padding(.bottom)
-                    .navigationDestination(isPresented: $isLoggedOut){
+                    .navigationDestination(isPresented: $isLoggedOut) {
                         ProcessOneView()
                     }
                 }

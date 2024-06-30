@@ -92,7 +92,7 @@ struct ProcessThreeView: View {
                             .cornerRadius(5)
                     }
                     .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
-                    .navigationDestination(isPresented: $showNextScreen){
+                    .navigationDestination(isPresented: $showNextScreen) {
                         Homepage()
                     }
                 }

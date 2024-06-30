@@ -221,7 +221,7 @@ struct AddExerciseView: View {
                                 .cornerRadius(5)
                         }
                         .disabled(addExerciseChecker.checkAll(name: name, sets: sets, reps: reps, weight: weight, group: muscleGroup, equipment: selectedEquipment, burnedCalorie: kcal))
-                        .navigationDestination(isPresented: $shouldNavigate){
+                        .navigationDestination(isPresented: $shouldNavigate) {
                             AddWorkoutForm()
                         }
                     }

@@ -19,7 +19,6 @@ struct ProcessOneView: View {
     let notificationHandler = NotificationHandler()
 
     @StateObject private var authViewModel = AuthViewModel.shared
-    
 
     var body: some View {
         NavigationStack {
@@ -124,7 +123,7 @@ struct ProcessOneView: View {
                                     .cornerRadius(5)
                             }
                             .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
-                            .navigationDestination(isPresented: $shouldNavigate){
+                            .navigationDestination(isPresented: $shouldNavigate) {
                                 ProcessTwoView()
                             }
                         }

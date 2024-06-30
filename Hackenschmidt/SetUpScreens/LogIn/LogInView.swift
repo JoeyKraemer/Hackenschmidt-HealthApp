@@ -82,7 +82,7 @@ struct LogInView: View {
                             .cornerRadius(5)
                     }
                     .disabled(logInChecker.checkAll(password: password, email: email))
-                    .navigationDestination(isPresented: $shouldNavigate){
+                    .navigationDestination(isPresented: $shouldNavigate) {
                         Homepage()
                     }
                 }
