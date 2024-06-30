@@ -5,7 +5,7 @@
 //  Created by Vladislav Kitsak on 21.06.2024.
 //
 
-//this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
+// this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
 import Foundation
 
 struct Meal: Codable, Hashable, Identifiable {

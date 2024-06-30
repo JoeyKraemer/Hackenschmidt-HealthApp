@@ -5,7 +5,7 @@
 //  Created by Богдан Закусило on 19.06.2024.
 //
 
-//this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
+// this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
 import Foundation
 
 struct UserProfile: Codable, Hashable {
