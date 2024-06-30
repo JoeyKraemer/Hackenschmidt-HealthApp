@@ -23,7 +23,7 @@ struct ProcessThreeView: View {
     @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 VStack {
@@ -92,21 +92,13 @@ struct ProcessThreeView: View {
                             .cornerRadius(5)
                     }
                     .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
-
-                    NavigationLink(
-                        destination: Homepage(),
-                        isActive: $shouldNavigate,
-                        label: {
-                            EmptyView()
-                        }
-                    )
-                    .hidden()
+                    .navigationDestination(isPresented: $showNextScreen) {
+                        Homepage()
+                    }
                 }
                 .padding()
                 .background(Color("NormalBackground"))
                 .cornerRadius(10)
-                .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
             }
         }
         .navigationBarBackButtonHidden(true)

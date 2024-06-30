@@ -69,8 +69,6 @@ struct Homepage: View {
 
                         Spacer()
                     }
-                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                    .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
                     .navigationBarHidden(true)
 
                     VStack {

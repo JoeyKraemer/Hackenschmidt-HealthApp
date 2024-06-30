@@ -15,7 +15,7 @@ struct AddWorkoutForm: View {
     @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
 
@@ -123,11 +123,9 @@ struct AddWorkoutForm: View {
                         .padding(.bottom, 10)
 
                         Spacer()
-
-                        NavigationLink(destination: Homepage(), isActive: $shouldNavigate) {
-                            EmptyView()
-                        }
-
+                            .navigationDestination(isPresented: $shouldNavigate) {
+                                Homepage()
+                            }
                         Button(action: {
                             Task {
                                 isSaving = true

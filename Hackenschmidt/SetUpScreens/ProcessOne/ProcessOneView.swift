@@ -21,7 +21,7 @@ struct ProcessOneView: View {
     @StateObject private var authViewModel = AuthViewModel.shared
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Color("NormalBackground").edgesIgnoringSafeArea(.all)
                 GeometryReader { geometry in
@@ -123,21 +123,16 @@ struct ProcessOneView: View {
                                     .cornerRadius(5)
                             }
                             .disabled(processOneChecker.checkAll(username: userName, email: email, password: password, age: age))
-
-                            NavigationLink(
-                                destination: ProcessTwoView(),
-                                isActive: $shouldNavigate,
-                                label: {
-                                    EmptyView()
-                                }
-                            )
-                            .hidden()
+                            .navigationDestination(isPresented: $shouldNavigate) {
+                                ProcessTwoView()
+                            }
                         }
                         .padding()
                         .background(Color("NormalBackground"))
                         .cornerRadius(10)
-                        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
-                        .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
+                        .padding(.top, 40)
+                        .padding(.bottom)
+                        .padding(.horizontal)
                     }
                     .frame(minHeight: geometry.size.height)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
