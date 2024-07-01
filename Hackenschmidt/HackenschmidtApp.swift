@@ -32,7 +32,7 @@ struct HackenschmidtApp: App {
                     ZStack {
                         Color("BackgroundSplashSCreenColor").edgesIgnoringSafeArea(.all)
                         VStack {
-                            ProgressView("Logging in...")
+                            ProgressView("Retriveing data...")
                                 .tint(.black)
                                 .progressViewStyle(CircularProgressViewStyle())
                                 .scaleEffect(1.5)
