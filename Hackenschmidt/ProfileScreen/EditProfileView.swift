@@ -121,7 +121,7 @@ struct EditProfileView: View {
 
                 Section(header: Text("Notifications")) {
                     Toggle("Enable Notifications", isOn: $notificationsEnabled)
-                        .onChange(of: notificationsEnabled) { newValue in
+                        .onChange(of: notificationsEnabled) { oldValue, newValue in
                             UserDefaults.standard.set(newValue, forKey: "notifications")
                         }
                 }
