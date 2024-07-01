@@ -106,7 +106,7 @@ struct Homepage: View {
                                 .padding(.bottom, 30)
                             }
                         }
-                        .padding(.trailing, 20) 
+                        .padding(.trailing, 20)
                     }
                 }
                 .tabItem {
