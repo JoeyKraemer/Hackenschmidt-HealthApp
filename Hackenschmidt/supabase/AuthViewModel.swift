@@ -56,7 +56,7 @@ class AuthViewModel: Observable {
     }
 
     func signUp(email: String, password: String) async {
-        self.errorMessage = nil
+        errorMessage = nil
         isLoading = true
         do {
             let session = try await client.auth.signUp(email: email, password: password)
