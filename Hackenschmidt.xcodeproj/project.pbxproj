@@ -12,6 +12,7 @@
 		4257D4172C29E0A5007469AD /* MealFoodStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4257D4162C29E0A5007469AD /* MealFoodStruct.swift */; };
 		42976D3B2C29AE1D001F177D /* MealStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42976D3A2C29AE1D001F177D /* MealStruct.swift */; };
 		42976D3D2C29B119001F177D /* MealCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42976D3C2C29B119001F177D /* MealCard.swift */; };
+		42BD6F8A2C32EF9300FA5567 /* FoodStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BD6F892C32EF9300FA5567 /* FoodStruct.swift */; };
 		6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6101152A2C21D013005CC443 /* SupabaseLogic.swift */; };
 		6111BE2E2C14F9F200B17BB8 /* ProcessOneChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE2D2C14F9F200B17BB8 /* ProcessOneChecker.swift */; };
 		6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6111BE312C14FBBF00B17BB8 /* AddExerciseLogic.swift */; };
@@ -32,7 +33,6 @@
 		617800B82C234EC60021FCC6 /* UserProfileInformationGather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617800B72C234EC60021FCC6 /* UserProfileInformationGather.swift */; };
 		617C34562C1646F3004FC095 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34552C1646F3004FC095 /* SearchBarView.swift */; };
 		619E4FE22C20ECAC00C58A21 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E4FE12C20ECAC00C58A21 /* NotificationHandler.swift */; };
-		61ADFBDB2C21E089005B4A74 /* FoodStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ADFBDA2C21E089005B4A74 /* FoodStruct.swift */; };
 		61ADFBDD2C21E269005B4A74 /* ExerciseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOneView.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwoView.swift */; };
@@ -71,6 +71,7 @@
 		4257D4162C29E0A5007469AD /* MealFoodStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealFoodStruct.swift; sourceTree = "<group>"; };
 		42976D3A2C29AE1D001F177D /* MealStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealStruct.swift; sourceTree = "<group>"; };
 		42976D3C2C29B119001F177D /* MealCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCard.swift; sourceTree = "<group>"; };
+		42BD6F892C32EF9300FA5567 /* FoodStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodStruct.swift; sourceTree = "<group>"; };
 		6101152A2C21D013005CC443 /* SupabaseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseLogic.swift; sourceTree = "<group>"; };
 		6111BE2D2C14F9F200B17BB8 /* ProcessOneChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOneChecker.swift; sourceTree = "<group>"; };
 		6111BE312C14FBBF00B17BB8 /* AddExerciseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseLogic.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		617800B72C234EC60021FCC6 /* UserProfileInformationGather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInformationGather.swift; sourceTree = "<group>"; };
 		617C34552C1646F3004FC095 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		619E4FE12C20ECAC00C58A21 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
-		61ADFBDA2C21E089005B4A74 /* FoodStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodStruct.swift; sourceTree = "<group>"; };
 		61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStruct.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOneView.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwoView.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 		61ADFBD92C21E05A005B4A74 /* DbStrcuts */ = {
 			isa = PBXGroup;
 			children = (
-				61ADFBDA2C21E089005B4A74 /* FoodStruct.swift */,
+				42BD6F892C32EF9300FA5567 /* FoodStruct.swift */,
 				61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */,
 				6177EFCE2C22662600316DF6 /* UserProfileStruct.swift */,
 				42976D3A2C29AE1D001F177D /* MealStruct.swift */,
@@ -399,7 +399,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					DA80AFED2BDFEE6200980333 = {
 						CreatedOnToolsVersion = 15.3;
@@ -473,6 +473,7 @@
 				421BF6DB2C2097390097B3AE /* Homepage.swift in Sources */,
 				DA80AFF92BDFEE6200980333 /* ContentView.swift in Sources */,
 				D4C9BD492C25693E00FB0D1C /* AddWorkoutView.swift in Sources */,
+				42BD6F8A2C32EF9300FA5567 /* FoodStruct.swift in Sources */,
 				6111BE322C14FBBF00B17BB8 /* AddExerciseLogic.swift in Sources */,
 				D468BA7A2C259B03006179A4 /* AddWorkoutForm.swift in Sources */,
 				61E4F7202BE2B7D4008F3260 /* ProcessTwoView.swift in Sources */,
@@ -480,7 +481,6 @@
 				DAD2D3A72C21B58300B1BA62 /* AuthViewModel.swift in Sources */,
 				6135F5BA2C0E582E004138D9 /* ProcessTwoChecker.swift in Sources */,
 				D4719ED82C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift in Sources */,
-				61ADFBDB2C21E089005B4A74 /* FoodStruct.swift in Sources */,
 				D4AC45A62C05EE5700038144 /* WorkoutChartView.swift in Sources */,
 				DA8C428F2C2D89EF00E01773 /* CameraTextRecognitionView.swift in Sources */,
 				D468BA7E2C259ECC006179A4 /* ExerciseCard.swift in Sources */,
@@ -537,6 +537,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -598,6 +599,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -627,6 +629,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P98463U8S7;
@@ -674,6 +677,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Hackenschmidt/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P98463U8S7;

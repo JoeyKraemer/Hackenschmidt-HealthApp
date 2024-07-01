@@ -56,7 +56,7 @@ struct AddWorkoutView: View {
                                     .font(.system(size: 50))
                                     .foregroundColor(.purple)
                                     .transition(.move(edge: .bottom))
-                                    .animation(.easeInOut)
+                                    .animation(.easeInOut, value: isAdding)
                             }
                             .padding(.bottom, 30)
                         }
