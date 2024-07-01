@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct HackenschmidtApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var authViewModel = AuthViewModel.shared
     @State private var isLoginCheckFinished = false
 
     @State private var showSecondSplash = false
@@ -48,7 +48,7 @@ struct HackenschmidtApp: App {
                 }
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            .environmentObject(authViewModel)
+            .environment(authViewModel)
         }
     }
 }

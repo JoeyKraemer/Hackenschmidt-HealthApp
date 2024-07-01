@@ -11,7 +11,8 @@ struct CalorieSlider: View {
     @State var goal: Double = 0
     var food: Double
     var burned: Double
-    @StateObject private var supabasLogic = SupabaseLogic()
+    @State private var supabasLogic = SupabaseLogic.shared
+    @State private var user_loading: Bool = true
 
     var remaining: Double {
         goal - food + burned
@@ -29,7 +30,7 @@ struct CalorieSlider: View {
                     .foregroundColor(.gray)
                     .padding(.bottom)
             }
-            if supabasLogic.user_loading {
+            if self.user_loading {
                 ProgressView("Loading...")
             } else if let errorMessage = supabasLogic.errorMessage {
                 Text(errorMessage).foregroundColor(.red)
@@ -88,8 +89,11 @@ struct CalorieSlider: View {
         .cornerRadius(14)
         .padding()
         .onAppear {
-            Task {
-                await supabasLogic.fetchUserProfile()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                Task {
+                    await supabasLogic.fetchUserProfile()
+                    self.user_loading = false
+                }
             }
         }
     }

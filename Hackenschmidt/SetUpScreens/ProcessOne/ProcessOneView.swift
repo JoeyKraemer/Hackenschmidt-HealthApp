@@ -18,7 +18,7 @@ struct ProcessOneView: View {
     let processOneChecker = ProcessOneChecker()
     let notificationHandler = NotificationHandler()
 
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationStack {

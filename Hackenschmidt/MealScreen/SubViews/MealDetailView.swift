@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MealDetailView: View {
     var meal: Meal
-    @StateObject private var supabaseLogic = SupabaseLogic()
+    @State private var supabaseLogic = SupabaseLogic.shared
     @State private var foodItems: [Food] = []
     @State private var isLoading: Bool = false
     @State private var errorMessage: String? = nil

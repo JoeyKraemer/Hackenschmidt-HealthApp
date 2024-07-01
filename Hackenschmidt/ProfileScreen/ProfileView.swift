@@ -8,7 +8,7 @@ import HealthKit
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject private var supabasLogic = SupabaseLogic()
+    @State private var supabasLogic = SupabaseLogic.shared
     @State private var isEditViewPresented = false
     @State private var isLoggedOut = false
     @State private var name: String = ""

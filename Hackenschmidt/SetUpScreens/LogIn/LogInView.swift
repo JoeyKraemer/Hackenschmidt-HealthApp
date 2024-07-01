@@ -13,7 +13,7 @@ struct LogInView: View {
     @State private var shouldNavigate = false
     @State private var errorMessage: String?
 
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var authViewModel = AuthViewModel.shared
     let logInChecker = LogInChecker()
 
     var body: some View {

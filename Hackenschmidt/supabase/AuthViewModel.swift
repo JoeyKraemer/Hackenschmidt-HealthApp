@@ -10,7 +10,7 @@ import KeychainAccess
 import Supabase
 import SwiftUI
 
-class AuthViewModel: ObservableObject {
+class AuthViewModel: Observable {
     @Published var errorMessage: String?
     @Published var uid: UUID?
     @Published var isLoading: Bool = false

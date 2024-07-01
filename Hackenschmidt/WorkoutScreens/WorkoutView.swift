@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WorkoutView: View {
-    @StateObject private var supabaseLogic = SupabaseLogic()
+    @State private var supabaseLogic = SupabaseLogic.shared
     @State private var isLoading = true
     @State private var isAdding: Bool = false
 

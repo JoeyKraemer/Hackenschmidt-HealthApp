@@ -11,8 +11,8 @@ struct AddWorkoutForm: View {
     @State private var alertMessage = ""
     @State private var shouldNavigate = false
 
-    @StateObject private var supabaseLogic = SupabaseLogic()
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var supabaseLogic = SupabaseLogic.shared
+    @State private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationStack {

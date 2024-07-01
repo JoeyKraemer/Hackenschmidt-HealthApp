@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AddWorkoutView: View {
     @State private var isAdding: Bool = false
-    @StateObject private var supabaseLogic = SupabaseLogic()
+    @State private var supabaseLogic = SupabaseLogic.shared
 
     var body: some View {
         NavigationView {

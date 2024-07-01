@@ -19,8 +19,8 @@ struct ProcessThreeView: View {
     let processThreeChecker = ProcessThreeChecker()
     let userInfo = UserProfileInformationGather.shared
 
-    @StateObject private var supabaseLogic = SupabaseLogic()
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var supabaseLogic = SupabaseLogic.shared
+    @State private var authViewModel = AuthViewModel.shared
 
     var body: some View {
         NavigationStack {

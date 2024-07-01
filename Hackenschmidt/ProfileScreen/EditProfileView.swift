@@ -40,8 +40,8 @@ struct EditProfileView: View {
     @Binding var notificationsEnabled: Bool
     @Binding var age: Int
     @Binding var body_goal: String
-    @StateObject private var supabaseLogic = SupabaseLogic()
-    @StateObject private var authViewModel = AuthViewModel.shared
+    @State private var supabaseLogic = SupabaseLogic.shared
+    @State private var authViewModel = AuthViewModel.shared
 
     let notificationHandler = NotificationHandler()
     let calorieCalculator = CalorieCalculator.shared
