@@ -32,7 +32,7 @@ class CameraTextRecognition {
 
             var currentKey: String? = nil
 
-            for (index, line) in textLines.enumerated() {
+            for (_, line) in textLines.enumerated() {
                 if line.contains("Energie") || line.contains("kcal") || line.contains("Brennwert") || line.contains("energy") {
                     currentKey = "Calories"
                 } else if line.contains("Fett") || line.contains("vetten") || line.contains("Fat") && !line.contains("davon gesättigte Fettsäuren") {

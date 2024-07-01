@@ -83,14 +83,14 @@ struct Homepage: View {
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
                                             .transition(.move(edge: .bottom))
-                                            .animation(.easeInOut)
+                                            .animation(.easeInOut, value: isAdding)
                                     }
                                     NavigationLink(destination: AddWorkoutView()) {
                                         Image(systemName: "trophy.circle.fill")
                                             .font(.system(size: 50))
                                             .foregroundColor(.purple)
                                             .transition(.move(edge: .bottom))
-                                            .animation(.easeInOut)
+                                            .animation(.easeInOut, value: isAdding)
                                     }
                                 }
 
@@ -106,7 +106,7 @@ struct Homepage: View {
                                 .padding(.bottom, 30)
                             }
                         }
-                        .padding(.trailing, 20) // Adjust padding here as needed
+                        .padding(.trailing, 20)
                     }
                 }
                 .tabItem {

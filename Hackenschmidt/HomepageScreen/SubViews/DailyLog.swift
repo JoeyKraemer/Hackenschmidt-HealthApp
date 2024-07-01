@@ -98,7 +98,7 @@ struct CircularProgressView: View {
                 .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.purple)
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.linear)
+                .animation(.linear, value: remaining)
 
             VStack {
                 Text("\(remaining)")
