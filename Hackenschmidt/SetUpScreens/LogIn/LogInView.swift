@@ -59,7 +59,8 @@ struct LogInView: View {
                             .cornerRadius(10)
                     }
                     if errorMessage != nil {
-                        Text("There was an error logging you in.")
+                        // if check asserts that errorMessage is not nil
+                        Text(errorMessage!)
                     }
                     Spacer()
                     Spacer()

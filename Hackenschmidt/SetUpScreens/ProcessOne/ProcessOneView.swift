@@ -14,6 +14,8 @@ struct ProcessOneView: View {
     @State private var password: String = ""
     @State private var age = 0
     @State private var shouldNavigate = false
+    @State private var showError = false
+    @State private var errorMessage: String?
 
     let processOneChecker = ProcessOneChecker()
     let notificationHandler = NotificationHandler()
@@ -110,9 +112,14 @@ struct ProcessOneView: View {
                                 Task {
                                     if !processOneChecker.checkAll(username: userName, email: email, password: password, age: age) {
                                         await authViewModel.signUp(email: email, password: password)
-                                        UserProfileInformationGather.shared.setName(name: userName)
-                                        UserProfileInformationGather.shared.setAge(age: age)
-                                        shouldNavigate = true
+                                        if let error = authViewModel.errorMessage {
+                                            self.showError = true
+                                            self.errorMessage = error
+                                        } else {
+                                            UserProfileInformationGather.shared.setName(name: userName)
+                                            UserProfileInformationGather.shared.setAge(age: age)
+                                            shouldNavigate = true
+                                        }
                                     }
                                 }
                             }) {
@@ -133,6 +140,9 @@ struct ProcessOneView: View {
                         .padding(.top, 40)
                         .padding(.bottom)
                         .padding(.horizontal)
+                        .alert(isPresented: $showError) {
+                            Alert(title: Text("Login Failed"), message: Text(errorMessage!), dismissButton: .default(Text("OK")))
+                        }
                     }
                     .frame(minHeight: geometry.size.height)
                     .ignoresSafeArea(.keyboard, edges: .bottom)
