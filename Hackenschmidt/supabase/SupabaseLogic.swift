@@ -18,7 +18,7 @@ class SupabaseLogic: Observable {
     @Published var logs: [Log] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
-    
+
     static let shared = SupabaseLogic()
 
     func fetchFoods() async {
@@ -81,13 +81,13 @@ class SupabaseLogic: Observable {
     }
 
     func fetchUserProfile() async {
-        self.user_loading = true
+        user_loading = true
         do {
             let response: [UserProfile] = try await authViewModel.client.from("user_profile").select().execute().value
             user_profiles = response
             print(response)
             print(user_profiles)
-            self.user_loading = false
+            user_loading = false
             print("finished loading...")
         } catch {
             DispatchQueue.main.async {
