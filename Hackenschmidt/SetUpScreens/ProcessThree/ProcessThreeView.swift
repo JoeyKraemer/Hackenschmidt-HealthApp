@@ -11,7 +11,6 @@ struct ProcessThreeView: View {
     @State private var calories: Int = 0
     @State private var selectedButton: Int?
     @State private var selectedTitle: String = ""
-    @State private var showNextScreen: Bool = false
     @State private var shouldNavigate = false
 
     let buttonTitles = ["Lose Weight", "Maintain Weight", "Grow Muscles"]
@@ -92,7 +91,7 @@ struct ProcessThreeView: View {
                             .cornerRadius(5)
                     }
                     .disabled(processThreeChecker.checkEmpty(selectedTitle: selectedTitle, calories: calories))
-                    .navigationDestination(isPresented: $showNextScreen) {
+                    .navigationDestination(isPresented: $shouldNavigate) {
                         Homepage()
                     }
                 }
