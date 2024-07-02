@@ -18,6 +18,7 @@ class SupabaseLogic: Observable {
     @Published var logs: [Log] = []
     @Published var user_loading: Bool = true
     @Published var errorMessage: String? = nil
+    @Published var mealsByLogId: [[Meal]] = []
 
     static let shared = SupabaseLogic()
 
@@ -103,8 +104,10 @@ class SupabaseLogic: Observable {
             let response: [Log] = try await authViewModel.client.from("logs").select().execute().value
             logs = response
             authViewModel.isLoading = false
+            print(logs)
         } catch {
             DispatchQueue.main.async {
+                print(error.localizedDescription)
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
@@ -266,12 +269,10 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func appendLog(log_id: UUID, log_date: Date, user_id _: UUID, meals: [Meal], workouts: [Workout]) async {
+    func appendLog(log_id: Int, log_date: String, user_id _: UUID) async {
         let newLog = Log(
             log_id: log_id,
-            log_date: log_date,
-            meals: meals,
-            workouts: workouts
+            log_date: log_date
         )
         do {
             let _ = try await
@@ -308,13 +309,11 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func updateLog(log_id: UUID, log_date: Date, user_id: UUID, meals: [Meal], workouts: [Workout]) async {
+    func updateLog(log_id: Int, log_date: String, user_id: UUID) async {
         let updateLog = Log(
             log_id: log_id,
             log_date: log_date,
-            user_id: user_id,
-            meals: meals,
-            workouts: workouts
+            user_id: user_id
         )
         do {
             let _ = try await authViewModel.client.from("logs").update(updateLog)
@@ -369,5 +368,26 @@ class SupabaseLogic: Observable {
 
         let foodIds = mealFoodStructs.map { $0.food_id }
         return await fetchFoods(for: foodIds)
+    }
+
+    func fetchMealById(log_id: Int) async {
+        do {
+            let response: [MealFoodStruct] = try await authViewModel.client.from("meals_foods").select().eq("log_id", value: log_id).execute().value
+
+            for i in response {
+                let mealResponse: [Meal] = try await authViewModel.client.from("meals").select().eq("meal_id", value: i.meal_id).execute().value
+                if !mealResponse.isEmpty {
+                    DispatchQueue.main.async {
+                        self.mealsByLogId.append(mealResponse)
+                    }
+                }
+            }
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription)
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+        }
     }
 }
