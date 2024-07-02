@@ -41,7 +41,7 @@ struct HackenschmidtApp: App {
                     }
                 } else {
                     if authViewModel.isLoggedIn {
-                        ProcessOneView()
+                        Homepage()
                     } else {
                         ProcessOneView()
                     }
