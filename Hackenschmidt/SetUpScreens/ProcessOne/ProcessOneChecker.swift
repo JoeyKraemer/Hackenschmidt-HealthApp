@@ -14,7 +14,7 @@ class ProcessOneChecker {
 
     func checkEmail(email: String) -> Bool {
         let emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$"
-        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegex)
+        let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegex)
         return !emailTest.evaluate(with: email)
     }
 
