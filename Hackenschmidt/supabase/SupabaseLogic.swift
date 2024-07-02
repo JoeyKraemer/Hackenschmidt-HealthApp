@@ -269,7 +269,7 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func appendLog(log_id: Int, log_date: String, user_id: UUID) async {
+    func appendLog(log_id: Int, log_date: String, user_id _: UUID) async {
         let newLog = Log(
             log_id: log_id,
             log_date: log_date
@@ -369,11 +369,11 @@ class SupabaseLogic: Observable {
         let foodIds = mealFoodStructs.map { $0.food_id }
         return await fetchFoods(for: foodIds)
     }
-    
+
     func fetchMealById(log_id: Int) async {
         do {
             let response: [MealFoodStruct] = try await authViewModel.client.from("meals_foods").select().eq("log_id", value: log_id).execute().value
-            
+
             for i in response {
                 let mealResponse: [Meal] = try await authViewModel.client.from("meals").select().eq("meal_id", value: i.meal_id).execute().value
                 if !mealResponse.isEmpty {
@@ -390,5 +390,4 @@ class SupabaseLogic: Observable {
             }
         }
     }
-
 }

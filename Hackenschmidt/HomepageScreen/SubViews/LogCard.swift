@@ -12,7 +12,7 @@ struct LogCard: View {
     var log_id: Int
     var body: some View {
         NavigationLink(destination: DailyLog(log_id: log_id, date: date)) {
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(date == "" ? Color.purple : Color.gray, lineWidth: 1)
                     .frame(width: 350, height: 100)
@@ -30,7 +30,7 @@ struct LogCard: View {
             }
         }
     }
-    
+
     func formattedDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"

@@ -12,9 +12,9 @@ struct DailyLog: View {
     @State private var isLoading = true
     @State private var supabasLogic = SupabaseLogic.shared
     @State private var isAdding: Bool = false
-    
+
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack {
                 HStack {
                     Spacer()
@@ -47,38 +47,37 @@ struct DailyLog: View {
             .blur(radius: isAdding ? 10 : 0)
             .animation(.default, value: isAdding)
 
-                VStack(alignment: .leading) {
-                    Text("Meal list")
-                        .font(.headline)
-                        .padding(.bottom, 5)
-                    if(isLoading){
-                        ProgressView("Loading...")
-                    }
-                    else if let errorMessage = supabasLogic.errorMessage {
-                        Text(errorMessage).foregroundColor(.red)
-                    }else{
-                        LazyVStack{
-                            ForEach(Array(supabasLogic.mealsByLogId.enumerated()), id: \.offset) {index,mealGroup in
-                                ForEach(mealGroup) { meal in
-                                    MealItemView(name: meal.meal_name, details: meal.cooking_steps, calories: meal.calories)
-                                }
+            VStack(alignment: .leading) {
+                Text("Meal list")
+                    .font(.headline)
+                    .padding(.bottom, 5)
+                if isLoading {
+                    ProgressView("Loading...")
+                } else if let errorMessage = supabasLogic.errorMessage {
+                    Text(errorMessage).foregroundColor(.red)
+                } else {
+                    LazyVStack {
+                        ForEach(Array(supabasLogic.mealsByLogId.enumerated()), id: \.offset) { _, mealGroup in
+                            ForEach(mealGroup) { meal in
+                                MealItemView(name: meal.meal_name, details: meal.cooking_steps, calories: meal.calories)
                             }
                         }
                     }
                 }
-                .padding()
-                .onAppear{
-                    Task{
-                        await supabasLogic.fetchUserProfile()
-                        await supabasLogic.fetchMealById(log_id: log_id)
-                        await supabasLogic.fetchWorkoutExercise()
-                        await supabasLogic.fetchWorkout()
-                        await supabasLogic.fetchExercise()
-                        isLoading = false
-                    }
+            }
+            .padding()
+            .onAppear {
+                Task {
+                    await supabasLogic.fetchUserProfile()
+                    await supabasLogic.fetchMealById(log_id: log_id)
+                    await supabasLogic.fetchWorkoutExercise()
+                    await supabasLogic.fetchWorkout()
+                    await supabasLogic.fetchExercise()
+                    isLoading = false
                 }
             }
         }
+    }
 }
 
 struct CircularProgressView: View {
