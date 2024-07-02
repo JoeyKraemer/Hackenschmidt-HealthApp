@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct MealFoodStruct: Codable, Hashable {
+    var meal_food_combination_id: Int
     var meal_id: Int
     var food_id: Int
     var log_id: Int

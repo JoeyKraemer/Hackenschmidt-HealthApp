@@ -33,6 +33,8 @@
 		617800B82C234EC60021FCC6 /* UserProfileInformationGather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617800B72C234EC60021FCC6 /* UserProfileInformationGather.swift */; };
 		617C34562C1646F3004FC095 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C34552C1646F3004FC095 /* SearchBarView.swift */; };
 		619E4FE22C20ECAC00C58A21 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E4FE12C20ECAC00C58A21 /* NotificationHandler.swift */; };
+		61A00C812C335AAF00D5D809 /* LogCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A00C802C335AAF00D5D809 /* LogCard.swift */; };
+		61A00C832C335BB500D5D809 /* ListOfLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A00C822C335BB500D5D809 /* ListOfLogs.swift */; };
 		61ADFBDD2C21E269005B4A74 /* ExerciseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */; };
 		61E4F71E2BE2AAB7008F3260 /* ProcessOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71D2BE2AAB7008F3260 /* ProcessOneView.swift */; };
 		61E4F7202BE2B7D4008F3260 /* ProcessTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E4F71F2BE2B7D4008F3260 /* ProcessTwoView.swift */; };
@@ -41,7 +43,6 @@
 		D42D889E2C206ADC00B179EA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889D2C206ADC00B179EA /* EditProfileView.swift */; };
 		D42D88A02C206DAD00B179EA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889F2C206DAD00B179EA /* ProfileView.swift */; };
 		D43BBA8A2C258424007C3A8B /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BBA892C258424007C3A8B /* DailyLog.swift */; };
-		D43BBA8C2C25842E007C3A8B /* ListOfLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BBA8B2C25842E007C3A8B /* ListOfLogs.swift */; };
 		D468BA7A2C259B03006179A4 /* AddWorkoutForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA792C259B03006179A4 /* AddWorkoutForm.swift */; };
 		D468BA7E2C259ECC006179A4 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */; };
 		D4719ED82C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4719ED72C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift */; };
@@ -91,6 +92,8 @@
 		617800B72C234EC60021FCC6 /* UserProfileInformationGather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInformationGather.swift; sourceTree = "<group>"; };
 		617C34552C1646F3004FC095 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		619E4FE12C20ECAC00C58A21 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		61A00C802C335AAF00D5D809 /* LogCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCard.swift; sourceTree = "<group>"; };
+		61A00C822C335BB500D5D809 /* ListOfLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLogs.swift; sourceTree = "<group>"; };
 		61ADFBDC2C21E269005B4A74 /* ExerciseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStruct.swift; sourceTree = "<group>"; };
 		61E4F71D2BE2AAB7008F3260 /* ProcessOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessOneView.swift; sourceTree = "<group>"; };
 		61E4F71F2BE2B7D4008F3260 /* ProcessTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTwoView.swift; sourceTree = "<group>"; };
@@ -99,7 +102,6 @@
 		D42D889D2C206ADC00B179EA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D42D889F2C206DAD00B179EA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D43BBA892C258424007C3A8B /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
-		D43BBA8B2C25842E007C3A8B /* ListOfLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfLogs.swift; sourceTree = "<group>"; };
 		D468BA792C259B03006179A4 /* AddWorkoutForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutForm.swift; sourceTree = "<group>"; };
 		D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		D4719ED72C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseStruct.swift; sourceTree = "<group>"; };
@@ -345,7 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				D43BBA892C258424007C3A8B /* DailyLog.swift */,
-				D43BBA8B2C25842E007C3A8B /* ListOfLogs.swift */,
+				61A00C802C335AAF00D5D809 /* LogCard.swift */,
+				61A00C822C335BB500D5D809 /* ListOfLogs.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -451,13 +454,13 @@
 				42976D3B2C29AE1D001F177D /* MealStruct.swift in Sources */,
 				6111BE342C14FFEB00B17BB8 /* ExcerciseButtonView.swift in Sources */,
 				D4AC459C2C05D9E900038144 /* WorkoutView.swift in Sources */,
-				D43BBA8C2C25842E007C3A8B /* ListOfLogs.swift in Sources */,
 				616878C12C1A431800A35247 /* LogInView.swift in Sources */,
 				DA8C42902C2D89EF00E01773 /* FoodFormCameraView.swift in Sources */,
 				4257D4152C29DC34007469AD /* MealDetailView.swift in Sources */,
 				6101152B2C21D013005CC443 /* SupabaseLogic.swift in Sources */,
 				617C34562C1646F3004FC095 /* SearchBarView.swift in Sources */,
 				D41A8F542C257B9E00E06190 /* LogStruct.swift in Sources */,
+				61A00C832C335BB500D5D809 /* ListOfLogs.swift in Sources */,
 				6177EFCF2C22662600316DF6 /* UserProfileStruct.swift in Sources */,
 				61ADFBDD2C21E269005B4A74 /* ExerciseStruct.swift in Sources */,
 				617639B72BEFDB900057D0A4 /* ProcessThreeView.swift in Sources */,
@@ -466,6 +469,7 @@
 				6111BE3B2C1506B000B17BB8 /* AddMealView.swift in Sources */,
 				619E4FE22C20ECAC00C58A21 /* NotificationHandler.swift in Sources */,
 				DA8C42912C2D89EF00E01773 /* CameraTextRecognition.swift in Sources */,
+				61A00C812C335AAF00D5D809 /* LogCard.swift in Sources */,
 				4257D4172C29E0A5007469AD /* MealFoodStruct.swift in Sources */,
 				42976D3D2C29B119001F177D /* MealCard.swift in Sources */,
 				D4C9BD4B2C256C7100FB0D1C /* WorkoutCard.swift in Sources */,

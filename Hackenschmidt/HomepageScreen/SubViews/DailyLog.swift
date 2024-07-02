@@ -7,77 +7,78 @@
 import SwiftUI
 
 struct DailyLog: View {
+    let log_id: Int
+    let date: String
+    @State private var isLoading = true
+    @State private var supabasLogic = SupabaseLogic.shared
+    @State private var isAdding: Bool = false
+    
     var body: some View {
-        VStack {
-            // Header
-            HStack {
-                Button(action: {
-                    // Previous day action
-                }) {
-                    Image(systemName: "chevron.left")
-                }
-                Spacer()
-                VStack {
-                    Text("Day 20")
-                        .font(.headline)
-                    Text("Today - 25/04/2024")
-                        .font(.subheadline)
-                }
-                Spacer()
-                Button(action: {
-                    // Next day action
-                }) {
-                    Image(systemName: "chevron.right")
-                }
-            }
-            .padding()
-
-            // Calories Circular Progress
+        ScrollView{
             VStack {
-                Text("Calories")
-                    .font(.headline)
-                CircularProgressView(remaining: 1150, goal: 2000, food: 1350, burned: 500)
-                    .frame(width: 150, height: 150)
-            }
-            .padding()
+                HStack {
+                    Spacer()
+                    VStack {
+                        Text(date)
+                            .font(.headline)
+                    }
+                    Spacer()
+                }
+                .padding()
 
-            // Meal List
-            VStack(alignment: .leading) {
-                Text("Meal list")
-                    .font(.headline)
-                    .padding(.bottom, 5)
-                MealItemView(name: "Fruit Bowl", details: "1 apple, 1 banana, 1 cup...", calories: 900)
-                MealItemView(name: "Pasta", details: "80g pasta, 10 cherry to...", calories: 450)
-            }
-            .padding()
+                HStack {
+                    Text("Calories")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.purple)
+                        .padding(.top)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                CalorieSlider(goal: 3000, food: 1750, burned: 700)
 
-            // Workout List
-            VStack(alignment: .leading) {
-                Text("Workout list")
-                    .font(.headline)
-                    .padding(.bottom, 5)
-                WorkoutItemView(name: "Cardio", details: "30m running, 20m walki...", calories: 250)
-                WorkoutItemView(name: "Push", details: "3x 20 push-ups, 3x 20 fl...", calories: 250)
+                Spacer()
             }
+            .frame(height: 340)
+            .background(Color.white)
+            .cornerRadius(15)
+            .shadow(radius: 5)
             .padding()
+            .blur(radius: isAdding ? 10 : 0)
+            .animation(.default, value: isAdding)
 
-            Spacer()
-
-            // Add button
-            Button(action: {
-                // Add action
-            }) {
-                Image(systemName: "plus")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding()
-                    .background(Color.purple)
-                    .clipShape(Circle())
-                    .foregroundColor(.white)
+                VStack(alignment: .leading) {
+                    Text("Meal list")
+                        .font(.headline)
+                        .padding(.bottom, 5)
+                    if(isLoading){
+                        ProgressView("Loading...")
+                    }
+                    else if let errorMessage = supabasLogic.errorMessage {
+                        Text(errorMessage).foregroundColor(.red)
+                    }else{
+                        LazyVStack{
+                            ForEach(Array(supabasLogic.mealsByLogId.enumerated()), id: \.offset) {index,mealGroup in
+                                ForEach(mealGroup) { meal in
+                                    MealItemView(name: meal.meal_name, details: meal.cooking_steps, calories: meal.calories)
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .onAppear{
+                    Task{
+                        await supabasLogic.fetchUserProfile()
+                        await supabasLogic.fetchMealById(log_id: log_id)
+                        await supabasLogic.fetchWorkoutExercise()
+                        await supabasLogic.fetchWorkout()
+                        await supabasLogic.fetchExercise()
+                        isLoading = false
+                    }
+                }
             }
-            .padding()
         }
-    }
 }
 
 struct CircularProgressView: View {

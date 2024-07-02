@@ -9,9 +9,7 @@
 import Foundation
 
 struct Log: Codable {
-    var log_id: UUID?
-    var log_date: Date
+    var log_id: Int
+    var log_date: String
     var user_id: UUID?
-    var meals: [Meal]
-    var workouts: [Workout]
 }
