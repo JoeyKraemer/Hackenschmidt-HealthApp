@@ -127,7 +127,7 @@ struct Homepage: View {
                     .padding(.horizontal, 5)
                 }
 
-                AddMealView()
+                ListOfLogs()
                     .tabItem {
                         VStack {
                             Image(systemName: "book.circle.fill")
