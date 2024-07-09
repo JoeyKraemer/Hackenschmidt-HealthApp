@@ -56,7 +56,7 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func appendMeal(meal_id: Int? = nil, meal_name: String, cooking_steps: String,user_id: UUID, calories: Int) async -> Bool {
+    func appendMeal(meal_id: Int? = nil, meal_name: String, cooking_steps: String, user_id: UUID, calories: Int) async -> Bool {
         let newMeal = Meal(
             meal_id: meal_id,
             meal_name: meal_name,
@@ -67,7 +67,7 @@ class SupabaseLogic: Observable {
 
         do {
             let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
-            
+
             return true
         } catch {
             DispatchQueue.main.async {
@@ -243,7 +243,7 @@ class SupabaseLogic: Observable {
             return false
         }
     }
-    
+
     func appendMealFood(meal_food_combination_id: Int? = nil, meal_id: Int, food_id: Int, log_id: Int? = nil) async -> Bool {
         let newFoodMeal = MealFoodStruct(
             meal_food_combination_id: meal_food_combination_id,

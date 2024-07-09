@@ -56,7 +56,7 @@ struct AddMealForm: View {
                             }
                             .frame(width: 340, height: 70)
                             .buttonStyle(PlainButtonStyle())
-                            
+
                             NavigationLink(destination: FoodFormCameraView(mealName: $mealName)) {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -76,8 +76,6 @@ struct AddMealForm: View {
                             .frame(width: 340, height: 70)
                             .buttonStyle(PlainButtonStyle())
                         }
-                        
-                        
 
                         VStack(alignment: .leading) {
                             Text("Food list")
@@ -195,7 +193,7 @@ struct AddMealForm: View {
         }
 
         let mealAdded = await supabaseLogic.appendMeal(meal_name: mealName, cooking_steps: "", user_id: userId, calories: 0)
-        
+
         if !mealAdded {
             return false
         }

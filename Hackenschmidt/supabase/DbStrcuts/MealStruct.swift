@@ -8,7 +8,7 @@
 // this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
 import Foundation
 
-struct Meal: Codable, Hashable{
+struct Meal: Codable, Hashable {
     let meal_id: Int?
     let meal_name: String
     let cooking_steps: String
