@@ -1,5 +1,5 @@
 //
-//  WorkoutExerciseStruct.swift
+//  WorkoutExercis.swift
 //  Hackenschmidt
 //
 //  Created by Joey Krämer on 24.06.24.

@@ -1,5 +1,5 @@
 //
-//  MealFoodStruct.swift
+//  MealFood.swift
 //  Hackenschmidt
 //
 //  Created by Vladislav Kitsak on 24.06.2024.
