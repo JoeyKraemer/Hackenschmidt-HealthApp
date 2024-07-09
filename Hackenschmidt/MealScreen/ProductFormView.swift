@@ -16,7 +16,7 @@ struct ProductFormView: View {
     @State private var protein: Float = 0
     @State private var calories: Int = 0
     @State private var shouldNavigate = false
-    
+
     @State private var supabaseLogic = SupabaseLogic.shared
 
     var body: some View {
@@ -35,7 +35,7 @@ struct ProductFormView: View {
                                     .background(Color.gray.opacity(0.1))
                                     .cornerRadius(10)
                             }
-                            
+
                             VStack {
                                 Text("What is the product weight?")
                                     .foregroundStyle(Color("TextColor"))
@@ -60,7 +60,7 @@ struct ProductFormView: View {
                                     }
                                 )
                             }
-                            
+
                             VStack {
                                 Text("Nutrition per 100g")
                                     .foregroundStyle(Color("TextColor"))
@@ -85,7 +85,7 @@ struct ProductFormView: View {
                                         }
                                     )
                                 }
-                                
+
                                 HStack {
                                     TextField("Fat", text: Binding(
                                         get: { "\(fat)" },
@@ -107,7 +107,7 @@ struct ProductFormView: View {
                                         }
                                     )
                                 }
-                                
+
                                 HStack {
                                     TextField("Protein", text: Binding(
                                         get: { "\(protein)" },
@@ -131,7 +131,7 @@ struct ProductFormView: View {
                                 }
                             }
                             .padding()
-                            
+
                             VStack {
                                 Text("Calorie on 100g")
                                     .foregroundStyle(Color("TextColor"))
@@ -159,7 +159,7 @@ struct ProductFormView: View {
                         }
                         Spacer()
                         Spacer()
-                        
+
                         Button(action: {
                             Task {
                                 await supabaseLogic.appendFood(food_name: productName, calories: calories, weight: productWeight, protein: protein, carbohydrates: carbs, fat: fat, additional: "TBD")
