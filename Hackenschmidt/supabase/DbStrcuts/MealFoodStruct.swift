@@ -6,9 +6,9 @@
 //
 
 // this struct is a representative class in database. We use supabase and it forced us to use snake_case instead of camelCase.
-import SwiftUI
+import Foundation
 
-struct MealFoodStruct: Codable, Hashable {
+struct MealFood: Codable, Hashable {
     var meal_food_combination_id: Int?
     var meal_id: Int
     var food_id: Int

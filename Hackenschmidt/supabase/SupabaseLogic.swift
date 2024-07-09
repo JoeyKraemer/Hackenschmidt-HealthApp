@@ -245,7 +245,7 @@ class SupabaseLogic: Observable {
     }
     
     func appendMealFood(meal_food_combination_id: Int? = nil, meal_id: Int, food_id: Int, log_id: Int? = nil) async -> Bool {
-        let newFoodMeal = MealFoodStruct(
+        let newFoodMeal = MealFood(
             meal_food_combination_id: meal_food_combination_id,
             meal_id: meal_id,
             food_id: food_id,
@@ -345,9 +345,9 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func fetchMealFoodStructs(for mealId: Int) async -> [MealFoodStruct]? {
+    func fetchMealFoodStructs(for mealId: Int) async -> [MealFood]? {
         do {
-            let response: [MealFoodStruct] = try await authViewModel.client
+            let response: [MealFood] = try await authViewModel.client
                 .from("meals_foods")
                 .select()
                 .eq("meal_id", value: mealId)
@@ -390,7 +390,7 @@ class SupabaseLogic: Observable {
 
     func fetchMealById(log_id: Int) async {
         do {
-            let response: [MealFoodStruct] = try await authViewModel.client.from("meals_foods").select().eq("log_id", value: log_id).execute().value
+            let response: [MealFood] = try await authViewModel.client.from("meals_foods").select().eq("log_id", value: log_id).execute().value
 
             for i in response {
                 let mealResponse: [Meal] = try await authViewModel.client.from("meals").select().eq("meal_id", value: i.meal_id).execute().value
