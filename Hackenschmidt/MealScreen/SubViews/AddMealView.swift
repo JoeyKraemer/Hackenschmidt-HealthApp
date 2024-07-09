@@ -67,9 +67,6 @@ struct AddMealView: View {
                     .padding(.trailing, 20)
                 }
             }
-            .sheet(item: $selectedMeal) { meal in
-                MealDetailView(meal: meal)
-            }
         }
     }
 }

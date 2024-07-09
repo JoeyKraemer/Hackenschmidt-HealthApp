@@ -174,6 +174,7 @@ struct AddWorkoutForm: View {
         }
 
         let workoutAdded = await supabaseLogic.appendWorkout(workout_name: workoutName, user_id: userId)
+        
         if !workoutAdded {
             return false
         }

@@ -6,6 +6,7 @@
 import SwiftUI
 
 struct FoodFormCameraView: View {
+    @Binding var mealName: String
     @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage? = nil
     @State private var nutritionInfo: [String: String] = [:]
@@ -102,11 +103,5 @@ struct FoodFormCameraView: View {
             }
         }
         .padding()
-    }
-}
-
-struct FoodFormCameraView_Previews: PreviewProvider {
-    static var previews: some View {
-        FoodFormCameraView()
     }
 }

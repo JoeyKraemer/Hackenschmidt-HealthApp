@@ -50,7 +50,7 @@ struct MealDetailView: View {
         isLoading = true
         errorMessage = nil
         Task {
-            if let fetchedFoodItems = await supabaseLogic.fetchFoodItems(for: meal.meal_id) {
+            if let fetchedFoodItems = await supabaseLogic.fetchFoodItems(for: meal.meal_id!) {
                 foodItems = fetchedFoodItems
             } else {
                 errorMessage = supabaseLogic.errorMessage

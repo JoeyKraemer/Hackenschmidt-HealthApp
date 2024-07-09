@@ -56,13 +56,7 @@ class SupabaseLogic: Observable {
         }
     }
 
-    func appendMeal(
-        meal_id: Int,
-        meal_name: String,
-        cooking_steps: String,
-        user_id: UUID,
-        calories: Int
-    ) async {
+    func appendMeal(meal_id: Int? = nil, meal_name: String, cooking_steps: String,user_id: UUID, calories: Int) async -> Bool {
         let newMeal = Meal(
             meal_id: meal_id,
             meal_name: meal_name,
@@ -73,11 +67,14 @@ class SupabaseLogic: Observable {
 
         do {
             let _ = try await authViewModel.client.from("meals").insert(newMeal).execute()
+            
+            return true
         } catch {
             DispatchQueue.main.async {
                 self.authViewModel.errorMessage = error.localizedDescription
                 self.authViewModel.isLoading = false
             }
+            return true
         }
     }
 
@@ -161,10 +158,11 @@ class SupabaseLogic: Observable {
     }
 
     func appendFood(
-        food_name: String, calories: Int8, weight: Float16, protein: Float16, carbohydrates: Float16,
-        fat: Float16, additional: String
+        food_id: Int? = nil, food_name: String, calories: Int, weight: Float, protein: Float, carbohydrates: Float,
+        fat: Float, additional: String
     ) async {
         let newFood = Food(
+            food_id: food_id,
             food_name: food_name,
             calories: calories,
             weight: weight,
@@ -227,14 +225,34 @@ class SupabaseLogic: Observable {
     }
 
     func appendWorkoutExercise(workout_exercise_combination_id: Int? = nil, workout_id: Int, exercise_id: Int, log_id: Int? = nil) async -> Bool {
-        let newExercise = WorkoutExercise(
+        let newWorkoutExercise = WorkoutExercise(
             workout_exercise_combination_id: workout_exercise_combination_id,
             workout_id: workout_id,
             exercise_id: exercise_id,
             log_id: log_id
         )
         do {
-            let _ = try await authViewModel.client.from("workouts_exercises").insert(newExercise).execute()
+            let _ = try await authViewModel.client.from("workouts_exercises").insert(newWorkoutExercise).execute()
+            return true
+        } catch {
+            DispatchQueue.main.async {
+                print(error.localizedDescription, "112244")
+                self.authViewModel.errorMessage = error.localizedDescription
+                self.authViewModel.isLoading = false
+            }
+            return false
+        }
+    }
+    
+    func appendMealFood(meal_food_combination_id: Int? = nil, meal_id: Int, food_id: Int, log_id: Int? = nil) async -> Bool {
+        let newFoodMeal = MealFoodStruct(
+            meal_food_combination_id: meal_food_combination_id,
+            meal_id: meal_id,
+            food_id: food_id,
+            log_id: log_id
+        )
+        do {
+            let _ = try await authViewModel.client.from("meals_foods").insert(newFoodMeal).execute()
             return true
         } catch {
             DispatchQueue.main.async {

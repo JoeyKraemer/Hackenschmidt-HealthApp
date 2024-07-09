@@ -58,7 +58,7 @@ struct DailyLog: View {
                 } else {
                     LazyVStack {
                         ForEach(Array(supabasLogic.mealsByLogId.enumerated()), id: \.offset) { _, mealGroup in
-                            ForEach(mealGroup) { meal in
+                            ForEach(mealGroup,id: \.meal_id) { meal in
                                 MealItemView(name: meal.meal_name, details: meal.cooking_steps, calories: meal.calories)
                             }
                         }

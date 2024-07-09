@@ -43,6 +43,7 @@
 		D42D889E2C206ADC00B179EA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889D2C206ADC00B179EA /* EditProfileView.swift */; };
 		D42D88A02C206DAD00B179EA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D889F2C206DAD00B179EA /* ProfileView.swift */; };
 		D43BBA8A2C258424007C3A8B /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BBA892C258424007C3A8B /* DailyLog.swift */; };
+		D43BCA262C3D3BBC009F1FAA /* FoodCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43BCA252C3D3BBC009F1FAA /* FoodCard.swift */; };
 		D468BA7A2C259B03006179A4 /* AddWorkoutForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA792C259B03006179A4 /* AddWorkoutForm.swift */; };
 		D468BA7E2C259ECC006179A4 /* ExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */; };
 		D4719ED82C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4719ED72C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift */; };
@@ -102,6 +103,7 @@
 		D42D889D2C206ADC00B179EA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D42D889F2C206DAD00B179EA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D43BBA892C258424007C3A8B /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
+		D43BCA252C3D3BBC009F1FAA /* FoodCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCard.swift; sourceTree = "<group>"; };
 		D468BA792C259B03006179A4 /* AddWorkoutForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutForm.swift; sourceTree = "<group>"; };
 		D468BA7D2C259ECC006179A4 /* ExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCard.swift; sourceTree = "<group>"; };
 		D4719ED72C29DD0F00EDCF10 /* WorkoutExerciseStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseStruct.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				4257D4142C29DC34007469AD /* MealDetailView.swift */,
 				6111BE382C15058600B17BB8 /* AddMealForm.swift */,
 				DA8C428D2C2D89EE00E01773 /* FoodFormCameraView.swift */,
+				D43BCA252C3D3BBC009F1FAA /* FoodCard.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				DA80AFF42BDFEE6200980333 /* Persistence.swift in Sources */,
 				DA94EC312C0E65EB0009D397 /* CalorieSlider.swift in Sources */,
 				617800B82C234EC60021FCC6 /* UserProfileInformationGather.swift in Sources */,
+				D43BCA262C3D3BBC009F1FAA /* FoodCard.swift in Sources */,
 				D43BBA8A2C258424007C3A8B /* DailyLog.swift in Sources */,
 				6135F5C02C0E86A2004138D9 /* ProcessThreeChecker.swift in Sources */,
 			);
@@ -649,6 +653,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -697,6 +702,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
